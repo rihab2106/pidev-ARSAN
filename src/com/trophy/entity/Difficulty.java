@@ -1,4 +1,4 @@
-package entity;
+package com.trophy.entity;
 
 public enum Difficulty {
     VERY_EASY,

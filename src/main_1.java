@@ -1,11 +1,12 @@
-import Controller.CategoryController;
-import Controller.GamesController;
-import Controller.TrophiesController;
-import entity.Category;
-import entity.Games;
-import entity.Trophies;
 
-public class main {
+import com.trophy.Controller.CategoryController;
+import com.trophy.Controller.GamesController;
+import com.trophy.Controller.TrophiesController;
+import com.trophy.entity.Category;
+import com.trophy.entity.Games;
+import com.trophy.entity.Trophies;
+
+public class main_1 {
     public static void main(String[] args) {
         Category c=new Category(1,"Action");
         Games g=new Games(c,"God Of War","Descripion",4.9f);

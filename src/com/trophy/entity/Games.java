@@ -1,4 +1,4 @@
-package entity;
+package com.trophy.entity;
 
 public class Games {
     private int id_game;

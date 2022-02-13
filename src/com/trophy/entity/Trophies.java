@@ -1,4 +1,4 @@
-package entity;
+package com.trophy.entity;
 
 
 public class Trophies {

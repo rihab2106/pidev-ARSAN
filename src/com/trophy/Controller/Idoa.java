@@ -1,4 +1,4 @@
-package Controller;
+package com.trophy.Controller;
 
 import java.util.List;
 

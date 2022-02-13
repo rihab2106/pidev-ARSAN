@@ -1,8 +1,8 @@
-package Controller;
+package com.trophy.Controller;
 
-import entity.Category;
-import entity.Games;
-import utils.SingletonConnexion;
+import com.trophy.entity.Category;
+import com.trophy.entity.Games;
+import com.trophy.utils.SingletonConnexion;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
