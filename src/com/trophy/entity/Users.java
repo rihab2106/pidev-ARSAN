@@ -9,7 +9,6 @@ package com.trophy.entity;
  *
  * @author rihab bns
  */
-public class Cart {
-    private Integer ID_Cart;
+public class Users {
     
 }

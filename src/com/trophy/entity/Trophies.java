@@ -9,7 +9,14 @@ package com.trophy.entity;
  *
  * @author rihab bns
  */
-public class Cart {
-    private Integer ID_Cart;
+public class Trophies {
+    private int id_trophy;
+    private Games game;
+    private String title,description,platform;
+    private String difficulty;
+
+    public Trophies() {
+    }
+
     
 }
