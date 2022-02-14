@@ -1,4 +1,4 @@
-package com.trophy.Controller;
+package com.trophy.Dao;
 
 import com.trophy.entity.Games;
 import com.trophy.entity.Trophies;
@@ -13,26 +13,26 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TrophiesController implements Idoa<Trophies> {
-    private static TrophiesController trophies;
+public class TrophiesDao implements Idoa<Trophies> {
+    private static TrophiesDao trophies;
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
 
-    public static TrophiesController getTrophies() {
+    public static TrophiesDao getTrophies() {
         return trophies;
     }
-    private TrophiesController(){
+    private TrophiesDao(){
         SingletonConnexion cn=SingletonConnexion.getInstance();
         try {
             st=cn.getCnx().createStatement();
         }catch (SQLException es){
-            Logger.getLogger(GamesController.class.getName()).log(Level.SEVERE,null,es);
+            Logger.getLogger(GamesDao.class.getName()).log(Level.SEVERE,null,es);
         }
     }
-    public static TrophiesController getInstance(){
+    public static TrophiesDao getInstance(){
         if (trophies==null)
-            trophies=new TrophiesController();
+            trophies=new TrophiesDao();
         return trophies;
     }
     @Override
@@ -75,7 +75,7 @@ public class TrophiesController implements Idoa<Trophies> {
             while (rs.next()){
                 Trophies t =new Trophies();
                 t.setId_trophy(rs.getInt(1));
-                t.setGame(GamesController.getInstance().displayById(rs.getInt(2)));
+                t.setGame(GamesDao.getInstance().displayById(rs.getInt(2)));
                 t.setTitle(rs.getString(3));
                 t.setDescription(rs.getString(4));
                 t.setPlatform(rs.getString(5));
@@ -99,7 +99,7 @@ public class TrophiesController implements Idoa<Trophies> {
             rs=ps.executeQuery();
             if (rs.next()) {
                 t.setId_trophy(rs.getInt(1));
-                t.setGame(GamesController.getInstance().displayById(rs.getInt(2)));
+                t.setGame(GamesDao.getInstance().displayById(rs.getInt(2)));
                 t.setTitle(rs.getString(3));
                 t.setDescription(rs.getString(4));
                 t.setPlatform(rs.getString(5));

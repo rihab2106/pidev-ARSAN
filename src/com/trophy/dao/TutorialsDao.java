@@ -1,4 +1,4 @@
-package com.trophy.Controller;
+package com.trophy.Dao;
 
 import com.trophy.entity.Games;
 import com.trophy.entity.Tutorials;
@@ -13,26 +13,26 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TutorialsContorller implements Idoa<Tutorials> {
-    private static TutorialsContorller tutorials;
+public class TutorialsDao implements Idoa<Tutorials> {
+    private static TutorialsDao tutorials;
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
 
-    public static TutorialsContorller getTutorials() {
+    public static TutorialsDao getTutorials() {
         return tutorials;
     }
-    private TutorialsContorller(){
+    private TutorialsDao(){
         SingletonConnexion cn=SingletonConnexion.getInstance();
         try {
             st=cn.getCnx().createStatement();
         }catch (SQLException es){
-            Logger.getLogger(GamesController.class.getName()).log(Level.SEVERE,null,es);
+            Logger.getLogger(GamesDao.class.getName()).log(Level.SEVERE,null,es);
         }
     }
-    public static TutorialsContorller getInstance(){
+    public static TutorialsDao getInstance(){
         if (tutorials==null)
-            tutorials=new TutorialsContorller();
+            tutorials=new TutorialsDao();
         return tutorials;
     }
 
@@ -75,7 +75,7 @@ public class TutorialsContorller implements Idoa<Tutorials> {
                 Tutorials t =new Tutorials();
                 t.setId_tutorial(rs.getInt(1));
                 //t.setUser();
-                t.setTrophy(TrophiesController.getInstance().displayById(rs.getInt("id_trophy")));
+                t.setTrophy(TrophiesDao.getInstance().displayById(rs.getInt("id_trophy")));
                 t.setPath(rs.getString("path"));
                 t.setContent(rs.getString("content"));
                 list.add(t);
@@ -98,7 +98,7 @@ public class TutorialsContorller implements Idoa<Tutorials> {
             if (rs.next()) {
                 t.setId_tutorial(rs.getInt(1));
                 //t.setUser();
-                t.setTrophy(TrophiesController.getInstance().displayById(rs.getInt("id_trophy")));
+                t.setTrophy(TrophiesDao.getInstance().displayById(rs.getInt("id_trophy")));
                 t.setPath(rs.getString("path"));
                 t.setContent(rs.getString("content"));
             }

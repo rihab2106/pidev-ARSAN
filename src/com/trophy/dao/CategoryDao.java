@@ -1,4 +1,4 @@
-package com.trophy.Controller;
+package com.trophy.Dao;
 
 import com.trophy.entity.Category;
 import com.trophy.entity.Games;
@@ -13,26 +13,26 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CategoryController implements Idoa<Category> {
-    private static CategoryController categories;
+public class CategoryDao implements Idoa<Category> {
+    private static CategoryDao categories;
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
 
-    public static CategoryController getCategories() {
+    public static CategoryDao getCategories() {
         return categories;
     }
-    private CategoryController(){
+    private CategoryDao(){
         SingletonConnexion cn=SingletonConnexion.getInstance();
         try {
             st=cn.getCnx().createStatement();
         }catch (SQLException es){
-            Logger.getLogger(GamesController.class.getName()).log(Level.SEVERE,null,es);
+            Logger.getLogger(GamesDao.class.getName()).log(Level.SEVERE,null,es);
         }
     }
-    public static CategoryController getInstance(){
+    public static CategoryDao getInstance(){
         if (categories==null)
-            categories=new CategoryController();
+            categories=new CategoryDao();
         return categories;
     }
 

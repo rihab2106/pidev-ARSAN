@@ -1,4 +1,4 @@
-package com.trophy.Controller;
+package com.trophy.Dao;
 
 import java.util.List;
 

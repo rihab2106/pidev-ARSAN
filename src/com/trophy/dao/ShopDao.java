@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.trophy.Controller;
+package com.trophy.Dao;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
 /**
- * FXML Controller class
+ * FXML Dao class
  *
  * @author rihab bns
  */
-public class HomeController implements Initializable {
+public class ShopDao implements Initializable {
 
     /**
      * Initializes the controller class.

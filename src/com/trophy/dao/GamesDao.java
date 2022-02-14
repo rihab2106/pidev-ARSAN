@@ -1,4 +1,4 @@
-package com.trophy.Controller;
+package com.trophy.Dao;
 
 import com.trophy.entity.Games;
 import com.trophy.utils.SingletonConnexion;
@@ -12,26 +12,26 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GamesController implements Idoa<Games>{
-    private static GamesController games;
+public class GamesDao implements Idoa<Games>{
+    private static GamesDao games;
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
 
-    public static GamesController getGames() {
+    public static GamesDao getGames() {
         return games;
     }
-    private GamesController(){
+    private GamesDao(){
         SingletonConnexion cn=SingletonConnexion.getInstance();
         try {
             st=cn.getCnx().createStatement();
         }catch (SQLException es){
-            Logger.getLogger(GamesController.class.getName()).log(Level.SEVERE,null,es);
+            Logger.getLogger(GamesDao.class.getName()).log(Level.SEVERE,null,es);
         }
     }
-    public static GamesController getInstance(){
+    public static GamesDao getInstance(){
         if (games ==null)
-            games=new GamesController();
+            games=new GamesDao();
         return games;
     }
 
@@ -74,7 +74,7 @@ public class GamesController implements Idoa<Games>{
             while (rs.next()){
                 Games g =new Games();
                 g.setId_game(rs.getInt(1));
-                g.setCategory(CategoryController.getInstance().displayById(rs.getInt(2)));
+                g.setCategory(CategoryDao.getInstance().displayById(rs.getInt(2)));
                 g.setName(rs.getString(3));
                 g.setDescription(rs.getString(4));
                 g.setRate(rs.getFloat(5));
@@ -97,7 +97,7 @@ public class GamesController implements Idoa<Games>{
             rs=ps.executeQuery();
             if (rs.next()) {
                 g.setId_game(rs.getInt(1));
-                g.setCategory(CategoryController.getInstance().displayById(rs.getInt(2)));
+                g.setCategory(CategoryDao.getInstance().displayById(rs.getInt(2)));
                 g.setName(rs.getString(3));
                 g.setDescription(rs.getString(4));
                 g.setRate(rs.getFloat(5));
