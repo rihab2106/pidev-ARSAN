@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class GamesDao implements Idoa<Games>{
     private static GamesDao games;
@@ -86,7 +88,27 @@ public class GamesDao implements Idoa<Games>{
         }
         return list;
     }
+    
+    public ObservableList<Games> DisplayObservableList() {
+        ObservableList<Games> list=FXCollections.observableArrayList();
+        try{
+            rs=st.executeQuery("select * from games");
+            while (rs.next()){
+                Games g =new Games();
+                g.setId_game(rs.getInt(1));
+                g.setCategory(CategoryDao.getInstance().displayById(rs.getInt(2)));
+                g.setName(rs.getString(3));
+                g.setDescription(rs.getString(4));
+                g.setRate(rs.getFloat(5));
+                list.add(g);
+            }
+        }catch (SQLException ex){
+            Logger.getLogger(Games.class.getName()).log(Level.SEVERE,null,ex);
 
+        }
+        return list;
+    }
+    
     @Override
     public Games displayById(int id) {
         Games g=new Games();

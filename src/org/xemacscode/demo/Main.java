@@ -5,9 +5,19 @@
  */
 package org.xemacscode.demo;
 
+import com.trophy.Dao.GamesDao;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -18,28 +28,25 @@ import javafx.stage.Stage;
  * @author rihab bns
  */
 public class Main extends Application {
+     private Stage primaryStage;
+    private Parent parentPage;
     
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
+    public void start(Stage primaryStage) throws IOException{
         
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        this.primaryStage=primaryStage;
+         parentPage = FXMLLoader.load(getClass().getResource("/com/trophy/view/QGames.fxml"));
+        Scene scene = new Scene(parentPage);
         
-        Scene scene = new Scene(root, 300, 250);
+         this.primaryStage.setTitle("TF");
+        this.primaryStage.setScene(scene);
+        this.primaryStage.show();
         
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        
     }
+   
+    
+   
 
     /**
      * @param args the command line arguments
