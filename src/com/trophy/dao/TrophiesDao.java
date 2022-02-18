@@ -120,14 +120,14 @@ public class TrophiesDao implements Idoa<Trophies> {
                     "ID_GAME=?, TITLE=?," +
                     "DESCRIPTION=?, PLATFORM=?," +
                     "DIFFICULITY=? " +
-                    "where (ID_GAME=?)");
+                    "where (ID_TROPHY=?)");
             ps.setInt(1,o.getGame().getId_game());
             ps.setString(2,o.getTitle());
             ps.setString(3,o.getDescription());
             ps.setString(4,o.getPlatform());
             ps.setString(5,o.getDifficulty());
             ps.setInt(6,o.getId_trophy());
-            if (ps.executeUpdate()>1)
+            if (ps.executeUpdate()>=1)
                 return true;
         }catch (SQLException ex){
             Logger.getLogger(Games.class.getName()).log(Level.SEVERE,null,ex);

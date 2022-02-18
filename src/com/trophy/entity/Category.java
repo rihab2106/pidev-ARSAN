@@ -18,10 +18,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" +
-                "id_category=" + id_category +
-                ", category='" + category + '\'' +
-                '}';
+        return category;
     }
 
     public int getId_category() {

@@ -2,39 +2,56 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.trophy.Controller.QGamesController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.QGamesController">
    <children>
-      <HBox fx:id="Hbox_games_button" alignment="CENTER" layoutX="948.0" layoutY="99.0" prefHeight="82.0" prefWidth="296.0" spacing="20.0">
+      <HBox fx:id="Hbox_games_button" alignment="CENTER_LEFT" layoutX="21.0" layoutY="115.0" prefHeight="82.0" prefWidth="561.0" spacing="20.0">
          <children>
             <Button fx:id="add_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Add" />
-            <Button fx:id="delte_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" />
+            <Button fx:id="delete_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" />
+            <TextField fx:id="game_in_search" prefHeight="42.0" prefWidth="317.0" promptText="Search game " />
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </HBox>
-      <Label fx:id="Title" layoutX="581.0" layoutY="93.0" prefHeight="56.0" prefWidth="140.0" text="Games">
+      <Label fx:id="Title" layoutX="584.0" layoutY="52.0" text="Games">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tableview_game" editable="true" layoutX="64.0" layoutY="200.0" prefHeight="470.0" prefWidth="1152.0" stylesheets="@../../../../dark%20theme.css" tableMenuButtonVisible="true">
-        <columns>
-            <TableColumn fx:id="game_name" prefWidth="136.800048828125" text="Name" />
-            <TableColumn fx:id="game_description" minWidth="100.0" prefWidth="410.39990234375" text="Description" />
-            <TableColumn fx:id="game_category" minWidth="0.0" prefWidth="108.800048828125" text="Category" />
-            <TableColumn fx:id="games_rate" prefWidth="212.0" text="Rate" />
-            <TableColumn fx:id="game_trophies" prefWidth="144.0" text="Trophies" />
-        </columns>
-      </TableView>
+      <HBox layoutX="32.0" layoutY="229.0" spacing="20.0">
+         <children>
+            <TableView fx:id="tableview_game" editable="true" prefHeight="476.0" prefWidth="673.0" stylesheets="@../../../../dark%20theme.css" tableMenuButtonVisible="true">
+              <columns>
+                  <TableColumn fx:id="game_name" prefWidth="136.800048828125" text="Name" />
+                  <TableColumn fx:id="game_description" minWidth="69.60009765625" prefWidth="144.800048828125" text="Description" />
+                  <TableColumn fx:id="game_category" minWidth="0.0" prefWidth="146.4000244140625" text="Category" />
+                  <TableColumn fx:id="games_rate" prefWidth="112.800048828125" text="Rate" />
+                  <TableColumn fx:id="game_trophies" prefWidth="171.2001953125" text="Trophies" />
+              </columns>
+               <contextMenu>
+                  <ContextMenu fx:id="game_con">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <Accordion fx:id="game_acc" prefHeight="476.0" prefWidth="545.0" />
+         </children>
+      </HBox>
    </children>
    <stylesheets>
       <URL value="@../../../../dark%20theme.css" />
