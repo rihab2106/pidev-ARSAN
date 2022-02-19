@@ -11,12 +11,15 @@ import com.trophy.entity.Category;
 import com.trophy.entity.Games;
 import com.trophy.entity.Trophies;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javafx.animation.Interpolator;
@@ -30,13 +33,21 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -45,6 +56,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -57,6 +69,7 @@ import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -69,8 +82,7 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
-import sun.plugin2.jvm.RemoteJVMLauncher;
-import sun.plugin2.jvm.RemoteJVMLauncher.CallBack;
+
 
 /**
  * FXML Controller class
@@ -105,6 +117,14 @@ public class QGamesController implements  Initializable {
     private ContextMenu game_con;
     @FXML
     private TextField game_in_search;
+    @FXML
+    private AnchorPane game_paine;
+    @FXML
+    private HBox game_hbox_view;
+    @FXML
+    private Button game_stat;
+    @FXML
+    private MenuBar game_menu_bar;
    
 
     /**
@@ -178,7 +198,7 @@ public class QGamesController implements  Initializable {
             g.setDescription(event.getNewValue());
             GamesDao.getInstance().update(g);
          });
-          game_category.setCellFactory(column -> new TableCell()
+          /*game_category.setCellFactory(column -> new TableCell()
                   {
                 private ChoiceBox comboBox;
                 
@@ -214,7 +234,7 @@ public class QGamesController implements  Initializable {
                     }
                 }
             }
-          );
+          );*/
           
           //game_category.
           games_rate.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
@@ -240,6 +260,7 @@ public class QGamesController implements  Initializable {
             int idx=GamesDao.getInstance().DisplayObservableList().size()-1;
             AnimateButton(add_game);
             tableview_game.edit(idx, game_name);
+            
         });
         
         delete_game.setOnAction(event ->{
@@ -276,7 +297,17 @@ public class QGamesController implements  Initializable {
                     game_acc.getPanes().add(new TitledPane("Title "+t.getTitle(),DisplayTrophies(t)));
                 }});
         });
-        game_con.getItems().add(addtrophy);
+        MenuItem updateGame=new MenuItem("Modify");
+        updateGame.setOnAction(event -> {
+        try {
+                SceneTransition(SetUpForm(tableview_game.getSelectionModel().getSelectedItem()));
+            } catch (IOException ex) {
+                Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        game_con.getItems().addAll(addtrophy,updateGame);
+        
         
        
        /* game_in_search.textProperty().addListener((obj,old,n)->{
@@ -290,7 +321,7 @@ public class QGamesController implements  Initializable {
            
        });
        
-        
+        game_trophies.setVisible(false);
         
               
     }    
@@ -372,6 +403,7 @@ public class QGamesController implements  Initializable {
         b.setAlignment(Pos.CENTER);
         
         return b;
+        
     }
     
     
@@ -394,6 +426,143 @@ public class QGamesController implements  Initializable {
       
     
     }
+    
+    private Pane SetUpForm(Games g ){
+    VBox box=new VBox();
+   box.setStyle("-fx-background-color: #373e43");
+    box.setMinWidth(game_paine.getWidth()-20);
+    box.setMinHeight(game_paine.getHeight()-20);
+    TextField tname=new TextField();
+    TextArea tdesc=new TextArea();
+    ChoiceBox cb=new ChoiceBox(FXCollections.observableArrayList(CategoryDao.getInstance().DisplayAllList()));
+    TextField trate =new TextField();
+    Button ok=new Button("OK");
+    Button cancel=new Button("Cancel");
+    
+    cancel.setOnAction(event -> {
+    game_paine.getChildren().remove(box);
+    game_paine.getChildren().addAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
+    });
+    
+    ok.setOnAction(e -> {
+    g.setName(tname.getText());
+    g.setDescription(tdesc.getText());
+    g.setCategory((Category)cb.getValue());
+    g.setRate(Float.valueOf(trate.getText()));
+    GamesDao.getInstance().update(g);
+    tableview_game.setItems(GamesDao.getInstance().DisplayObservableList());
+    game_paine.getChildren().remove(box);
+    game_paine.getChildren().addAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
+    });
+    
+    tname.setText(g.getName());
+    tdesc.setText(g.getDescription());
+    cb.setValue(g.getCategory());
+    trate.setText(String.valueOf(g.getRate()));
+    
+    ok.setMinSize(200, 30);
+    cancel.setMinSize(200, 30);
+    HBox h=new HBox(ok,cancel);
+    h.setAlignment(Pos.CENTER);
+    h.setSpacing(20);
+    box.getChildren().addAll(new Label("Game Name"),tname,
+                             new Label("Description"),tdesc,
+                             new Label("Category"),cb,
+                             new Label("Rate"),trate,
+                             h);
+    box.setSpacing(20);
+   
+    return box;
+    
+    }
+    
+    private void SceneTransition(Parent root) throws IOException{
+    Timeline t=new Timeline();
+    
+    Scene s=add_game.getScene();
+    root.translateYProperty().set(s.getHeight());
+    
+    root.setLayoutX(10);
+    root.setLayoutY(10);
+    game_paine.getChildren().add(root);
+    
+    KeyValue kv=new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_IN);
+    KeyFrame kf=new KeyFrame(Duration.seconds(1),kv);
+    
+    KeyFrame kff=new KeyFrame(Duration.seconds(0), new KeyValue(game_hbox_view.translateYProperty(),0,Interpolator.EASE_OUT));
+            
+    t.getKeyFrames().add(kf);
+    //t.getKeyFrames().add(kff);
+    t.setOnFinished(event -> {
+    game_paine.getChildren().removeAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
+    });
+    t.play();
+    
+      /*((Button)((HBox)((VBox)root).getChildren().get(8)).getChildren().get(1)).setOnAction(event -> {
+         
+   t.getKeyFrames().clear();
+   t.getKeyFrames().add(kff);
+    t.setOnFinished(e -> {
+    game_paine.getChildren().remove(root);
+    game_paine.getChildren().addAll(Title,Hbox_games_button,game_hbox_view);
+    });
+    t.play();
+      });*/
+    
+    
+    
+    }
+
+    @FXML
+    private void show_stat(ActionEvent event) throws IOException {
+       String[] diff={"Very easy","Easy","Medium","Hard","Impossible"};
+        CategoryAxis xAxis=new CategoryAxis(FXCollections.observableArrayList(GamesDao.getInstance().DisplayObservableList()
+                                            .stream().map(g -> g.getName()).collect(Collectors.toList())));
+        xAxis.setLabel("Games");
+        xAxis.setGapStartAndEnd(true);
+        
+        NumberAxis yAxis=new NumberAxis();
+        yAxis.setLabel("Count");
+        BarChart<String,Number> bchart=new BarChart(xAxis,yAxis);
+        
+        bchart.setTitle("Comparison between games by the number of trophies' difficulity");
+        
+        ObservableList<Games> listg=GamesDao.getInstance().DisplayObservableList();
+        for (String d: diff){
+            XYChart.Series<String, Number> s=new XYChart.Series<>();
+            s.setName(d);
+            for (Games g : listg){
+            s.getData().add(new XYChart.Data<>(g.getName(),countTrophy(g, d)));   
+            }
+           
+            bchart.getData().add(s);
+        }
+         VBox box=new VBox();
+   box.setStyle("-fx-background-color: #373e43");
+    box.setMinWidth(game_paine.getWidth()-20);
+    box.setMinHeight(game_paine.getHeight()-20);
+    Button rt=new Button("Return");
+    rt.setMaxSize(120, 40);
+    box.setSpacing(20);
+     rt.setOnAction(e -> {
+    game_paine.getChildren().remove(box);
+    game_paine.getChildren().addAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
+    });
+    bchart.setAnimated(true);
+    box.getChildren().addAll(rt,bchart);
+        SceneTransition(box);
+        
+        
+    }
+    
+    private Long countTrophy(Games g,String s){
+    ObservableList<Trophies> list=FXCollections.observableArrayList(TrophiesDao.getInstance().DisplayAllList());
+    return list.stream().filter(t -> t.getGame().getId_game()==g.getId_game())
+                .map(t -> t.getDifficulty())
+                .filter(t -> t.equals(s))
+                .count();
+    }
+    
     
     
 }
