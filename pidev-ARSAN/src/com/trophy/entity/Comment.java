@@ -69,6 +69,14 @@ public class Comment {
         this.dislikes = dislikes;
     }
 
+    public News getNews() {
+        return news;
+    }
+
+    public void setNews(News news) {
+        this.news = news;
+    }
+
     @Override
     public String toString() {
         return "Comment{" + "idcomm=" + idcomm + ", comcontent=" + comcontent + ", likes=" + likes + ", dislikes=" + dislikes + '}';

@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -24,7 +26,7 @@ public class CommentDao implements CommentInterface<Comment,News> {
     private Statement st;
     private ResultSet rs;
     
-    private CommentDao() {
+    public CommentDao() {
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
@@ -53,18 +55,18 @@ public class CommentDao implements CommentInterface<Comment,News> {
     @Override
     public void delete(Comment c, News n) {
         String req="delete from comments "
-                + "where ID_NEWS="+n.getNewsid()+"and ID_NEWS="+n.getNewsid();
-        Comment cc=displayById(c.getIdcomm(),n.getNewsid());
+                + "where ID_COMMENT="+c.getIdcomm();
+//        Comment cc=displayById(c.getIdcomm(),n.getNewsid());
         
-          if(cc!=null)
+         // if(cc!=null)
               try {
            
             st.executeUpdate(req);
              
-        } catch (SQLException ex) {
+       } catch (SQLException ex) {
             Logger.getLogger(NewsDao.class.getName()).log(Level.SEVERE, null, ex);
-        }else System.out.println("This comment doesn't exist");
-    }
+       // }else System.out.println("This comment doesn't exist");
+    }}
 
     @Override
     public List<Comment> displayAll(News n) {
@@ -78,8 +80,48 @@ public class CommentDao implements CommentInterface<Comment,News> {
 
     @Override
     public boolean update(Comment p, News n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String qry = "UPDATE comments SET COMMENT = '"+p.getComcontent()+"'"
+            + ", LIKES = '"+p.getLikes()+"',DISLIKES='"+p.getDislikes()+"' WHERE ID_NEWS = "+n.getNewsid()+"AND ID_COMMENT= "+p.getIdcomm();
+        
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(NewsDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
     }
+    public ObservableList<Comment> getAllComments(News n)
+   {
+       ObservableList<Comment> c =FXCollections.observableArrayList();
+       try{
+       st=ConnexionSingleton.openConnection().createStatement();
+        rs  =  st.executeQuery
+                ("SELECT * "
+                + "FROM comments "
+                + "where ID_NEWS="+n.getNewsid());
+     
+        while (rs.next()){
+         
+         Comment cm=new Comment();
+         cm.setIdcomm(rs.getInt(1));
+         cm.setComcontent(rs.getString(3));
+         cm.setLikes(rs.getInt(4));
+         cm.setDislikes(rs.getInt(5));
+         c.add(cm);
+        }
+        ConnexionSingleton.closeConnection();
+       }catch (SQLException ex) {
+            //Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            ConnexionSingleton.closeConnection();
+        }
+       
+   return c;
+   }
+
 }
 
     

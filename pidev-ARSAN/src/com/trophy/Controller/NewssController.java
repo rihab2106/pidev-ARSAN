@@ -4,7 +4,9 @@
  */
 package com.trophy.Controller;
 
+import com.trophy.dao.CommentDao;
 import com.trophy.dao.NewsDao;
+import com.trophy.entity.Comment;
 import com.trophy.entity.News;
 import com.trophy.entity.Product;
 import java.net.URL;
@@ -33,13 +35,8 @@ public class NewssController implements Initializable {
     private TextField txtheadline;
     @FXML
     private TableView commentview;
-    @FXML
-    private TableColumn COMCOL;
-    @FXML
     private TableColumn CONTENTCOL;
-    @FXML
     private TableColumn comlike;
-    @FXML
     private TableColumn comdislike;
     @FXML
     private Button btnAdd;
@@ -56,6 +53,7 @@ public class NewssController implements Initializable {
     @FXML
     private TextField txtheadline111;
    int idn;
+   int idc;
     @FXML
     private TableColumn ID;
     @FXML
@@ -64,6 +62,20 @@ public class NewssController implements Initializable {
     private TableColumn Headline;
     @FXML
     private TableColumn imgurl;
+    @FXML
+    private Button btnaddcom;
+    @FXML
+    private Button btndelcom;
+    @FXML
+    private Button btnupdatecom;
+    @FXML
+    private TextField AddComment;
+    @FXML
+    private TableColumn<?, ?> CONTENT;
+    @FXML
+    private TableColumn<?, ?> LIKES;
+    @FXML
+    private TableColumn<?, ?> DISLIKES;
     
     /**
      * Initializes the controller class.
@@ -71,15 +83,18 @@ public class NewssController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tablev.setItems(nd.getAllNews());
-        ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        ID.setCellValueFactory(new PropertyValueFactory<>("newsid"));
         Headline.setCellValueFactory(new PropertyValueFactory<>("Headline"));
         Content.setCellValueFactory(new PropertyValueFactory<>("Content"));
         imgurl.setCellValueFactory(new PropertyValueFactory<>("imgurl"));
         System.out.println(nd.getAllNews());
+        
+        
 
     }    
 
     NewsDao nd=new NewsDao();
+    CommentDao cd=new CommentDao();
     @FXML
     private void Add(ActionEvent event) {
         News n=new News();
@@ -150,8 +165,62 @@ public class NewssController implements Initializable {
            txtheadline1.setText(n.getHeadline());
            txtheadline11.setText(n.getImgurl()+"");
            txtheadline111.setText(n.getContent()+"");
-           idn=n.getNewsid();
+           txtheadline.setText(n.getHeadline());
+           txtcontent.setText(n.getContent());
+           btnaddcom.setVisible(true);
+           btndelcom.setVisible(true);
+           btnupdatecom.setVisible(true);
+           AddComment.setVisible(true);
+           AddComment.setText("YOUR COMMENT");
+
+           idn=n.getNewsid();  
+           commentview.setItems(cd.getAllComments(n));
+           System.out.println(cd.getAllComments(n));
+        CONTENT.setCellValueFactory(new PropertyValueFactory<>("comcontent"));
+        LIKES.setCellValueFactory(new PropertyValueFactory<>("likes"));
+        DISLIKES.setCellValueFactory(new PropertyValueFactory<>("dislikes"));
+     }
+
+    @FXML
+    private void AddCom(ActionEvent event) {
+       Comment cm=new Comment();
+       News n =(News) tablev.getSelectionModel().getSelectedItem();
+       if(!AddComment.getText().equals("")){
+        cm.setIdcomm(idc);
+        cm.setComcontent(AddComment.getText());
+        }
+      cd.insert(cm,n); 
+        AddComment.setText("");
+          commentview.setItems(cd.getAllComments(n));
+          
+    }   
+    
+
+    @FXML
+    private void DeleteCom(ActionEvent event) {
+        News n =(News) tablev.getSelectionModel().getSelectedItem();
+        Comment c =(Comment) commentview.getSelectionModel().getSelectedItem();
+
+        Comment C=new Comment();        
+          if(!AddComment.getText().equals("")){
+          c.setComcontent(AddComment.getText());
+          c.setIdcomm(c.getIdcomm());
+          
+        cd.delete(c,n);
+          
+          AddComment.setText("");
+          commentview.setItems(cd.getAllComments(n));
+          }
     }
+
+    @FXML
+    private void UpdateCom(ActionEvent event) {
+            System.out.println("fuck off");
+
+    }
+    
+    
+    
 
     
 }
