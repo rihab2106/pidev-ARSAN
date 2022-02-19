@@ -133,14 +133,14 @@ public class ProductController implements Initializable {
 
     @FXML
     private void Delete(ActionEvent event) {
-        /*pd.delete(ID);
+        pd.delete(ID);
         
           txtName.setText("");
           
           txtPrice.setText("");
           txtDiscount.setText("");
           
-          table.setItems(pd.getAllProduct());*/
+          table.setItems(pd.getAllProduct());
         
         
     }

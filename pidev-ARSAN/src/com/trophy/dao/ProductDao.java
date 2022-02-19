@@ -140,14 +140,14 @@ public class ProductDao implements ProductInterface<Product> {
    }
    @Override
     public void delete(int id) {
-         /*try{
+         try{
             st = ConnexionSingleton.openConnection().createStatement();
             st.executeUpdate("DELETE FROM `product` WHERE ID_PRODUCT = " + id);
             ConnexionSingleton.closeConnection();
         } catch (SQLException ex) {
             ConnexionSingleton.closeConnection();
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }
    } 
     

@@ -5,7 +5,10 @@
  */
 package org.demo;
 
+import com.trophy.dao.CompetitionsDao;
+import com.trophy.entity.Competitions;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -27,7 +30,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Product.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Competitions.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -40,7 +43,17 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+       // launch(args);
+       
+       Competitions co =new Competitions(12,"helloworld");
+       co.setDateofcomp(LocalDate.now());
+           co.setGame_name("fffffff");
+       //CompetitionsDao.getInstance().insert(co);
+       //CompetitionsDao.getInstance().update(co);
+        CompetitionsDao.getInstance().delete(12);
+        System.out.println(CompetitionsDao.getInstance().getAllCompetitions());
+        
+          
     }
     
 }
