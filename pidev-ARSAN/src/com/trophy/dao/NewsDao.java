@@ -81,7 +81,7 @@ public class NewsDao implements NewsInterface<News>{
 
     @Override
     public void delete(News n) {
-        String req="delete from news where news_id="+n.getNewsid();
+        String req="delete from news where ID_NEWS="+n.getNewsid();
         News ns=displayById(n.getNewsid());
         
           if(ns!=null)
@@ -138,7 +138,8 @@ public class NewsDao implements NewsInterface<News>{
 
     @Override
     public boolean update(News n)
-    {  String qry = "UPDATE news SET CONTENT = '"+n.getContent()+"', IMG = '"+n.getImgurl()+"',HEADLINE='"+n.getHeadline()+"' WHERE ID_NEWS = "+n.getNewsid();
+    {  String qry = "UPDATE news SET CONTENT = '"+n.getContent()+"'"
+            + ", IMG = '"+n.getImgurl()+"',HEADLINE='"+n.getHeadline()+"' WHERE ID_NEWS = "+n.getNewsid();
         
         try {
             if (st.executeUpdate(qry) > 0) {

@@ -72,8 +72,8 @@ public class NewssController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         tablev.setItems(nd.getAllNews());
         ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-        Headline.setCellValueFactory(new PropertyValueFactory<>("Content"));
-        Content.setCellValueFactory(new PropertyValueFactory<>("Headline"));
+        Headline.setCellValueFactory(new PropertyValueFactory<>("Headline"));
+        Content.setCellValueFactory(new PropertyValueFactory<>("Content"));
         imgurl.setCellValueFactory(new PropertyValueFactory<>("imgurl"));
         System.out.println(nd.getAllNews());
 
@@ -105,12 +105,43 @@ public class NewssController implements Initializable {
            
     @FXML
     private void Update(ActionEvent event) {
+          News n=new News();        
+          if(!txtheadline1.getText().equals("")&&!txtheadline111.getText().equals("")&&!txtheadline11.getText().equals("")){
+          n.setHeadline(txtheadline1.getText());
+          n.setContent(txtheadline111.getText());
+          n.setImgurl(txtheadline11.getText());
+          n.setNewsid(idn);
+          
+        nd.update(n);
+          
+          txtheadline1.setText("");
+          txtheadline111.setText("");
+          txtheadline11.setText("");
+            
+          tablev.setItems(nd.getAllNews());
+          }     
         
         
     }
 
     @FXML
     private void Delete(ActionEvent event) {
+        News n=new News();        
+          if(!txtheadline1.getText().equals("")&&!txtheadline111.getText().equals("")&&!txtheadline11.getText().equals("")){
+          n.setHeadline(txtheadline1.getText());
+          n.setContent(txtheadline111.getText());
+          n.setImgurl(txtheadline11.getText());
+          n.setNewsid(idn);
+          
+        nd.delete(n);
+          
+          txtheadline1.setText("");
+          txtheadline111.setText("");
+          txtheadline11.setText("");
+            
+          tablev.setItems(nd.getAllNews());
+          }
+        
     }
 
     @FXML
