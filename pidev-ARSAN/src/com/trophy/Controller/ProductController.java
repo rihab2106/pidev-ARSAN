@@ -31,9 +31,7 @@ import javafx.scene.input.MouseEvent;
  */
 public class ProductController implements Initializable {
 
-    @FXML
     private TextField txtName;
-    @FXML
     private TextField txtPrice;
     @FXML
     private Button btnAdd;
@@ -41,26 +39,40 @@ public class ProductController implements Initializable {
     private Button btnUpdate;
     @FXML
     private Button btnDelete;
-    @FXML
     private TextField txtDiscount;
-    @FXML
     private TextField txtSearch;
-    @FXML
     private TableView table;
-    @FXML
     private TableColumn id;
-    @FXML
     private TableColumn name;
-    @FXML
     private TableColumn price;
-    @FXML
     private TableColumn discount;
-    @FXML
     private ComboBox ComboCategory;
-    @FXML
     private TableColumn Category;
    
     int ID;
+    @FXML
+    private TextField txtcontent;
+    @FXML
+    private TextField txtheadline;
+    @FXML
+    private TableView<?> commentview;
+    @FXML
+    private TableColumn<?, ?> COMCOL;
+    @FXML
+    private TableColumn<?, ?> CONTENTCOL;
+    @FXML
+    private TableColumn<?, ?> comlike;
+    @FXML
+    private TableColumn<?, ?> comdislike;
+    @FXML
+    private TableView<?> tablev;
+    @FXML
+    private TableColumn<?, ?> colid;
+    @FXML
+    private TableColumn<?, ?> headcol;
+    @FXML
+    private TableColumn<?, ?> contentcol;
+    
     
      
     /**
@@ -148,13 +160,11 @@ public class ProductController implements Initializable {
 
     
 
-    @FXML
     private void select(ActionEvent event) {
         String s = ComboCategory.getSelectionModel().getSelectedItem().toString();
     }
 
 
-    @FXML
     private void clickTable(MouseEvent event) {
            Product pr =(Product) table.getSelectionModel().getSelectedItem();
            txtName.setText(pr.getPROD_Name());
@@ -164,7 +174,6 @@ public class ProductController implements Initializable {
            ComboCategory.setValue(pr.getCategory());
     }
 
-    @FXML
     private void Search(ActionEvent event) {
         table.setItems(pd.getSearchProduct(txtSearch.getText()));
     }
