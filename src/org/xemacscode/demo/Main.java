@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 /**
@@ -36,10 +37,12 @@ public class Main extends Application {
         
         this.primaryStage=primaryStage;
          parentPage = FXMLLoader.load(getClass().getResource("/com/trophy/view/QGames.fxml"));
-        Scene scene = new Scene(parentPage);
+        
+         Scene scene = new Scene(parentPage);
         
          this.primaryStage.setTitle("TF");
         this.primaryStage.setScene(scene);
+        
         this.primaryStage.show();
         
         
