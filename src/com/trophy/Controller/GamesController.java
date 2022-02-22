@@ -49,7 +49,7 @@ public class GamesController implements Initializable {
         AnchorPane p=new AnchorPane();
         FileInputStream f;
         try {
-                f=new FileInputStream("C:\\Users\\anasb\\OneDrive\\Study\\Project 4\\Trophy Hunter\\TF\\Resources\\wp7489322.jpg");
+                f=new FileInputStream("C:\\Users\\anasb\\OneDrive\\Other stuff\\Pictures\\Capture.PNG");
                     
        
        ImageView img=new ImageView(new Image(f));
@@ -71,15 +71,17 @@ public class GamesController implements Initializable {
       HBox hb=new HBox();
       VBox vb=new VBox();
       GridPane.setMargin(GamesGrid,new Insets(20));
-        for (Games g : GamesDao.getInstance().DisplayAllList()){
-            Button b=new Button(g.getName());
+        //for (Games g : GamesDao.getInstance().DisplayAllList())
+        {
+            Button b=new Button("g.getName()");
            // group.getChildren().add(b);
            box.getChildren().add(b);
-           p.getChildren().add(box);
+          // p.getChildren().add(box);
           
-            GamesGrid.add(p, 0, 0);
+            
             //GamesGrid.add(p, 1, 0);
         }
+        GamesGrid.add(box, 0, 0);
          } catch (FileNotFoundException ex) {
             Logger.getLogger(GamesController.class.getName()).log(Level.SEVERE, null, ex);
         }

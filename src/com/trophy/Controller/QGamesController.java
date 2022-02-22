@@ -11,13 +11,13 @@ import com.trophy.entity.Category;
 import com.trophy.entity.Games;
 import com.trophy.entity.Trophies;
 import java.io.File;
+
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Consumer;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -26,26 +26,21 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.Observable;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleObjectProperty;
+
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
+
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Accordion;
@@ -53,7 +48,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
+
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
@@ -65,24 +60,25 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
-import javafx.scene.control.cell.ComboBoxTableCell;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+
 import javafx.scene.transform.Rotate;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
-
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 /**
  * FXML Controller class
@@ -136,7 +132,7 @@ public class QGamesController implements  Initializable {
         
         //Media m=new Media(new File("../../../../Resources/Mouse-Click-00-c-FesliyanStudios.com.mp3").toURI().toString());
         
-       
+         
         //tableview_game.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         ObservableList<Games> list= GamesDao.getInstance().DisplayObservableList();
         tableview_game.setItems(list);
@@ -192,6 +188,7 @@ public class QGamesController implements  Initializable {
             g.setName(event.getNewValue());
             GamesDao.getInstance().update(g);
         });
+        
          game_description.setCellFactory(TextFieldTableCell.forTableColumn());
          game_description.setOnEditCommit(event -> {
          Games g =event.getRowValue();
@@ -247,7 +244,7 @@ public class QGamesController implements  Initializable {
         AudioClip mp=new AudioClip(getClass().getResource("Mouse-Click-00-c-FesliyanStudios.com.mp3").toExternalForm());
         
         add_game.setOnAction(event -> {
-        
+            
             //ObservableList<Games> t=FXCollections.observableArrayList();
            // Games g=new Games();
            // list.add(idx,);
@@ -273,7 +270,6 @@ public class QGamesController implements  Initializable {
         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Game Deleted !!",ButtonType.OK);
         a.showAndWait();
         });
-        
         tableview_game.getSelectionModel().selectedItemProperty().addListener((obj, olds,newc) -> {
            
              game_acc.getPanes().clear();
@@ -313,15 +309,32 @@ public class QGamesController implements  Initializable {
        /* game_in_search.textProperty().addListener((obj,old,n)->{
         tableview_game.setItems(GamesDao.getInstance().sreachByName(n));
         });*/
-       game_in_search.setOnAction(event -> {
+       game_in_search.textProperty().addListener((obj,old,ne) -> {
            if (!game_in_search.getText().isEmpty())
-       tableview_game.setItems(GamesDao.getInstance().searchByName(game_in_search.getText()));
+       tableview_game.setItems(GamesDao.getInstance().searchByName(ne));
            else 
                tableview_game.setItems(GamesDao.getInstance().DisplayObservableList());
            
        });
        
         game_trophies.setVisible(false);
+        
+        
+        
+        MenuItem fetchInfo=new MenuItem("Fetch Online");
+        fetchInfo.setOnAction(e-> {
+            try {
+                
+                Games g=tableview_game.getSelectionModel().getSelectedItem();
+                g.setDescription(FetchGamesOnline("God Of War"));
+            GamesDao.getInstance().update(g);
+            tableview_game.setItems(GamesDao.getInstance().DisplayObservableList());
+            } catch (IOException ex) {
+                Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        });
+        game_con.getItems().add(fetchInfo);
         
               
     }    
@@ -517,7 +530,8 @@ public class QGamesController implements  Initializable {
     private void show_stat(ActionEvent event) throws IOException {
        String[] diff={"Very easy","Easy","Medium","Hard","Impossible"};
         CategoryAxis xAxis=new CategoryAxis(FXCollections.observableArrayList(GamesDao.getInstance().DisplayObservableList()
-                                            .stream().map(g -> g.getName()).collect(Collectors.toList())));
+                                            .stream().map(g -> g.getName()).distinct().collect(Collectors.toList())));
+       
         xAxis.setLabel("Games");
         xAxis.setGapStartAndEnd(true);
         
@@ -563,6 +577,30 @@ public class QGamesController implements  Initializable {
                 .count();
     }
     
+    private String FetchGamesOnline(String name) throws IOException {
+    
+    
+    /*params = {
+    'action': 'query',
+    'format': 'json',
+    'titles': subject,
+    'prop': 'links',
+    'pllimit': 'max',
+    'redirects':''
+}*/ 
+    String jsonBody = "{\"action\":query,\"format\":\"json\"titles\":"+name+"\"prop\":links\"pllimit\":max\"redirects\":''}";
+    String url="https://en.wikipedia.org/wiki/"+"Doom_(2016_video_game)";
+    Document d=Jsoup.connect(url).get();
+    String desc=d.getElementsByClass("infobox-data").eachText().stream().reduce("", (t1,t2)-> t1+System.lineSeparator()+t2);
+    
+    /*Connection.Response r=Jsoup.connect("https://en.wikipedia.org/").header("Content-Type", "application/json")
+        .header("Accept", "application/json").method(Connection.Method.POST)
+            .requestBody(jsonBody).execute();*/
+        
+    
+    return desc;
+    
+    }
     
     
 }
