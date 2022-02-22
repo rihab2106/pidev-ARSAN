@@ -43,15 +43,15 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // launch(args);
+       launch(args);
        
-       Competitions co =new Competitions(12,"helloworld");
-       co.setDateofcomp(LocalDate.now());
-           co.setGame_name("fffffff");
+       //Competitions co =new Competitions(12,"helloworld");
+       //co.setDateofcomp(LocalDate.now());
+         //  co.setGame_name("fffffff");
        //CompetitionsDao.getInstance().insert(co);
        //CompetitionsDao.getInstance().update(co);
-        CompetitionsDao.getInstance().delete(12);
-        System.out.println(CompetitionsDao.getInstance().getAllCompetitions());
+        //CompetitionsDao.getInstance().delete(12);
+        //System.out.println(CompetitionsDao.getInstance().getAllCompetitions());
         
           
     }

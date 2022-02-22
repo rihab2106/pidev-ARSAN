@@ -73,8 +73,29 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
     }
 
     @Override
-    public Competitions displayById(int ID_Product) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Competitions displayById(int Id_competion) {
+          Competitions co =new Competitions();
+       try{
+       st=ConnexionSingleton.openConnection().createStatement();
+        rs  =  st.executeQuery("SELECT * FROM competitions where ID_COMPETION="+String.valueOf(Id_competion));
+        
+        while (rs.next()){
+            
+         co.setId_competion(rs.getInt(1));
+         co.setGame_name(rs.getString(2));
+         co.setDateofcomp(rs.getDate(3).toLocalDate());
+        
+         
+       
+         
+        
+        }
+        ConnexionSingleton.closeConnection();
+       }catch (SQLException ex) {
+            Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
+            ConnexionSingleton.closeConnection();
+        }
+       return co;
     }
     
         @Override

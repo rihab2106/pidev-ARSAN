@@ -63,9 +63,9 @@ public class CompetitionsController implements Initializable {
   
  ObservableList<Competitions> listComp =(ObservableList<Competitions>)  CompetitionsDao.getInstance().getAllCompetitions();
        tableComp.setItems(cd.getAllCompetitions());       
-        colIdComp.setCellValueFactory(new PropertyValueFactory<>("ID_COMPETION"));
-        colNameGameComp.setCellValueFactory(new PropertyValueFactory<>("GAME_NAME"));
-        colDateofComp.setCellValueFactory(new PropertyValueFactory<>("DATEOFCOMP"));
+        colIdComp.setCellValueFactory(new PropertyValueFactory<>("Id_competion"));
+        colNameGameComp.setCellValueFactory(new PropertyValueFactory<>("game_name"));
+        colDateofComp.setCellValueFactory(new PropertyValueFactory<>("dateofcomp"));
           
         System.out.println(listComp);
     }    
@@ -85,7 +85,7 @@ public class CompetitionsController implements Initializable {
     
           inputIdComp.setText("");
           inputGameNameComp.setText("");
-          inputDateofComp.setValue(LocalDate.MIN);
+          inputDateofComp.setValue(null);
           tableComp.setItems(cd.getAllCompetitions());
               
     }
@@ -108,7 +108,7 @@ public class CompetitionsController implements Initializable {
     
           inputIdComp.setText("");
           inputGameNameComp.setText("");
-          inputDateofComp.setValue(LocalDate.MIN);
+          inputDateofComp.setValue(null);
           
           tableComp.setItems(cd.getAllCompetitions());
           
@@ -131,7 +131,7 @@ public class CompetitionsController implements Initializable {
         
          inputIdComp.setText("");  
          inputGameNameComp.setText("");
-         inputDateofComp.setValue(LocalDate.MIN);
+         inputDateofComp.setValue(null);
       
          tableComp.setItems(cd.getAllCompetitions());
      
@@ -143,8 +143,13 @@ public class CompetitionsController implements Initializable {
     
         @FXML
     private void clickTable(MouseEvent event) {
-     
-        
+     Competitions comp =(Competitions) tableComp.getSelectionModel().getSelectedItem();
+                
+          inputIdComp.setText(String.valueOf(comp.getId_competion()));
+          inputGameNameComp.setText(comp.getGame_name()+"");
+          inputDateofComp.setValue(comp.getDateofcomp());
+          
+           
     }
     
     @FXML

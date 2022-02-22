@@ -30,6 +30,7 @@ public class ConnexionSingleton {
     private ConnexionSingleton() {
         try {
             cnx=DriverManager.getConnection(url, login, pwd);
+            
         } catch (SQLException ex) {
             Logger.getLogger(ConnexionSingleton.class.getName()).log(Level.SEVERE, null, ex);
         }
