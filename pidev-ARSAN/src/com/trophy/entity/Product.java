@@ -14,17 +14,18 @@ public class Product {
     private Integer ID_Product ;
     private Float Price ;
     private String PROD_Name,Category ;
-    private Integer Discount ;
+    private Integer Discount,Quantity ;
     
     public Product() {
     }
 
-    public Product(Integer ID_Product, Float Price, String PROD_Name, String Category, Integer Discount) {
+    public Product(Integer ID_Product, Float Price, String PROD_Name, String Category, Integer Discount,Integer Quantity) {
         this.ID_Product = ID_Product;
         this.Price = Price;
         this.PROD_Name = PROD_Name;
         this.Category = Category;
         this.Discount = Discount;
+        this.Quantity=Quantity;
     }
 
     public Integer getID_Product() {
@@ -67,10 +68,21 @@ public class Product {
         this.Discount = Discount;
     }
 
+    public Integer getQuantity() {
+        return Quantity;
+    }
+
+    public void setQuantity(Integer Quantity) {
+        this.Quantity = Quantity;
+    }
+    
+
     @Override
     public String toString() {
-        return "Product{" + "ID_Product=" + ID_Product + ", Price=" + Price + ", PROD_Name=" + PROD_Name + ", Category=" + Category + ", Discount=" + Discount + '}';
+        return "Product{" + "ID_Product=" + ID_Product + ", Price=" + Price + ", PROD_Name=" + PROD_Name + ", Category=" + Category + ", Discount=" + Discount + ", Quantity=" + Quantity + '}';
     }
+
+   
 
     
    

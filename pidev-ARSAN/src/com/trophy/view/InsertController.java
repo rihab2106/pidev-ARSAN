@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.trophy.Controller;
+package com.trophy.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,22 +11,32 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author rihab bns
  */
-public class HomeController implements Initializable {
+public class InsertController implements Initializable {
 
     @FXML
-    private Button lblProducts;
+    private TextField txtName;
     @FXML
-    private Button lblServices;
+    private TextField txtPrice;
     @FXML
-    private Button lblEmployees;
+    private TextField txtDiscount;
     @FXML
-    private Button lblStatistics;
+    private TextField txtquantity;
+    @FXML
+    private ComboBox<?> ComboCategory;
+    @FXML
+    private Button btnAdd;
+    @FXML
+    private Button btnUpdate;
+    @FXML
+    private Button btnDelete;
 
     /**
      * Initializes the controller class.
@@ -37,15 +47,19 @@ public class HomeController implements Initializable {
     }    
 
     @FXML
-    private void openProducts(ActionEvent event) {
+    private void select(ActionEvent event) {
     }
 
     @FXML
-    private void openServices(ActionEvent event) {
+    private void Add(ActionEvent event) {
     }
 
     @FXML
-    private void openEmployee(ActionEvent event) {
+    private void Update(ActionEvent event) {
+    }
+
+    @FXML
+    private void Delete(ActionEvent event) {
     }
     
 }

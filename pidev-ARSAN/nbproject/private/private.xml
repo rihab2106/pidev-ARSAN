@@ -3,9 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/org/demo/Main.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/employee.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/facebook.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/icons8-alert-64.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/erd.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/ShopController.java</file>
             <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/ProductController.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/icons8-shopping-cart-64.png</file>
             <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/utils/ConnexionSingleton.java</file>
             <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/dao/ProductDao.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/HomeController.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/entity/Games.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/entity/Cart.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/icons8-delivery-100.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/entity/Product.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/services.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/InsertController.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/icons8-macaron-100.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/Insert.fxml</file>
             <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/test/ConnexionBDJavafx.java</file>
         </group>
     </open-files>
