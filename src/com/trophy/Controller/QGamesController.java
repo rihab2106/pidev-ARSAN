@@ -4,6 +4,11 @@
  */
 package com.trophy.Controller;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.deploy.net.HttpRequest;
 import com.trophy.Dao.CategoryDao;
 import com.trophy.Dao.GamesDao;
 import com.trophy.Dao.TrophiesDao;
@@ -11,8 +16,12 @@ import com.trophy.entity.Category;
 import com.trophy.entity.Games;
 import com.trophy.entity.Trophies;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 
 import java.util.List;
@@ -22,6 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -51,6 +61,7 @@ import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
@@ -63,10 +74,18 @@ import javafx.scene.control.TitledPane;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
@@ -75,7 +94,9 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
+import org.controlsfx.control.NotificationPane;
 import org.jsoup.Connection;
+import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -121,6 +142,8 @@ public class QGamesController implements  Initializable {
     private Button game_stat;
     @FXML
     private MenuBar game_menu_bar;
+    @FXML
+    private MenuItem funfact;
    
 
     /**
@@ -132,6 +155,19 @@ public class QGamesController implements  Initializable {
         
         //Media m=new Media(new File("../../../../Resources/Mouse-Click-00-c-FesliyanStudios.com.mp3").toURI().toString());
         
+       
+       funfact.setOnAction(e -> {
+       Alert ff;
+        try {
+            ff = new Alert(Alert.AlertType.INFORMATION,FunFact(),ButtonType.CLOSE,ButtonType.NEXT);
+             ff.show();
+        } catch (IOException ex) {
+            Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       });
+       
+     
          
         //tableview_game.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         ObservableList<Games> list= GamesDao.getInstance().DisplayObservableList();
@@ -179,6 +215,7 @@ public class QGamesController implements  Initializable {
     };
     return cell;
         };
+       
        //game_trophies.setCellFactory(cellFactory);
        //game_category.setCellFactory(cellFactory);
         tableview_game.setEditable(true);
@@ -245,10 +282,11 @@ public class QGamesController implements  Initializable {
         
         add_game.setOnAction(event -> {
             
-            //ObservableList<Games> t=FXCollections.observableArrayList();
-           // Games g=new Games();
-           // list.add(idx,);
-            //tableview_game.getSelectionModel().select(idx);
+            NotificationPane not=new NotificationPane();
+            not.getStyleClass().add(NotificationPane.STYLE_CLASS_DARK);
+            not.setText("dxsdfd");
+            game_hbox_view.getChildren().add(not);
+            not.show();
             Games g=new Games(CategoryDao.getInstance().DisplayAllList().get(0),"<put name>","<put Description>",5f);
             GamesDao.getInstance().insert(g);
             mp.play();
@@ -257,6 +295,8 @@ public class QGamesController implements  Initializable {
             int idx=GamesDao.getInstance().DisplayObservableList().size()-1;
             AnimateButton(add_game);
             tableview_game.edit(idx, game_name);
+            
+           
             
         });
         
@@ -296,7 +336,28 @@ public class QGamesController implements  Initializable {
         MenuItem updateGame=new MenuItem("Modify");
         updateGame.setOnAction(event -> {
         try {
-                SceneTransition(SetUpForm(tableview_game.getSelectionModel().getSelectedItem()));
+            Games g=tableview_game.getSelectionModel().getSelectedItem();
+             StackPane sp=new StackPane();    
+            Pane root=SetUpForm(g,sp);
+           
+            InputStream f=getClass().getClassLoader().getResourceAsStream("/com/trophy/Resources/"+
+                        g.getName()+".jpg");
+            Image img=null;
+            if (f!=null)
+               img=new Image(f);
+                        
+               
+                ImageView i=new ImageView(img);
+                i.setOpacity(0.2);
+                i.setPreserveRatio(true);
+                 i.setFitHeight(game_paine.getHeight());
+                 i.setFitWidth(game_paine.getWidth());
+               sp.getChildren().addAll(i,root);
+               
+                
+                //root.setBackground(b);
+                
+                SceneTransition(sp);
             } catch (IOException ex) {
                 Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -326,8 +387,14 @@ public class QGamesController implements  Initializable {
             try {
                 
                 Games g=tableview_game.getSelectionModel().getSelectedItem();
-                g.setDescription(FetchGamesOnline("God Of War"));
-            GamesDao.getInstance().update(g);
+                
+                Games g1=FetchGamesOnline(g.getName());
+                if (g1!=null){
+                g.setDescription(g1.getDescription());
+                g.setRate(g1.getRate());
+                g.setName(g1.getName());
+                GamesDao.getInstance().update(g);}
+                
             tableview_game.setItems(GamesDao.getInstance().DisplayObservableList());
             } catch (IOException ex) {
                 Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
@@ -440,20 +507,24 @@ public class QGamesController implements  Initializable {
     
     }
     
-    private Pane SetUpForm(Games g ){
+    private Pane SetUpForm(Games g ,Pane p){
     VBox box=new VBox();
-   box.setStyle("-fx-background-color: #373e43");
+  // box.setStyle("-fx-opacity: 20%");
     box.setMinWidth(game_paine.getWidth()-20);
     box.setMinHeight(game_paine.getHeight()-20);
     TextField tname=new TextField();
     TextArea tdesc=new TextArea();
     ChoiceBox cb=new ChoiceBox(FXCollections.observableArrayList(CategoryDao.getInstance().DisplayAllList()));
     TextField trate =new TextField();
+    
+    tdesc.setWrapText(true);
+    
     Button ok=new Button("OK");
     Button cancel=new Button("Cancel");
     
     cancel.setOnAction(event -> {
     game_paine.getChildren().remove(box);
+    game_paine.getChildren().remove(p);
     game_paine.getChildren().addAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
     });
     
@@ -465,6 +536,7 @@ public class QGamesController implements  Initializable {
     GamesDao.getInstance().update(g);
     tableview_game.setItems(GamesDao.getInstance().DisplayObservableList());
     game_paine.getChildren().remove(box);
+    game_paine.getChildren().remove(p);
     game_paine.getChildren().addAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
     });
     
@@ -473,8 +545,8 @@ public class QGamesController implements  Initializable {
     cb.setValue(g.getCategory());
     trate.setText(String.valueOf(g.getRate()));
     
-    ok.setMinSize(200, 30);
-    cancel.setMinSize(200, 30);
+    ok.setMinSize(200, 50);
+    cancel.setMinSize(200, 50);
     HBox h=new HBox(ok,cancel);
     h.setAlignment(Pos.CENTER);
     h.setSpacing(20);
@@ -498,13 +570,17 @@ public class QGamesController implements  Initializable {
     root.setLayoutX(10);
     root.setLayoutY(10);
     game_paine.getChildren().add(root);
-    
+   
     KeyValue kv=new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_IN);
     KeyFrame kf=new KeyFrame(Duration.seconds(1),kv);
     
-    KeyFrame kff=new KeyFrame(Duration.seconds(0), new KeyValue(game_hbox_view.translateYProperty(),0,Interpolator.EASE_OUT));
-            
-    t.getKeyFrames().add(kf);
+    KeyFrame kff=new KeyFrame(Duration.seconds(1), 
+            new KeyValue(root.opacityProperty(),1,Interpolator.EASE_IN));
+    KeyFrame kfff=new KeyFrame(Duration.seconds(0), 
+            new KeyValue(root.opacityProperty(),0,Interpolator.EASE_IN));
+    
+    
+    t.getKeyFrames().addAll(kf,kfff,kff);
     //t.getKeyFrames().add(kff);
     t.setOnFinished(event -> {
     game_paine.getChildren().removeAll(Title,Hbox_games_button,game_hbox_view,game_menu_bar);
@@ -528,7 +604,8 @@ public class QGamesController implements  Initializable {
 
     @FXML
     private void show_stat(ActionEvent event) throws IOException {
-       String[] diff={"Very easy","Easy","Medium","Hard","Impossible"};
+        
+        String[] diff={"Very easy","Easy","Medium","Hard","Impossible"};
         CategoryAxis xAxis=new CategoryAxis(FXCollections.observableArrayList(GamesDao.getInstance().DisplayObservableList()
                                             .stream().map(g -> g.getName()).distinct().collect(Collectors.toList())));
        
@@ -577,28 +654,55 @@ public class QGamesController implements  Initializable {
                 .count();
     }
     
-    private String FetchGamesOnline(String name) throws IOException {
-    
-    
-    /*params = {
-    'action': 'query',
-    'format': 'json',
-    'titles': subject,
-    'prop': 'links',
-    'pllimit': 'max',
-    'redirects':''
-}*/ 
-    String jsonBody = "{\"action\":query,\"format\":\"json\"titles\":"+name+"\"prop\":links\"pllimit\":max\"redirects\":''}";
-    String url="https://en.wikipedia.org/wiki/"+"Doom_(2016_video_game)";
-    Document d=Jsoup.connect(url).get();
-    String desc=d.getElementsByClass("infobox-data").eachText().stream().reduce("", (t1,t2)-> t1+System.lineSeparator()+t2);
-    
-    /*Connection.Response r=Jsoup.connect("https://en.wikipedia.org/").header("Content-Type", "application/json")
-        .header("Accept", "application/json").method(Connection.Method.POST)
-            .requestBody(jsonBody).execute();*/
+    private Games FetchGamesOnline(String name) throws IOException {
+        
+        name=name.toLowerCase();
+        name=name.replaceAll("[<>]","" );
+        name=name.replaceAll(" ", "-");
         
     
-    return desc;
+    Response d =Jsoup.connect("https://rawg-video-games-database.p.rapidapi.com/games/"+name+"?key=0b1f1156cb1546dabef544af6d565b4b")
+            .header("x-rapidapi-host", "rawg-video-games-database.p.rapidapi.com")
+            .header("x-rapidapi-key", "64097372bemsh474baf260df44b5p187695jsn0d1f86c219e8")
+            .method(Connection.Method.GET)
+            .ignoreContentType(true).ignoreHttpErrors(true)
+            .execute();
+    if (d.statusCode()>400) {
+         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Couldn't find the game",ButtonType.OK);
+        a.showAndWait();
+        return null;
+    }
+    
+    ObjectMapper obj=new ObjectMapper();
+     JsonNode jn=obj.readTree(d.body());
+     Games g=new Games();
+     String desc=jn.get("description").asText();
+     
+        g.setDescription(Jsoup.parse(desc).wholeText());
+        g.setRate((float)jn.get("metacritic").asInt());
+        g.setName(jn.get("slug").asText());
+        
+        Response img_res=Jsoup.connect(jn.get("background_image").asText())
+             .ignoreContentType(true).execute();
+        int len=jn.get("background_image").asText().length();
+     FileOutputStream img=new FileOutputStream("src/com/trophy/Resources/"+g.getName()+jn.get("background_image").asText()
+                        .substring(len-4, len));
+     img.write(img_res.bodyAsBytes());
+     img.close();
+        
+    return g;
+    
+    }
+    
+    public String FunFact() throws IOException{
+    Element d =Jsoup.connect("https://asli-fun-fact-api.herokuapp.com/").ignoreContentType(true).get().body();
+    String json =d.text();
+    ObjectMapper obj=new ObjectMapper();
+       
+    JsonNode jn=obj.readTree(obj.getFactory().createParser(json));
+        
+    return jn.get("data").get("fact").asText();
+    
     
     }
     
