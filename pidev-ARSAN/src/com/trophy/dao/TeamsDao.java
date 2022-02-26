@@ -30,6 +30,7 @@ public class TeamsDao implements TeamsInterface<Teams> {
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
+            System.out.println(st.toString());
         } catch (SQLException ex) {
             Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,9 +50,9 @@ public class TeamsDao implements TeamsInterface<Teams> {
           st = ConnexionSingleton.openConnection().createStatement();
           st.executeUpdate("INSERT INTO `Teams`(`ID_TEAM`,`ID_COMPETION`,`TEAM_NAME`,`CREATOR`) VALUES ('"+t.getId_team()+"','"+t.getCompetitions().getId_competion()+"','"+t.getTeam_name()+"','"+t.getCreator()+"')");
           
-          ConnexionSingleton.closeConnection();
+          //ConnexionSingleton.closeConnection();
           }catch (SQLException ex){
-          ConnexionSingleton.closeConnection();
+         /// ConnexionSingleton.closeConnection();
           Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
@@ -61,9 +62,9 @@ public class TeamsDao implements TeamsInterface<Teams> {
                  try{
             st = ConnexionSingleton.openConnection().createStatement();
             st.executeUpdate("DELETE FROM `Teams` WHERE ID_TEAM  = " + id);
-            ConnexionSingleton.closeConnection();
+          //  ConnexionSingleton.closeConnection();
         } catch (SQLException ex) {
-            ConnexionSingleton.closeConnection();
+            //ConnexionSingleton.closeConnection();
             Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -83,10 +84,10 @@ public class TeamsDao implements TeamsInterface<Teams> {
         try{
         st = ConnexionSingleton.openConnection().createStatement();
        st.executeUpdate("UPDATE `Teams` SET `ID_COMPETION`="+"'"+t.getCompetitions().getId_competion()+"'"+",`TEAM_NAME`="+"'"+t.getTeam_name()+"'"+",`CREATOR`="+"'"+t.getCreator()+"'"+" WHERE ID_TEAM  = "+t.getId_team());
-       ConnexionSingleton.closeConnection();
+      // ConnexionSingleton.closeConnection();
         }catch (SQLException ex) {
             Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           // ConnexionSingleton.closeConnection();
         }
     }
     
@@ -95,7 +96,7 @@ public class TeamsDao implements TeamsInterface<Teams> {
    {
        ObservableList<Teams> t =FXCollections.observableArrayList();
        try{
-       st=ConnexionSingleton.openConnection().createStatement();
+       //st=ConnexionSingleton.openConnection().createStatement();
         rs  =  st.executeQuery("SELECT * FROM Teams");
         
         while (rs.next()){
@@ -107,10 +108,10 @@ public class TeamsDao implements TeamsInterface<Teams> {
          t.add(te);
         
         }
-        ConnexionSingleton.closeConnection();
+       // ConnexionSingleton.closeConnection();
        }catch (SQLException ex) {
-            Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           System.out.println(ex.getMessage());
+           // ConnexionSingleton.closeConnection();
         }
        
    return t;
@@ -132,10 +133,10 @@ public class TeamsDao implements TeamsInterface<Teams> {
        te.setCreator(rs.getString(4));
        teams.add(te);
     
-   }ConnexionSingleton.closeConnection();
+   }//ConnexionSingleton.closeConnection();
    }catch (SQLException ex) {
             Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+            // ConnexionSingleton.closeConnection();
         }
    return teams;
    }

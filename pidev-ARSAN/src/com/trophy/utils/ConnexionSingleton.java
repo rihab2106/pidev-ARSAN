@@ -30,7 +30,7 @@ public class ConnexionSingleton {
     private ConnexionSingleton() {
         try {
             cnx=DriverManager.getConnection(url, login, pwd);
-            
+            System.out.println("conx etqblie");
         } catch (SQLException ex) {
             Logger.getLogger(ConnexionSingleton.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -54,11 +54,11 @@ public class ConnexionSingleton {
         return cnx;
     }
    
-   public static void closeConnection()
-    {       
-        if(cnx != null)
-          cnx = null;
-    }
+   //public static void closeConnection()
+    //{       
+      //  if(cnx != null)
+        //  cnx = null;
+    //}
     
     
 }

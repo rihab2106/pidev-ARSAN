@@ -107,7 +107,7 @@
                         <TableView fx:id="tableTeams" onMouseClicked="#clickTable" prefHeight="500.0" prefWidth="830.0" BorderPane.alignment="CENTER">
                            <columns>
                               <TableColumn fx:id="colIdTeam" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Id Team" />
-                              <TableColumn fx:id="colIdCompTeam" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Id Competition" />
+                              <TableColumn fx:id="colIdCompTeam" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Name Competition" />
                               <TableColumn fx:id="colTeamName" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Team Name" />
                               <TableColumn fx:id="colCreatorName" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Creator Name" />
                            </columns>

@@ -58,9 +58,9 @@ public class ProductDao implements ProductInterface<Product> {
           st = ConnexionSingleton.openConnection().createStatement();
           st.executeUpdate("INSERT INTO `product`(`ID_PRODUCT`, `PROD_NAME`, `PRICE`, `Category`, `DISCOUNT`) VALUES ('"+p.getID_Product()+"','"+p.getPROD_Name()+"','"+p.getPrice()+"','"+p.getCategory()+"','"+p.getDiscount()+"')");
           
-          ConnexionSingleton.closeConnection();
+          //ConnexionSingleton.closeConnection();
           }catch (SQLException ex){
-          ConnexionSingleton.closeConnection();
+          //ConnexionSingleton.closeConnection();
           Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
@@ -82,10 +82,10 @@ public class ProductDao implements ProductInterface<Product> {
         try{
         st = ConnexionSingleton.openConnection().createStatement();
        st.executeUpdate("UPDATE `product` SET `PROD_NAME`="+"'"+p.getPROD_Name()+"'"+",`PRICE`="+"'"+p.getPrice()+"'"+",`Category`="+"'"+p.getCategory()+"'"+",`DISCOUNT`="+"'"+p.getDiscount()+"'"+" WHERE ID_PRODUCT = "+p.getID_Product());
-       ConnexionSingleton.closeConnection();
+       //ConnexionSingleton.closeConnection();
         }catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           // ConnexionSingleton.closeConnection();
         }
     }
  
@@ -106,10 +106,10 @@ public class ProductDao implements ProductInterface<Product> {
          p.add(pr);
         
         }
-        ConnexionSingleton.closeConnection();
+        //ConnexionSingleton.closeConnection();
        }catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           // ConnexionSingleton.closeConnection();
         }
        
    return p;
@@ -131,10 +131,10 @@ public class ProductDao implements ProductInterface<Product> {
        p.setCategory(rs.getString(5));
        product.add(p);
     
-   }ConnexionSingleton.closeConnection();
+   }//ConnexionSingleton.closeConnection();
    }catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+            //ConnexionSingleton.closeConnection();
         }
    return product;
    }
@@ -143,9 +143,9 @@ public class ProductDao implements ProductInterface<Product> {
          try{
             st = ConnexionSingleton.openConnection().createStatement();
             st.executeUpdate("DELETE FROM `product` WHERE ID_PRODUCT = " + id);
-            ConnexionSingleton.closeConnection();
+            //ConnexionSingleton.closeConnection();
         } catch (SQLException ex) {
-            ConnexionSingleton.closeConnection();
+            //ConnexionSingleton.closeConnection();
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

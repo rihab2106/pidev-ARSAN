@@ -7,6 +7,7 @@ package com.trophy.Controller;
 
 import com.trophy.dao.CompetitionsDao;
 import com.trophy.dao.TeamsDao;
+import com.trophy.entity.Competitions;
 import com.trophy.entity.Teams;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -51,7 +52,7 @@ public class TeamsController implements Initializable {
     @FXML
     private TableColumn colIdTeam;
     @FXML
-    private TableColumn colIdCompTeam;
+    private TableColumn<Teams,String> colIdCompTeam;
     @FXML
     private TableColumn colTeamName;
     @FXML
@@ -67,14 +68,19 @@ public class TeamsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
    
-    inputIdCompT.getItems().addAll(CompetitionsDao.getInstance().getAllCompetitions()
+    /*inputIdCompT.getItems().addAll(CompetitionsDao.getInstance().getAllCompetitions()
                                     .stream().map(t -> t.getId_competion())
-                                    .collect(Collectors.toList()));
+                                    .collect(Collectors.toList()));*/
+    
+        inputIdCompT.getItems().addAll(CompetitionsDao.getInstance().getAllCompetitions());
     ObservableList<Teams> listTeams =(ObservableList<Teams>)  TeamsDao.getInstance().getAllTeams();
     //ObservableList<Teams> listTeams =FXCollections.observableArrayList(  TeamsDao.getInstance().getAllTeams());
        tableTeams.setItems(td.getAllTeams());       
         colIdTeam.setCellValueFactory(new PropertyValueFactory<>("id_team"));
-        colIdCompTeam.setCellValueFactory(new PropertyValueFactory<>("competitions"));
+       colIdCompTeam.setCellValueFactory(new PropertyValueFactory<>("competitions"));
+//            colIdCompTeam.setCellValueFactory(cell->{
+//        return cell.getValue().getCompetitions().getGame_name();
+//    });
         colTeamName.setCellValueFactory(new PropertyValueFactory<>("team_name"));
         colCreatorName.setCellValueFactory(new PropertyValueFactory<>("creator"));
         System.out.println(listTeams);
@@ -89,7 +95,7 @@ public class TeamsController implements Initializable {
         Teams te = new Teams();
         if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")&&!inputCreatorName.getText().equals("")){
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
-        te.setCompetitions(CompetitionsDao.getInstance().displayById((Integer)inputIdCompT.getValue()));
+        te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
         te.setCreator(inputCreatorName.getText());
         }
@@ -112,7 +118,7 @@ public class TeamsController implements Initializable {
         if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")&&!inputCreatorName.getText().equals(""))
         {
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
-        te.setCompetitions(CompetitionsDao.getInstance().displayById((Integer)inputIdCompT.getValue()));
+        te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
         te.setCreator(inputCreatorName.getText());
         
@@ -137,7 +143,7 @@ public class TeamsController implements Initializable {
          Teams te = new Teams();
         if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")&&!inputCreatorName.getText().equals("")){
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
-        te.setCompetitions(CompetitionsDao.getInstance().displayById((Integer)inputIdCompT.getValue()));
+        te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
         te.setCreator(inputCreatorName.getText());
         
@@ -155,8 +161,9 @@ public class TeamsController implements Initializable {
      @FXML
     private void clickTable(MouseEvent event) {
        Teams te =(Teams) tableTeams.getSelectionModel().getSelectedItem();
+         
           inputIdTeam.setText(String.valueOf(te.getId_team()));
-          inputIdCompT.setValue(te.getCompetitions().getId_competion());
+          inputIdCompT.setValue(te.getCompetitions());
           inputTeamName.setText(te.getTeam_name()+"");
           inputCreatorName.setText(te.getCreator());  
     }

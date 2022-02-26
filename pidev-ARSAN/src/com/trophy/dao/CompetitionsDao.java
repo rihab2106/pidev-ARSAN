@@ -48,9 +48,9 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
           st = ConnexionSingleton.openConnection().createStatement();
           st.executeUpdate("INSERT INTO Competitions (ID_COMPETION,GAME_NAME,DATEOFCOMP) VALUES ('"+c.getId_competion()+"','"+c.getGame_name()+"','"+c.getDateofcomp()+"')");
           
-          ConnexionSingleton.closeConnection();
+          //ConnexionSingleton.closeConnection();
           }catch (SQLException ex){
-          ConnexionSingleton.closeConnection();
+          //ConnexionSingleton.closeConnection();
           Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
@@ -60,9 +60,9 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
           try{
             st = ConnexionSingleton.openConnection().createStatement();
             st.executeUpdate("DELETE FROM `Competitions` WHERE 	ID_COMPETION = " + id);
-            ConnexionSingleton.closeConnection();
+            // ConnexionSingleton.closeConnection();
         } catch (SQLException ex) {
-            ConnexionSingleton.closeConnection();
+            //ConnexionSingleton.closeConnection();
             Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -90,10 +90,10 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
          
         
         }
-        ConnexionSingleton.closeConnection();
+       // ConnexionSingleton.closeConnection();
        }catch (SQLException ex) {
             Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           // ConnexionSingleton.closeConnection();
         }
        return co;
     }
@@ -103,10 +103,10 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
         try{
         st = ConnexionSingleton.openConnection().createStatement();
        st.executeUpdate("UPDATE `Competitions` SET `GAME_NAME`="+"'"+c.getGame_name()+"'"+",`DATEOFCOMP`="+"'"+c.getDateofcomp()+"'"+" WHERE ID_COMPETION = "+c.getId_competion());
-       ConnexionSingleton.closeConnection();
+      // ConnexionSingleton.closeConnection();
         }catch (SQLException ex) {
             Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           // ConnexionSingleton.closeConnection();
         }
     }
     
@@ -115,7 +115,7 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
    {
        ObservableList<Competitions> c =FXCollections.observableArrayList();
        try{
-       st=ConnexionSingleton.openConnection().createStatement();
+       //st=ConnexionSingleton.openConnection().createStatement();
         rs  =  st.executeQuery("SELECT * FROM competitions");
         
         while (rs.next()){
@@ -130,10 +130,10 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
          
         
         }
-        ConnexionSingleton.closeConnection();
+      //  ConnexionSingleton.closeConnection();
        }catch (SQLException ex) {
             Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+           // ConnexionSingleton.closeConnection();
         }
        return c;
    }
@@ -153,10 +153,10 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
  
        competitions.add(co);
     
-   }ConnexionSingleton.closeConnection();
+   }//ConnexionSingleton.closeConnection();
    }catch (SQLException ex) {
-            Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
-            ConnexionSingleton.closeConnection();
+            System.out.println(ex.getMessage());
+           // ConnexionSingleton.closeConnection();
         }
    return competitions;
    }
