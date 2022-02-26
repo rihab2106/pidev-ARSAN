@@ -8,6 +8,7 @@ package com.trophy.Controller;
 import com.trophy.dao.CompetitionsDao;
 import com.trophy.dao.TeamsDao;
 import com.trophy.entity.Competitions;
+import com.trophy.entity.SendMail;
 import com.trophy.entity.Teams;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -108,6 +109,10 @@ public class TeamsController implements Initializable {
           inputCreatorName.setText("");
           
           tableTeams.setItems(td.getAllTeams());
+          
+          SendMail mail= new SendMail();
+          mail.envoyer("syrine.amami@esprit.tn");
+          
         
     }
 
