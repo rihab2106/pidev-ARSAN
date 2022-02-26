@@ -12,16 +12,20 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="game_paine" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.QGamesController">
+<AnchorPane id="AnchorPane" fx:id="game_paine" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.QGamesController">
    <children>
       <HBox fx:id="Hbox_games_button" alignment="CENTER_LEFT" layoutX="21.0" layoutY="115.0" prefHeight="82.0" prefWidth="736.0" spacing="20.0">
          <children>
-            <Button fx:id="add_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Add" />
+            <Button fx:id="add_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Add">
+               <effect>
+                  <Glow level="0.47" />
+               </effect></Button>
             <Button fx:id="delete_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" />
             <TextField fx:id="game_in_search" prefHeight="42.0" prefWidth="317.0" promptText="Search game " />
             <Button fx:id="game_stat" mnemonicParsing="false" onAction="#show_stat" prefHeight="40.0" prefWidth="90.0" text="Show Stat" />
@@ -60,7 +64,8 @@
          <menus>
             <Menu mnemonicParsing="false" text="File">
               <items>
-                <MenuItem fx:id="fun" mnemonicParsing="false" text="Fun Fact " />
+                <MenuItem fx:id="fun" mnemonicParsing="false" onAction="#ShowFunFact" text="Fun Fact " />
+                  <MenuItem fx:id="game_sort" mnemonicParsing="false" onAction="#SortGames" text="Sort" />
               </items>
             </Menu>
          </menus></MenuBar>

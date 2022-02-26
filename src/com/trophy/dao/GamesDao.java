@@ -174,4 +174,26 @@ public class GamesDao implements Idoa<Games>{
         }
         return list;
     }
+    public ObservableList<Games> Sort(){
+        ObservableList<Games> list=FXCollections.observableArrayList();
+        try {
+            ps=SingletonConnexion.getInstance().getCnx().prepareStatement("select * from GAMES order by name");
+           
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Games g =new Games();
+                g.setId_game(rs.getInt(1));
+                g.setCategory(CategoryDao.getInstance().displayById(rs.getInt(2)));
+                g.setName(rs.getString(3));
+                g.setDescription(rs.getString(4));
+                g.setRate(rs.getFloat(5));
+                list.add(g);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Games.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return list;
+    }
+    
 }

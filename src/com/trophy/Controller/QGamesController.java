@@ -15,6 +15,7 @@ import com.trophy.Dao.TrophiesDao;
 import com.trophy.entity.Category;
 import com.trophy.entity.Games;
 import com.trophy.entity.Trophies;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,7 +23,11 @@ import java.io.FileWriter;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Arrays;
 
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,6 +51,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -60,6 +66,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -67,6 +74,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -89,12 +97,17 @@ import javafx.scene.layout.StackPane;
 
 import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import javafx.scene.transform.Rotate;
 import javafx.util.Callback;
 import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import org.controlsfx.control.NotificationPane;
+import org.controlsfx.control.Notifications;
+import org.controlsfx.control.PopOver;
 import org.jsoup.Connection;
 import org.jsoup.Connection.Response;
 import org.jsoup.Jsoup;
@@ -143,7 +156,9 @@ public class QGamesController implements  Initializable {
     @FXML
     private MenuBar game_menu_bar;
     @FXML
-    private MenuItem funfact;
+    private MenuItem fun;
+    @FXML
+    private MenuItem game_sort;
    
 
     /**
@@ -156,16 +171,6 @@ public class QGamesController implements  Initializable {
         //Media m=new Media(new File("../../../../Resources/Mouse-Click-00-c-FesliyanStudios.com.mp3").toURI().toString());
         
        
-       funfact.setOnAction(e -> {
-       Alert ff;
-        try {
-            ff = new Alert(Alert.AlertType.INFORMATION,FunFact(),ButtonType.CLOSE,ButtonType.NEXT);
-             ff.show();
-        } catch (IOException ex) {
-            Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-       });
        
      
          
@@ -280,13 +285,12 @@ public class QGamesController implements  Initializable {
         
         AudioClip mp=new AudioClip(getClass().getResource("Mouse-Click-00-c-FesliyanStudios.com.mp3").toExternalForm());
         
+       
+            
+           
         add_game.setOnAction(event -> {
             
-            NotificationPane not=new NotificationPane();
-            not.getStyleClass().add(NotificationPane.STYLE_CLASS_DARK);
-            not.setText("dxsdfd");
-            game_hbox_view.getChildren().add(not);
-            not.show();
+           
             Games g=new Games(CategoryDao.getInstance().DisplayAllList().get(0),"<put name>","<put Description>",5f);
             GamesDao.getInstance().insert(g);
             mp.play();
@@ -307,14 +311,24 @@ public class QGamesController implements  Initializable {
         GamesDao.getInstance().delete(l.get(ind));
         tableview_game.setItems(GamesDao.getInstance().DisplayObservableList());
         tableview_game.refresh();
+        File f=new File("src/com/trophy/Resources/"+l.get(ind).getName()+".jpg");
+        if (f.exists()) f.delete();
         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Game Deleted !!",ButtonType.OK);
         a.showAndWait();
         });
         tableview_game.getSelectionModel().selectedItemProperty().addListener((obj, olds,newc) -> {
            
              game_acc.getPanes().clear();
+             
              if (tableview_game.isPressed() )
-            TrophiesDao.getInstance().DisplayAllList().forEach((Trophies t) -> {
+            TrophiesDao.getInstance().DisplayAllList().stream().sorted((Trophies t1,Trophies t2)->{
+                List<String> diff=Arrays.asList("Very easy","Easy","Medium","Hard","Impossible","Nothing");
+            int tr1,tr2;
+            tr1=diff.indexOf(t1.getDifficulty());
+            tr2=diff.indexOf(t2.getDifficulty());
+            return tr1-tr2;
+            })
+                    .forEach((Trophies t) -> {
                 if (t.getGame().getId_game()==obj.getValue().getId_game()){
                     game_acc.getPanes().add(new TitledPane("Title "+t.getTitle(),DisplayTrophies(t)));
                 }
@@ -340,7 +354,7 @@ public class QGamesController implements  Initializable {
              StackPane sp=new StackPane();    
             Pane root=SetUpForm(g,sp);
            
-            InputStream f=getClass().getClassLoader().getResourceAsStream("/com/trophy/Resources/"+
+            InputStream f=new FileInputStream("src/com/trophy/Resources/"+
                         g.getName()+".jpg");
             Image img=null;
             if (f!=null)
@@ -401,7 +415,43 @@ public class QGamesController implements  Initializable {
             }
             
         });
-        game_con.getItems().add(fetchInfo);
+        tableview_game.setRowFactory(tableView -> {
+    final TableRow<Games> row = new TableRow<>();
+    PopOver p=new PopOver();
+    row.hoverProperty().addListener((observable) -> {
+        final Games g = row.getItem();
+
+        if (row.isHover() && g != null) {
+            Text t=new Text(g.getDescription());
+            p.setContentNode(t);
+            p.setAnimated(true);
+            
+            p.show(row);
+        } else {
+            
+        }
+    });
+
+    return row;
+});
+        
+        
+        
+        MenuItem lookFurther=new MenuItem("Look Online");
+        lookFurther.setOnAction(e -> {
+            String n=tableview_game.getSelectionModel().getSelectedItem()
+                    .getName();
+           
+            try {
+                
+                Desktop.getDesktop().browse(new URI("https://www.google.com/search?q="+URLEncoder.encode(n, "UTF-8")));
+            } catch (Exception ex) {
+                Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        
+        game_con.getItems().addAll(fetchInfo,lookFurther);
         
               
     }    
@@ -668,9 +718,14 @@ public class QGamesController implements  Initializable {
             .ignoreContentType(true).ignoreHttpErrors(true)
             .execute();
     if (d.statusCode()>400) {
-         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Couldn't find the game",ButtonType.OK);
-        a.showAndWait();
-        return null;
+         Notifications.create()
+                 .darkStyle()
+                 .graphic(new Rectangle(300,200,Color.DARKGREY))
+                 .hideAfter(Duration.seconds(10))
+                 .title("Not Found")
+                 .text("Maybe or surely you've written the game name wrong you ape!")
+                 .showInformation();
+         return null;
     }
     
     ObjectMapper obj=new ObjectMapper();
@@ -695,7 +750,8 @@ public class QGamesController implements  Initializable {
     }
     
     public String FunFact() throws IOException{
-    Element d =Jsoup.connect("https://asli-fun-fact-api.herokuapp.com/").ignoreContentType(true).get().body();
+    Element d =Jsoup.connect("https://asli-fun-fact-api.herokuapp.com/")
+            .ignoreContentType(true).get().body();
     String json =d.text();
     ObjectMapper obj=new ObjectMapper();
        
@@ -704,6 +760,28 @@ public class QGamesController implements  Initializable {
     return jn.get("data").get("fact").asText();
     
     
+    }
+    
+    /*public searchGamesImg(){
+    
+        Response d=Jsoup
+    }*/
+
+    @FXML
+    private void ShowFunFact(ActionEvent event) {
+        Alert ff;
+        try {
+            ff = new Alert(Alert.AlertType.INFORMATION,FunFact(),ButtonType.CLOSE);
+
+            ff.show();
+        } catch (IOException ex) {
+            Logger.getLogger(QGamesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void SortGames(ActionEvent event) {
+        tableview_game.setItems(GamesDao.getInstance().Sort());
     }
     
     
