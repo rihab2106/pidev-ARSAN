@@ -4,8 +4,13 @@
 
 .button1
 {
--fx-background-color : #393351;
+-fx-background-color : #68da23;
 -fx-background-radius :  30 0 0 30;
+}
+.logo
+{
+-fx-background-color :#FFFFFF;
+-fx-background-radius :  0 0 50 50;
 }
 .button1:hover
 {

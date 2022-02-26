@@ -19,6 +19,14 @@ public class Product {
     public Product() {
     }
 
+    public Product(Float Price, String PROD_Name, String Category, Integer Discount) {
+        this.Price = Price;
+        this.PROD_Name = PROD_Name;
+        this.Category = Category;
+        this.Discount = Discount;
+    }
+    
+
     public Product(Integer ID_Product, Float Price, String PROD_Name, String Category, Integer Discount,Integer Quantity) {
         this.ID_Product = ID_Product;
         this.Price = Price;

@@ -323,7 +323,7 @@ public class ProductController implements Initializable {
     public void switchshop(ActionEvent event) throws Exception  {
        root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
        Stage window =(Stage)btnshop.getScene().getWindow();
-       window.setScene(new Scene(root,750,500));
+       window.setScene(new Scene(root));
     }
 
     

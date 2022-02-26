@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.ShopController">
+<AnchorPane id="AnchorPane" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.ShopController">
    <children>
-      <AnchorPane layoutX="191.0" layoutY="70.0" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="pane" prefHeight="535.0" prefWidth="973.0">
          <children>
-            <Text layoutX="77.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello" />
+            <SplitPane layoutX="27.0" layoutY="23.0" prefHeight="489.0" prefWidth="920.0">
+               <items>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #90949c;">
+                     <children>
+                        <ColorPicker fx:id="colorPicker" layoutX="52.0" layoutY="111.0" onAction="#changeColor" prefHeight="32.0" prefWidth="94.0" promptText="SelectColor" />
+                        <ImageView fitHeight="147.0" fitWidth="198.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/trophyhunter.png" />
+                           </image>
+                        </ImageView>
+                        <TableView fx:id="table" layoutX="234.0" layoutY="208.0" prefHeight="200.0" prefWidth="461.0">
+                          <columns>
+                            <TableColumn fx:id="Name" prefWidth="127.19996643066406" text="Product Name" />
+                            <TableColumn fx:id="Price" prefWidth="85.5999755859375" text="Price " />
+                              <TableColumn fx:id="Discount" prefWidth="121.5999755859375" text="Discount" />
+                              <TableColumn fx:id="Category" prefWidth="126.39996337890625" text="Category" />
+                          </columns>
+                        </TableView>
+                        <ImageView fx:id="Cart" fitHeight="53.0" fitWidth="82.0" layoutX="776.0" layoutY="4.0" onMouseClicked="#ViewCart" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-shopping-cart-64.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="Exit" fitHeight="60.0" fitWidth="98.0" layoutX="844.0" onMouseClicked="#Exit" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-microsoft-excel-100.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </items></SplitPane>
          </children>
       </AnchorPane>
    </children>
