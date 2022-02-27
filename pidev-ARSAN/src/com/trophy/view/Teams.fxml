@@ -99,7 +99,6 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Button layoutX="597.0" layoutY="61.0" mnemonicParsing="false" onAction="#Search" prefHeight="50.0" prefWidth="74.0" text="Search" />
                            </children>
                         </Pane>
                      </top>

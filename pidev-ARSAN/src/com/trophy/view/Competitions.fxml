@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.CompetitionsController">
    <children>
@@ -63,6 +64,7 @@
                            </cursor>
                         </Button>
                         <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="181.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" />
+                        <Text layoutX="-2.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hhhhh" wrappingWidth="289.0000034272671" />
                      </children>
                      <padding>
                         <Insets bottom="25.0" top="30.0" />
@@ -93,7 +95,7 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Button layoutX="597.0" layoutY="61.0" mnemonicParsing="false" onAction="#Search" prefHeight="50.0" prefWidth="74.0" text="Search" />
+                              <Button fx:id="sortComp" layoutX="661.0" layoutY="90.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="75.0" text="Sort" />
                            </children>
                         </Pane>
                      </top>

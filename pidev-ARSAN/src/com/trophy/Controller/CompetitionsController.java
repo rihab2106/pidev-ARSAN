@@ -51,12 +51,14 @@ public class CompetitionsController implements Initializable {
     private TableColumn colNameGameComp;
     @FXML
     private TableColumn colDateofComp;
-
+     @FXML
+    private Button sortComp;
     /**
      * Initializes the controller class.
      */
     
        CompetitionsDao cd = new CompetitionsDao();
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -68,6 +70,10 @@ public class CompetitionsController implements Initializable {
         colDateofComp.setCellValueFactory(new PropertyValueFactory<>("dateofcomp"));
           
         System.out.println(listComp);
+        
+            SearchComp.textProperty().addListener((obj,old,ne)->{
+            tableComp.setItems(cd.getSearchCompetitions(ne));});
+        
     }    
  
     
@@ -152,10 +158,16 @@ public class CompetitionsController implements Initializable {
            
     }
     
+//@FXML
+//    private void Search(ActionEvent event) {
+//       
+//       tableComp.setItems(cd.getSearchCompetitions(SearchComp.getText()));
+//    }
+
     @FXML
-    private void Search(ActionEvent event) {
+    private void sortComp(ActionEvent event) {
         
-        tableComp.setItems(cd.getSearchCompetitions(SearchComp.getText()));
+        
     }
 }
     

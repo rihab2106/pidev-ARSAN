@@ -75,7 +75,7 @@ public class TeamsController implements Initializable {
     
         inputIdCompT.getItems().addAll(CompetitionsDao.getInstance().getAllCompetitions());
     ObservableList<Teams> listTeams =(ObservableList<Teams>)  TeamsDao.getInstance().getAllTeams();
-    //ObservableList<Teams> listTeams =FXCollections.observableArrayList(  TeamsDao.getInstance().getAllTeams());
+    
        tableTeams.setItems(td.getAllTeams());       
         colIdTeam.setCellValueFactory(new PropertyValueFactory<>("id_team"));
        colIdCompTeam.setCellValueFactory(new PropertyValueFactory<>("competitions"));
@@ -86,6 +86,8 @@ public class TeamsController implements Initializable {
         colCreatorName.setCellValueFactory(new PropertyValueFactory<>("creator"));
         System.out.println(listTeams);
     
+        SearchTeam.textProperty().addListener((obj,old,ne)->{
+            tableTeams.setItems(td. getSearchTeams(ne));});
     
         // TODO
     }  
@@ -173,18 +175,13 @@ public class TeamsController implements Initializable {
           inputCreatorName.setText(te.getCreator());  
     }
     
-
-    @FXML
-    private void Search(ActionEvent event) {
-        tableTeams.setItems(td.getSearchTeams(SearchTeam.getText()));
-    }
+// @FXML
+//    private void Search(ActionEvent event) {
+//        tableTeams.setItems(td.getSearchTeams(SearchTeam.getText()));
+//   }
 
    
-    
-    
-    
-    
-    
+   
 }
 
 
