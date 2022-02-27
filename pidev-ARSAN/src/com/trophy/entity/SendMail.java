@@ -41,8 +41,8 @@ public class SendMail {
     {
         
     }
-    private String username = "adtrophyhun@gmail.com";
-    private String password = "admintrophyhunter001...";
+    private String username = "trophyhunterteamleader@gmail.com";
+    private String password = "teamleadertrophy2022...";
     
     public void envoyer(String destinataire)
     {
@@ -64,7 +64,7 @@ public class SendMail {
         {
 // Etape 2 : Création de l'objet Message
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("syrine.amami@esprit.tn"));
+            message.setFrom(new InternetAddress("adtrophyhun@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
             InternetAddress.parse(destinataire));
             message.setSubject("A new team is added to a new competition");

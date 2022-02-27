@@ -17,7 +17,7 @@ public class Teams {
      private String team_name;
      private String creator;
 
-    public Teams() {
+    public Teams() { 
     }
 
     public Teams(int id_team, Competitions competitions, String team_name, String creator) {

@@ -111,7 +111,7 @@ public class TeamsController implements Initializable {
           tableTeams.setItems(td.getAllTeams());
           
           SendMail mail= new SendMail();
-          mail.envoyer("syrine.amami@esprit.tn");
+          mail.envoyer("adtrophyhun@gmail.com");
           
         
     }
