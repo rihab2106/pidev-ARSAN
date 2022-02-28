@@ -3,13 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.trophy.entity;
+package com.trophy.dao;
+
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
  * @author rihab bns
  */
-public class Cart {
-    private Integer ID_Cart;
+public class CartDao {
+    private static CartDao instance;
+    private Statement st;
+    private ResultSet rs;
+    
+    
+    
     
 }

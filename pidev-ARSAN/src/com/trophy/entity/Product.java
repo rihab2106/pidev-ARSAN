@@ -12,29 +12,33 @@ package com.trophy.entity;
 
 public class Product {
     private Integer ID_Product ;
-    private Float Price ;
+    private Float Price,Discount ;
     private String PROD_Name,Category ;
-    private Integer Discount,Quantity ;
+    private Integer Quantity ;
     
     public Product() {
     }
 
-    public Product(Float Price, String PROD_Name, String Category, Integer Discount) {
+    public Product(Float Price, String PROD_Name, String Category, Float Discount,String Description ) {
         this.Price = Price;
         this.PROD_Name = PROD_Name;
         this.Category = Category;
         this.Discount = Discount;
+        
     }
     
 
-    public Product(Integer ID_Product, Float Price, String PROD_Name, String Category, Integer Discount,Integer Quantity) {
+    public Product(Integer ID_Product, Float Price, String PROD_Name, String Category, Float Discount,Integer Quantity) {
         this.ID_Product = ID_Product;
         this.Price = Price;
         this.PROD_Name = PROD_Name;
         this.Category = Category;
         this.Discount = Discount;
         this.Quantity=Quantity;
+        
     }
+
+    
 
     public Integer getID_Product() {
         return ID_Product;
@@ -52,7 +56,7 @@ public class Product {
         return Category;
     }
 
-    public Integer getDiscount() {
+    public Float getDiscount() {
         return Discount;
     }
 
@@ -72,7 +76,7 @@ public class Product {
         this.Category = Category;
     }
 
-    public void setDiscount(Integer Discount) {
+    public void setDiscount(Float Discount) {
         this.Discount = Discount;
     }
 
@@ -83,12 +87,14 @@ public class Product {
     public void setQuantity(Integer Quantity) {
         this.Quantity = Quantity;
     }
-    
 
     @Override
     public String toString() {
         return "Product{" + "ID_Product=" + ID_Product + ", Price=" + Price + ", PROD_Name=" + PROD_Name + ", Category=" + Category + ", Discount=" + Discount + ", Quantity=" + Quantity + '}';
     }
+    
+
+    
 
    
 

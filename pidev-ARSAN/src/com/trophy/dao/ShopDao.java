@@ -41,7 +41,7 @@ public class ShopDao implements ProductInterface<Product> {
          
          pr.setPROD_Name(rs.getString(1));
          pr.setPrice(rs.getFloat(2));
-         pr.setDiscount(rs.getInt(4));
+         pr.setDiscount(rs.getFloat(4));
          pr.setCategory(rs.getString(3));
          
          pl.add(pr);

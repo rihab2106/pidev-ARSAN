@@ -136,7 +136,7 @@ public class ProductController implements Initializable {
         p.setPROD_Name(txtName.getText());
         p.setPrice(Float.parseFloat(txtPrice.getText()));
         p.setCategory(ComboCategory.getValue().toString());
-        p.setDiscount(Integer.parseInt(txtDiscount.getText()));
+        p.setDiscount(Float.parseFloat(txtDiscount.getText()));
         p.setQuantity(Integer.parseInt(txtquantity.getText()));
         }
         
@@ -164,10 +164,10 @@ public class ProductController implements Initializable {
         
         Product pr = new Product();
         
-          if(Float.parseFloat(txtPrice.getText())>0&&Integer.parseInt(txtquantity.getText())>0&&Integer.parseInt(txtDiscount.getText())>0){
+          if(Float.parseFloat(txtPrice.getText())>0&&Integer.parseInt(txtquantity.getText())>0&&Float.parseFloat(txtDiscount.getText())>0){
           pr.setPROD_Name(txtName.getText());
           pr.setPrice(Float.parseFloat(txtPrice.getText()));
-          pr.setDiscount(Integer.parseInt(txtDiscount.getText()));
+          pr.setDiscount(Float.parseFloat(txtDiscount.getText()));
           pr.setCategory(ComboCategory.getValue().toString());
           pr.setQuantity(Integer.parseInt(txtquantity.getText()));
           pr.setID_Product(ID);
@@ -220,7 +220,7 @@ public class ProductController implements Initializable {
                 if(!txtName.getText().equals("")&&!txtPrice.getText().equals("")){
           pr.setPROD_Name(txtName.getText());
           pr.setPrice(Float.parseFloat(txtPrice.getText()));
-          pr.setDiscount(Integer.parseInt(txtDiscount.getText()));
+          pr.setDiscount(Float.parseFloat(txtDiscount.getText()));
           pr.setCategory(ComboCategory.getValue().toString());
           pr.setQuantity(Integer.parseInt(txtquantity.getText()));
           pr.setID_Product(ID);

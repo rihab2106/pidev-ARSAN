@@ -102,7 +102,7 @@ public class ProductDao implements ProductInterface<Product> {
          pr.setID_Product(rs.getInt(1));
          pr.setPROD_Name(rs.getString(2));
          pr.setPrice(rs.getFloat(3));
-         pr.setDiscount(rs.getInt(5));
+         pr.setDiscount(rs.getFloat(5));
          pr.setCategory(rs.getString(4));
          pr.setQuantity(rs.getInt(6));
          p.add(pr);
@@ -129,7 +129,7 @@ public class ProductDao implements ProductInterface<Product> {
        p.setID_Product(rs.getInt(1));
        p.setPROD_Name(rs.getString(2));
        p.setPrice(rs.getFloat(3));
-       p.setDiscount(rs.getInt(5));
+       p.setDiscount(rs.getFloat(5));
        p.setCategory(rs.getString(4));
        p.setQuantity(rs.getInt(6));
        product.add(p);
@@ -167,7 +167,7 @@ public class ProductDao implements ProductInterface<Product> {
        p.setID_Product(rs.getInt(1));
        p.setPROD_Name(rs.getString(2));
        p.setPrice(rs.getFloat(3));
-       p.setDiscount(rs.getInt(5));
+       p.setDiscount(rs.getFloat(5));
        p.setCategory(rs.getString(4));
        p.setQuantity(rs.getInt(6));
        pr.add(p);
@@ -207,7 +207,7 @@ public class ProductDao implements ProductInterface<Product> {
        p.setID_Product(rs.getInt(1));
        p.setPROD_Name(rs.getString(2));
        p.setPrice(rs.getFloat(3));
-       p.setDiscount(rs.getInt(5));
+       p.setDiscount(rs.getFloat(5));
        p.setCategory(rs.getString(4));
        p.setQuantity(rs.getInt(6));
        pr.add(p);
