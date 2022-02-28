@@ -10,13 +10,18 @@ import com.trophy.dao.TeamsDao;
 import com.trophy.entity.Competitions;
 import com.trophy.entity.SendMail;
 import com.trophy.entity.Teams;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -24,6 +29,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -58,6 +64,8 @@ public class TeamsController implements Initializable {
     private TableColumn colTeamName;
     @FXML
     private TableColumn colCreatorName;
+     @FXML
+    private Button gotocomp;
 
     /**
      * Initializes the controller class.
@@ -65,6 +73,7 @@ public class TeamsController implements Initializable {
    
     
      TeamsDao td = new TeamsDao();
+   
       @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -88,6 +97,22 @@ public class TeamsController implements Initializable {
     
         SearchTeam.textProperty().addListener((obj,old,ne)->{
             tableTeams.setItems(td. getSearchTeams(ne));});
+        
+        
+        
+        
+        gotocomp.setOnAction((event) -> {
+
+            try {
+                Parent p = FXMLLoader.load(getClass().getResource("/com/trophy/view/Competitions.fxml"));
+                Scene scene = new Scene(p);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                System.out.println("error in displaying Teams");
+            }
+        });
     
         // TODO
     }  

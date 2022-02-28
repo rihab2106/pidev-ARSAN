@@ -65,6 +65,7 @@
                         </Button>
                         <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="181.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" />
                         <Text layoutX="-2.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hhhhh" wrappingWidth="289.0000034272671" />
+                        <Button fx:id="gototeams" layoutX="70.0" layoutY="493.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="181.0" text="Teams" />
                      </children>
                      <padding>
                         <Insets bottom="25.0" top="30.0" />
@@ -95,7 +96,7 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Button fx:id="sortComp" layoutX="661.0" layoutY="90.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="75.0" text="Sort" />
+                              <Button fx:id="sortComp" layoutX="662.0" layoutY="90.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="75.0" text="Sort" />
                            </children>
                         </Pane>
                      </top>

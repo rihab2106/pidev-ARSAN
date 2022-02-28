@@ -7,13 +7,20 @@ package com.trophy.Controller;
 
 import com.trophy.dao.CompetitionsDao;
 import com.trophy.entity.Competitions;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -21,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -53,11 +61,15 @@ public class CompetitionsController implements Initializable {
     private TableColumn colDateofComp;
      @FXML
     private Button sortComp;
+      @FXML
+    private Button gototeams;
+     
     /**
      * Initializes the controller class.
      */
     
        CompetitionsDao cd = new CompetitionsDao();
+   
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,6 +85,21 @@ public class CompetitionsController implements Initializable {
         
             SearchComp.textProperty().addListener((obj,old,ne)->{
             tableComp.setItems(cd.getSearchCompetitions(ne));});
+            
+            
+             gototeams.setOnAction((event) -> {
+
+            try {
+                Parent p = FXMLLoader.load(getClass().getResource("/com/trophy/view/Teams.fxml"));
+                Scene scene = new Scene(p);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                System.out.println("error in displaying Teams");
+            }
+        });
+            
         
     }    
  
@@ -167,8 +194,19 @@ public class CompetitionsController implements Initializable {
     @FXML
     private void sortComp(ActionEvent event) {
         
-        
+        tableComp.setItems(FXCollections.observableArrayList(CompetitionsDao
+                .getInstance().getAllCompetitions()
+                .stream()
+                .sorted((t1,t2)->{
+                  
+                return t1.getDateofcomp().compareTo(t2.getDateofcomp());
+                })
+                .collect(Collectors.toList())));
     }
+    
+           
+    
+   
 }
     
 
