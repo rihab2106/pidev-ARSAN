@@ -6,36 +6,33 @@
 package org.demo;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author rihab bns
+ * 
  */
 public class Main extends Application {
     
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+            //Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/users_group.fxml"));
+              Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/group.fxml"));
+           
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
     }
-
+    
+    
     /**
      * @param args the command line arguments
      */

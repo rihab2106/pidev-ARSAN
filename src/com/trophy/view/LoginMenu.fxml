@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.trophy.Controller.LoginMenuController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Control.LoginMenuController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="503.0" prefWidth="854.0" style="-fx-background-color: #fff;">
          <children>
@@ -66,7 +65,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnsignup" focusTraversable="false" layoutX="5.0" layoutY="291.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="275.0" text="Sign up">
+                  <Button fx:id="btnsignup" focusTraversable="false" layoutX="5.0" layoutY="291.0" mnemonicParsing="false" onAction="#signup" prefHeight="34.0" prefWidth="275.0" text="Sign up">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

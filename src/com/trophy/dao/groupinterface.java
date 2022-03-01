@@ -21,11 +21,7 @@ public interface groupinterface <T>{
     public List<T> displayAll();
     public T displayById(int id);
     
-    /**
-     *
-     * @param os
-     * @return
-     */
-    public boolean update(T os);
+    
+    public boolean update(T o);
     
 }

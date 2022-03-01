@@ -28,13 +28,11 @@ private int PRIVILEGE_;
     public Users(int ID_USER,  String FULL_NAME, String IMG, String EMAIL, String PASSWORD) {
      
         this.ID_USER = ID_USER;
-       
         this.FULL_NAME = FULL_NAME;
         this.IMG = IMG;
         this.EMAIL = EMAIL;
         this.PASSWORD = PASSWORD;
-        this.PRIVILEGE_=0;
-        this.ISACTIVE=1;
+      
         
     }
 
@@ -154,7 +152,7 @@ private int PRIVILEGE_;
 
     @Override
     public String toString() {
-        return "Users{" + "ID_USER=" + ID_USER +  ", FULL_NAME=" + FULL_NAME + ", IMG=" + IMG + ", EMAIL=" + EMAIL + ", PASSWORD=" + PASSWORD + ", ISACTIVE=" + ISACTIVE + ", PRIVILEGE_=" + PRIVILEGE_ + '}';
+        return "Users{" + "ID_USER=" + ID_USER +  ", FULL_NAME=" + FULL_NAME + ", IMG=" + IMG + ", EMAIL=" + EMAIL + ", PASSWORD=" + PASSWORD + ", ISACTIVE=" + ISACTIVE + ", PRIVILEGE_=" + PRIVILEGE_ + "\n"+'}';
     }
 
    

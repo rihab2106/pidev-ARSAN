@@ -9,15 +9,16 @@ import java.util.List;
  *
  * @author lenovo
  * @param <T>
+ * @param <V>
  */
-public interface userinterface <T> {
+public interface userinterface <T,V> {
     public void insert(T o);
-    public void acceptuser(T o);
+    //public void acceptuser(T o,V u);//
     public void delete(T o);
     public List<T> displayAll();
     public T displayById(int id);
     public T displayacount();
     public boolean update(T os);
-   
+    
     
   }

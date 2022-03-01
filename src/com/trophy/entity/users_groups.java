@@ -5,8 +5,6 @@
  */
 package com.trophy.entity;
 
-import java.util.Objects;
-
 /**
  *
  * @author lenovo
@@ -16,17 +14,49 @@ public class users_groups {
     private int ID_USERS_GPS;
     private int ID_USER;
     private int ID_GROUP ;
-    private String JOINING_DATE;
+    private String status;
+    private String FULL_NAME;
+    private String mail;
+     
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setFULL_NAME(String FULL_NAME) {
+        this.FULL_NAME = FULL_NAME;
+    }
+
+    public String getFULL_NAME() {
+        return FULL_NAME;
+    }
 
     public users_groups() {
     }
 
-    public users_groups(int ID_USERS_GPS, int ID_USER, int ID_GROUP, String JOINING_DATE) {
-        this.ID_USERS_GPS = ID_USERS_GPS;
+    public users_groups( int ID_USER, int ID_GROUP) {
+       
         this.ID_USER = ID_USER;
         this.ID_GROUP = ID_GROUP;
-        this.JOINING_DATE = JOINING_DATE;
+        this.status="friend";    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    
+
+   
+
+   
 
     public int getID_USERS_GPS() {
         return ID_USERS_GPS;
@@ -40,10 +70,7 @@ public class users_groups {
         return ID_GROUP;
     }
 
-    public String getJOINING_DATE() {
-        return JOINING_DATE;
-    }
-
+   
     public void setID_USERS_GPS(int ID_USERS_GPS) {
         this.ID_USERS_GPS = ID_USERS_GPS;
     }
@@ -56,9 +83,7 @@ public class users_groups {
         this.ID_GROUP = ID_GROUP;
     }
 
-    public void setJOINING_DATE(String JOINING_DATE) {
-        this.JOINING_DATE = JOINING_DATE;
-    }
+   
 
     @Override
     public int hashCode() {
@@ -66,7 +91,7 @@ public class users_groups {
         hash = 71 * hash + this.ID_USERS_GPS;
         hash = 71 * hash + this.ID_USER;
         hash = 71 * hash + this.ID_GROUP;
-        hash = 71 * hash + Objects.hashCode(this.JOINING_DATE);
+      
         return hash;
     }
 
@@ -88,18 +113,16 @@ public class users_groups {
         if (this.ID_USER != other.ID_USER) {
             return false;
         }
-        if (this.ID_GROUP != other.ID_GROUP) {
-            return false;
-        }
-        if (!Objects.equals(this.JOINING_DATE, other.JOINING_DATE)) {
-            return false;
-        }
-        return true;
+        return this.ID_GROUP == other.ID_GROUP;
     }
 
     @Override
     public String toString() {
-        return "users_groups{" + "ID_USERS_GPS=" + ID_USERS_GPS + ", ID_USER=" + ID_USER + ", ID_GROUP=" + ID_GROUP + ", JOINING_DATE=" + JOINING_DATE + '}';
+        return "users_groups{" + "ID_USERS_GPS=" + ID_USERS_GPS + ", ID_USER=" + ID_USER + ", ID_GROUP=" + ID_GROUP + ", status=" + status + '}';
+    }
+
+   
+   
     }
     
     
@@ -107,4 +130,4 @@ public class users_groups {
     
     
     
-}
+

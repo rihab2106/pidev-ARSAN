@@ -6,6 +6,7 @@
 package com.trophy.entity;
 
 import java.util.Objects;
+import javafx.scene.control.Button;
 
 
 /**
@@ -16,6 +17,7 @@ public class Groups {
     private int ID_GROUP ;
     private String NAME;
     private String IMG;
+    private Button button;
     
 
     public Groups() {
@@ -25,9 +27,17 @@ public class Groups {
     public Groups(int ID_GROUP, String NAME, String IMG) {
         
         this.ID_GROUP = ID_GROUP;
-        
         this.NAME = NAME;
         this.IMG = IMG;
+      //  this.button=new Button("visit");
+    }
+
+    public void setButton(Button button) {
+        this.button = button;
+    }
+
+    public Button getButton() {
+        return button;
     }
 
     public int getID_GROUP() {
@@ -104,6 +114,10 @@ public class Groups {
     }
 
     public String getISACTIVE() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getInstance() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
