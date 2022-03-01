@@ -25,6 +25,7 @@ public class NewsDao implements NewsInterface<News>{
     private Statement st;
     private ResultSet rs;
     public NewsDao() {
+        
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
@@ -119,7 +120,7 @@ public class NewsDao implements NewsInterface<News>{
 
     @Override
     public News displayById(int idnews) {
-        String req="select * from news where id ="+idnews;
+        String req="select * from news where ID_NEWS = "+idnews;
            News n=new News();
         try {
             rs=st.executeQuery(req);
@@ -151,6 +152,35 @@ public class NewsDao implements NewsInterface<News>{
         }
         return false;
     }
+    public ObservableList<News> SearchNews(String headline,String desc)
+   {
+   ObservableList<News> news =FXCollections.observableArrayList();
+   try {
+   st=ConnexionSingleton.openConnection().createStatement();
+   if ((!headline.isEmpty()) && (desc.isEmpty()))
+   rs = st.executeQuery("SELECT * FROM news WHERE HEADLINE LIKE '%"+headline+"%'");
+   if ((headline.isEmpty()) && (!desc.isEmpty()))
+   rs = st.executeQuery("SELECT * FROM news WHERE CONTENT LIKE '%"+desc+"%'");
+   if ((!headline.isEmpty()) && (!desc.isEmpty()))
+   {
+   rs = st.executeQuery("SELECT * FROM news WHERE HEADLINE LIKE '%"+headline+"%' AND CONTENT LIKE '%"+desc+"%'");
+   
+   }
+   
+   while(rs.next()){
+       News n = new News();
+       n.setNewsid(rs.getInt(1));
+       n.setHeadline(rs.getString(2));
+       n.setImgurl(rs.getString(3));
+       n.setContent(rs.getString(4));
+       news.add(n);
     
+   }ConnexionSingleton.closeConnection();
+   }catch (SQLException ex) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            ConnexionSingleton.closeConnection();
+        }
+   return news;
+   }
     
 }

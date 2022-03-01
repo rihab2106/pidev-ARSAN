@@ -81,7 +81,7 @@ public class CommentDao implements CommentInterface<Comment,News> {
     @Override
     public boolean update(Comment p, News n) {
         String qry = "UPDATE comments SET COMMENT = '"+p.getComcontent()+"'"
-            + ", LIKES = '"+p.getLikes()+"',DISLIKES='"+p.getDislikes()+"' WHERE ID_NEWS = "+n.getNewsid()+"AND ID_COMMENT= "+p.getIdcomm();
+            + "WHERE ID_COMMENT= "+p.getIdcomm();
         
         try {
             if (st.executeUpdate(qry) > 0) {
