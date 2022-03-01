@@ -3,15 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/icons8-alert-64.png</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/entity/Product.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/OrderController.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/dao/OrderDao.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/Order.fxml</file>
             <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/ShopController.java</file>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Css/services.png</file>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/InsertController.java</file>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/Shop.fxml</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/ProductController.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/CartController.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/entity/Order.java</file>
             <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/dao/ProductDao.java</file>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/Controller/HomeController.java</file>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/view/Insert.fxml</file>
-            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/test/ConnexionBDJavafx.java</file>
+            <file>file:/E:/s7/j.ava/pidev-ARSAN/src/com/trophy/dao/CartDao.java</file>
         </group>
     </open-files>
 </project-private>

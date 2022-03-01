@@ -35,6 +35,7 @@ public class ProductDao implements ProductInterface<Product> {
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
+             
         } catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -231,21 +232,21 @@ public class ProductDao implements ProductInterface<Product> {
     return pr;
     }
     
-    public int countquantity(int id){
-     int quantity=0;
+    public void countquantity(){
+     Product pr =new Product();
      
      try{
             st = ConnexionSingleton.openConnection().createStatement();
-            st.executeUpdate("SELECT * FROM `product` WHERE `ID_PRODUCT` LIKE '%" + id+"%'");
-            while(rs.next()){
-            quantity++;}
+            st.executeUpdate("UPDATE `product` SET `Quantity`= "+"'"+(pr.getQuantity()-1)+"WHERE ID_PRODUCT = "+pr.getID_Product());
+           
             ConnexionSingleton.closeConnection();
         } catch (SQLException ex) {
             ConnexionSingleton.closeConnection();
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-     System.out.println(quantity);
-     return quantity;
+        
+     
+     
     }
     
     

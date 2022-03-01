@@ -32,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -45,25 +46,26 @@ import javafx.stage.StageStyle;
 public class CartController implements Initializable {
 
     @FXML
-    private TableView<Product> cartTable;
+     TableView<Product> cartTable;
     @FXML
     private TableColumn<Product, Product> coverCol;
     @FXML
-    private TableColumn<Product, String> titleCol;
+     TableColumn<Product, String> titleCol;
     @FXML
-    private TableColumn<Product, Float> priceCol;
+     TableColumn<Product, Float> priceCol;
     @FXML
     private TableColumn<Product, Product> removeCol;
     @FXML
-    private Label subtotalLabel;
+     Label subtotalLabel;
 public Hyperlink updatedCartButton;
-float total = 0 ;
+ 
 private ShopController shopController;
 public BorderPane mainBorderPaneForCheckoutUse;
 NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.FRANCE);
 private Stage stage;
 private Parent root;
 private Scene scene;
+ float total = 0; 
     @FXML
     private Button btnshop;
     /**
@@ -72,37 +74,46 @@ private Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cartTable.setPlaceholder(new Label("Your shopping cart is empty..."));
-        ShopDao sd = new ShopDao();
+       
+         ShopDao sd = new ShopDao();
          
          cartTable.setItems(sd.getProducttoShop());
          
          
          for (Product product : cartTable.getItems()){
-              
+            
          total = total+ (product.getPrice()- (product.getPrice()*(product.getDiscount()/100)));
          
-         
-         }
-          String currencyPrice = currencyFormatter.format(total);
+         String currencyPrice = currencyFormatter.format(total);
           subtotalLabel.setText(currencyPrice); 
                     
-         System.out.println(total);
+         System.out.println(total);}
         titleCol.setCellValueFactory(new PropertyValueFactory<>("PROD_Name"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("Price"));
      priceCol.setCellFactory(col -> new TableCell<Product, Float>(){
             @Override
             public void updateItem(Float Price, boolean empty) {
+                
                 super.updateItem(Price, empty);
                 if(empty) {
                     setGraphic(null);
                 } else {
-                    String currencyPrice = currencyFormatter.format(total);
+                    //Product product = new Product();
+                    String currencyPrice = currencyFormatter.format(Price);
                     Label priceLabel = new Label(currencyPrice);
                     setGraphic(priceLabel); 
                     
+                    
                 }
+                
             }
+            
         });
+         
+         
+         
+          
+        
      
      
      
@@ -132,13 +143,16 @@ private Scene scene;
                 removeFromCart.setStyle("-fx-text-fill: black;");
                 removeFromCart.setOnAction(e -> {
                     getTableView().getItems().remove(product);
-                    total = total - product.getPrice();
+                    total = total - (product.getPrice()- (product.getPrice()*(product.getDiscount()/100)));
                     String currencyPrice = currencyFormatter.format(total);
                     subtotalLabel.setText(currencyPrice);
                     updatedCartButton.setText("Cart (" + String.valueOf(shopController.getCartItems().size()) + ")");
                 });
             }
         });     
+       
+    
+    
     }    
 
     
@@ -161,5 +175,14 @@ private Scene scene;
        Stage window =(Stage)btnshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
+
+    @FXML
+    private void item(ContextMenuEvent event) {
+    }
+
     
+
+    
+    
+   
 }

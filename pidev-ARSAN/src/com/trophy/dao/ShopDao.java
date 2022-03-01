@@ -34,15 +34,16 @@ public class ShopDao implements ProductInterface<Product> {
        ObservableList<Product> pl =FXCollections.observableArrayList();
        try{
        st=ConnexionSingleton.openConnection().createStatement();
-        rs  =  st.executeQuery("SELECT `PROD_NAME`, `PRICE`, `Category`, `DISCOUNT` FROM Product");
+        rs  =  st.executeQuery("SELECT `ID_PRODUCT`, `PROD_NAME`, `PRICE`, `Category`, `DISCOUNT`, `Quantity` FROM Product");
         
         while (rs.next()){
          Product pr = new Product();
-         
-         pr.setPROD_Name(rs.getString(1));
-         pr.setPrice(rs.getFloat(2));
-         pr.setDiscount(rs.getFloat(4));
-         pr.setCategory(rs.getString(3));
+         pr.setID_Product(rs.getInt(1));
+         pr.setPROD_Name(rs.getString(2));
+         pr.setPrice(rs.getFloat(3));
+         pr.setDiscount(rs.getFloat(5));
+         pr.setCategory(rs.getString(4));
+         pr.setQuantity(rs.getInt(6));
          
          pl.add(pr);
         

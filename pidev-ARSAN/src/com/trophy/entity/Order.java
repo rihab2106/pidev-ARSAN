@@ -10,17 +10,35 @@ package com.trophy.entity;
  * @author rihab bns
  */
 public class Order {
-    private Integer OrderID;
+    private Integer OrderID,Month,Year;
     private String CardNumber,CardPassword,Name;
 
     public Order() {
     }
 
-    public Order(Integer OrderID, String CardNumber, String CardPassword, String Name) {
+    public Order(Integer OrderID, String CardNumber, String CardPassword, String Name,Integer Month,Integer Year) {
         this.OrderID = OrderID;
         this.CardNumber = CardNumber;
         this.CardPassword = CardPassword;
         this.Name = Name;
+        this.Month=Month;
+        this.Year = Year;
+    }
+
+    public void setMonth(Integer Month) {
+        this.Month = Month;
+    }
+
+    public void setYear(Integer Year) {
+        this.Year = Year;
+    }
+
+    public Integer getMonth() {
+        return Month;
+    }
+
+    public Integer getYear() {
+        return Year;
     }
 
     public Integer getOrderID() {
@@ -57,8 +75,10 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" + "OrderID=" + OrderID + ", CardNumber=" + CardNumber + ", CardPassword=" + CardPassword + ", Name=" + Name + '}';
+        return "Order{" + "OrderID=" + OrderID + ", Month=" + Month + ", Year=" + Year + ", CardNumber=" + CardNumber + ", CardPassword=" + CardPassword + ", Name=" + Name + '}';
     }
+
+    
     
     
     

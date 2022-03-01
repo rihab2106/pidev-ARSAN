@@ -12,6 +12,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.HomeController">
@@ -21,18 +22,18 @@
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1015.0" style="-fx-background-color: #2F2B43;" stylesheets="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/Stylee1.css">
          <children>
-            <AnchorPane prefHeight="519.0" prefWidth="262.0" style="-fx-background-color: #010101;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="-27.0" layoutY="-15.0" prefHeight="650.0" prefWidth="297.0" style="-fx-background-color: #010101;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="-27.0" AnchorPane.topAnchor="-15.0">
                <children>
-                  <VBox layoutY="162.0" prefHeight="356.0" prefWidth="262.0" style="-fx-background-color: #010101;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="162.0">
+                  <VBox layoutX="17.0" layoutY="162.0" prefHeight="504.0" prefWidth="279.0" style="-fx-background-color: #010101;" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="162.0">
                      <children>
-                        <Button fx:id="lblProducts" alignment="BASELINE_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#openProducts" prefHeight="59.0" prefWidth="162.0" style="-fx-background-color: #010101;" styleClass="button1" text="Products" textFill="#f4f1f1">
+                        <Button fx:id="lblProducts" alignment="BASELINE_LEFT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#openProducts" prefHeight="59.0" prefWidth="218.0" style="-fx-background-color: #010101;" styleClass="button1" text="Products" textFill="#f4f1f1">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
                               <ImageView fitHeight="47.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/home.png" />
+                                    <Image url="@../Css/home.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -44,31 +45,31 @@
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/services.png" />
+                                    <Image url="@../Css/services.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="lblEmployees" alignment="BASELINE_LEFT" graphicTextGap="27.0" mnemonicParsing="false" onAction="#openEmployee" prefHeight="59.0" prefWidth="189.0" style="-fx-background-color: #010101;" styleClass="button1" text="users" textFill="#f4f1f1">
+                        <Button fx:id="Iblusers" alignment="BASELINE_LEFT" graphicTextGap="27.0" mnemonicParsing="false" onAction="#openusers" prefHeight="59.0" prefWidth="189.0" style="-fx-background-color: #010101;" styleClass="button1" text="users" textFill="#f4f1f1">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/employee.png" />
+                                    <Image url="@../Css/employee.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="lblStatistics" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="170.0" style="-fx-background-color: #010101;" styleClass="button1" text="Trophies" textFill="#f4f1f1">
+                        <Button fx:id="IblTrophies" alignment="BASELINE_LEFT" graphicTextGap="30.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="170.0" style="-fx-background-color: #010101;" styleClass="button1" text="Trophies" textFill="#f4f1f1">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <graphic>
                               <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/statistics.png" />
+                                    <Image url="@../Css/statistics.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -86,9 +87,9 @@
                   </Pane>
                </children>
             </AnchorPane>
-            <Pane layoutX="266.0" prefHeight="650.0" prefWidth="753.0" style="-fx-background-color: #010101;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
+            <Pane layoutX="256.0" layoutY="-15.0" prefHeight="667.0" prefWidth="768.0" style="-fx-background-color: #010101;" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="-9.0" AnchorPane.topAnchor="-15.0">
                <children>
-                  <Pane layoutX="-25.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #2bc20e; -fx-background-radius: 70;" />
+                  <Pane layoutX="-35.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #2bc20e; -fx-background-radius: 70;" />
                   <Pane layoutX="76.0" layoutY="106.0">
                      <children>
                         <Button layoutX="-6.0" mnemonicParsing="false" prefHeight="202.0" prefWidth="185.0" style="-fx-background-color: #1D212E;" styleClass="button2" text="Button" />
@@ -110,11 +111,6 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="57.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/icons8-delivery-100.png" />
-                           </image>
-                        </ImageView>
                         <Label alignment="CENTER" layoutX="-6.0" layoutY="146.0" prefHeight="17.0" prefWidth="174.0" text="ffff" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
@@ -143,11 +139,6 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <ImageView fitHeight="59.0" fitWidth="54.0" layoutX="57.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/icons8-discount-100.png" />
-                           </image>
-                        </ImageView>
                         <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="News" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
@@ -186,7 +177,7 @@
                   <Pane layoutX="316.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
                      <children>
                         <Button mnemonicParsing="false" prefHeight="202.0" prefWidth="179.0" style="-fx-background-color: #1D212E;" styleClass="button2" text="Button" />
-                        <Circle layoutX="84.0" layoutY="87.0" radius="50.0" stroke="#ff924f" strokeType="INSIDE">
+                        <Circle layoutX="90.0" layoutY="101.0" radius="50.0" stroke="#ff924f" strokeType="INSIDE">
                            <fill>
                               <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
                                  <stops>
@@ -197,12 +188,12 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="56.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgshop" fitHeight="54.0" fitWidth="54.0" layoutX="63.0" layoutY="74.0" onMouseClicked="#showshop" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/icons8-gift-100.png" />
+                              <Image url="@../Css/icons8-gift-100.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Shop" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="6.0" layoutY="151.0" prefHeight="17.0" prefWidth="168.0" text="Shop" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
@@ -223,11 +214,6 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="57.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../../s8/pidev/market/Supermarket-Mangement-System/src/superMarket/image/icons8-new-100.png" />
-                           </image>
-                        </ImageView>
                         <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Trophies" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
@@ -256,6 +242,7 @@
                         </Label>
                      </children>
                   </Pane>
+                  <Line endX="-3.79998779296875" endY="582.9818115234375" layoutY="75.0" startX="-3.79998779296875" startY="-57.818172454833984" stroke="#2bc20e" />
                </children>
             </Pane>
          </children>

@@ -301,9 +301,14 @@ public class ProductController implements Initializable {
 
     @FXML
     private void Refrech(ActionEvent event) {
+        
+            
+       table.getItems().forEach(( t )->{
+           Product e=(Product)t;
+       if (e.getQuantity()<1){
         Image img = new Image("/com/trophy/Css/icons8-alert-64.png");
         Notifications notificationBuilder = Notifications.create()
-                .title("Warning").text("the product x will expire soon ")
+                .title("Warning").text("the product "+e.getPROD_Name()+" will expire soon ")
                 .graphic(new ImageView(img))
                 .hideAfter(Duration.seconds(5))
                 .position(Pos.TOP_LEFT)
@@ -315,6 +320,13 @@ public class ProductController implements Initializable {
                 });
         notificationBuilder.darkStyle();
         notificationBuilder.show();
+       }
+           
+       });
+       //System.out.println(p);
+       
+        
+        
         
         
     }

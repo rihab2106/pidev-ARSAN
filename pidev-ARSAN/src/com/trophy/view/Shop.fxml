@@ -27,19 +27,14 @@
                               <Image url="@../Css/trophyhunter.png" />
                            </image>
                         </ImageView>
-                        <TableView fx:id="table" layoutX="234.0" layoutY="208.0" prefHeight="200.0" prefWidth="461.0">
+                        <TableView fx:id="table" layoutX="234.0" layoutY="208.0" prefHeight="200.0" prefWidth="599.0">
                           <columns>
                             <TableColumn fx:id="Name" prefWidth="127.19996643066406" text="Product Name" />
                             <TableColumn fx:id="Price" prefWidth="85.5999755859375" text="Price " />
                               <TableColumn fx:id="Discount" prefWidth="121.5999755859375" text="Discount" />
-                              <TableColumn fx:id="Category" prefWidth="126.39996337890625" text="Category" />
+                              <TableColumn fx:id="Category" prefWidth="275.20013427734375" text="Category" />
                           </columns>
                         </TableView>
-                        <ImageView fx:id="Exit" fitHeight="60.0" fitWidth="98.0" layoutX="799.0" layoutY="4.0" onMouseClicked="#Exit" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Css/icons8-microsoft-excel-100.png" />
-                           </image>
-                        </ImageView>
                         <Button fx:id="addToCartButton" layoutX="308.0" layoutY="427.0" mnemonicParsing="false" onAction="#addToCartButtonClicked" text="Add To Cart" />
                         <Hyperlink fx:id="cartButton" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="625.0" layoutY="4.0" maxWidth="1.7976931348623157E308" onAction="#showCart" prefHeight="88.0" prefWidth="134.0" style="-fx-border-width: 1 0 1 0;" styleClass="navigation-hyperlink" text="Cart" textAlignment="CENTER" textFill="WHITE">
                            <padding>
@@ -56,6 +51,7 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Hyperlink>
+                        <Button fx:id="btnExit" layoutX="807.0" layoutY="23.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
                      </children>
                   </Pane>
                </items></SplitPane>

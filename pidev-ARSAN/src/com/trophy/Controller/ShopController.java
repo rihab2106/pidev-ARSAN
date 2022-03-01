@@ -9,10 +9,15 @@ package com.trophy.Controller;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import com.trophy.dao.ProductDao;
 import com.trophy.dao.ShopDao;
 import com.trophy.entity.Product;
+import com.trophy.utils.ConnexionSingleton;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,8 +78,6 @@ public class ShopController implements Initializable {
     @FXML
     private ImageView Cart;
     @FXML
-    private ImageView Exit;
-    @FXML
     private TableColumn Category;
     @FXML
     private TableView table;
@@ -85,6 +88,8 @@ public class ShopController implements Initializable {
     private Stage helpStage;
     @FXML
     private Hyperlink cartButton;
+    @FXML
+    private Button btnExit;
     /**
      * Initializes the controller class.
      */
@@ -109,13 +114,15 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
 
     
 
-    @FXML
-    private void Exit(MouseEvent event) {
+    private void Exit(MouseEvent event) throws IOException {
+        
+         
     }
 
     
     public Product getSelectedProduct() {
-        Product pr =(Product) table.getSelectionModel().getSelectedItem();
+        Product pr =(Product) table.getSelectionModel().getSelectedItem()  ;
+        
         return pr;
     }
     
@@ -128,9 +135,35 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
             alert.getDialogPane().setContentText("Each digital purchase is automatically linked to your account. You cannot buy the same digital item twice.");
             alert.getDialogPane().setHeaderText(null);
             alert.showAndWait().filter(response -> response == ButtonType.OK);
+            
         } else {
+             Statement st;
+            Product pr = new Product();
+            
             cartItems.add(getSelectedProduct());
            cartButton.setText("Cart (" + String.valueOf(cartItems.size()) + ")");
+           CartController c = new CartController();
+            
+           /*int q=cartItems.get(0).getQuantity()-1;
+           pr.setQuantity(q);
+           System.out.println(q);*/
+           
+               /*try{
+               
+              st = ConnexionSingleton.openConnection().createStatement();
+              st.executeUpdate(" UPDATE `product` SET `Quantity`= "+"'"+q+"WHERE ID_PRODUCT = "+cartItems.get(0).getID_Product());
+       ConnexionSingleton.closeConnection();
+        }catch (SQLException ex) {
+            Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE, null, ex);
+            ConnexionSingleton.closeConnection();
+        }*/
+            
+           
+          
+
+           
+           
+             
             //System.out.println("Product Added To Cart");
         }
         
@@ -169,6 +202,14 @@ public BorderPane mainBorderPaneForCheckoutUse;
         } catch(IOException ex){
             Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE,null ,ex);
         }
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) throws IOException  {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Home.fxml"));
+       Stage window =(Stage)btnExit.getScene().getWindow();
+       window.setScene(new Scene(root));
+       
     }
     
 }

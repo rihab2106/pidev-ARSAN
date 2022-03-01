@@ -5,6 +5,8 @@
  */
 package com.trophy.entity;
 
+import java.util.Objects;
+
 /**
  *
  * @author rihab bns
@@ -91,6 +93,45 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" + "ID_Product=" + ID_Product + ", Price=" + Price + ", PROD_Name=" + PROD_Name + ", Category=" + Category + ", Discount=" + Discount + ", Quantity=" + Quantity + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Product other = (Product) obj;
+        if (!Objects.equals(this.PROD_Name, other.PROD_Name)) {
+            return false;
+        }
+        if (!Objects.equals(this.Category, other.Category)) {
+            return false;
+        }
+        if (!Objects.equals(this.ID_Product, other.ID_Product)) {
+            return false;
+        }
+        if (!Objects.equals(this.Price, other.Price)) {
+            return false;
+        }
+        if (!Objects.equals(this.Discount, other.Discount)) {
+            return false;
+        }
+        if (!Objects.equals(this.Quantity, other.Quantity)) {
+            return false;
+        }
+        return true;
     }
     
 

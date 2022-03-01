@@ -5,6 +5,9 @@
  */
 package org.demo;
 
+import com.google.gson.JsonObject;
+import com.trophy.entity.DataProviderService;
+import com.trophy.entity.giveawysApi;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import retrofit2.Call;
 
 /**
  *
@@ -27,10 +31,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Product.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Home.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+             new  DataProviderService().getData();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
