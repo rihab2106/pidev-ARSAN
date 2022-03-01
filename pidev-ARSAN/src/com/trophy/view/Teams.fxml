@@ -100,6 +100,7 @@
                                     </Label>
                                  </children>
                               </Pane>
+                              <Button fx:id="exportToExcel" layoutX="692.0" layoutY="96.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Export Excel" />
                            </children>
                         </Pane>
                      </top>

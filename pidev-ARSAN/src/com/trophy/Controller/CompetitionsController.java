@@ -7,10 +7,16 @@ package com.trophy.Controller;
 
 import com.trophy.dao.CompetitionsDao;
 import com.trophy.entity.Competitions;
+import com.trophy.utils.ConnexionSingleton;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
@@ -28,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -63,26 +71,35 @@ public class CompetitionsController implements Initializable {
     private Button sortComp;
       @FXML
     private Button gototeams;
+        @FXML
+    private Button exportToExcel;
+      
      
     /**
      * Initializes the controller class.
      */
     
        CompetitionsDao cd = new CompetitionsDao();
+  
+   
    
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-  
+  //te5edh donné mé database w tcastéha l observable list w t'affichiha fy table
  ObservableList<Competitions> listComp =(ObservableList<Competitions>)  CompetitionsDao.getInstance().getAllCompetitions();
-       tableComp.setItems(cd.getAllCompetitions());       
+        //béch ya3ref kol colonne chnowa y7ot fiha (té5ou esm l attribute mél classe w t7ot l valeur mté3ou fél colonne)
+        tableComp.setItems(cd.getAllCompetitions());       
         colIdComp.setCellValueFactory(new PropertyValueFactory<>("Id_competion"));
         colNameGameComp.setCellValueFactory(new PropertyValueFactory<>("game_name"));
         colDateofComp.setCellValueFactory(new PropertyValueFactory<>("dateofcomp"));
           
         System.out.println(listComp);
         
+        
+        //classe bech ykoun fih text taatih listener w (old:élly mawjoud 9bal manmodify
+        //ne : élly béch nda5lou nlawéj 3lih -> lambda expression
             SearchComp.textProperty().addListener((obj,old,ne)->{
             tableComp.setItems(cd.getSearchCompetitions(ne));});
             
@@ -90,6 +107,9 @@ public class CompetitionsController implements Initializable {
              gototeams.setOnAction((event) -> {
 
             try {
+                //parent : élly béch yé5éou nodes lkol
+                //scene: l window élly béch t7ot feha l graphic lkol 
+                //stage : béch yékhou scene 
                 Parent p = FXMLLoader.load(getClass().getResource("/com/trophy/view/Teams.fxml"));
                 Scene scene = new Scene(p);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -99,6 +119,72 @@ public class CompetitionsController implements Initializable {
                 System.out.println("error in displaying Teams");
             }
         });
+             
+             
+         //exportToExcel = new Button ('Export to excel'); 
+//                ConnexionSingleton cs = ConnexionSingleton.getInstance();
+//
+//            exportToExcel.setOnAction((actionEvent -> {
+//            exportToExcel.setFont(Font.font("Sansserif", 15));
+//            String query = "select * from Competitions";
+//            try {
+//        
+//            Statement pst= cs.getCnx().createStatement();
+//            ResultSet rs = pst.executeQuery(query);
+//            
+//            //Apache POI Jar Link
+//            //https://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-5.2.0-20220106.tgz
+//            
+//            XSSFWorkbook wb = new XSSFWorkbook();
+//            XSSFSheet sheet = wb.createSheet("List of Competitions");
+//            XSSFRow header = sheet.createRow(0);
+//            header.createCell(0).setCellValue("Id_competion");
+//            header.createCell(1).setCellValue("game_name");
+//            header.createCell(2).setCellValue("dateofcomp");
+//         
+//            
+//            sheet.autoSizeColumn(1);
+//            sheet.autoSizeColumn(2);
+//            sheet.setColumnWidth(3, 256*25);//256-character width 
+//            
+//            sheet.setZoom(150); //scale(150%
+//            
+//            
+//
+//            
+//            int index = 1; 
+//            while (rs.next()) {
+//                XSSFRow row = sheet.createRow(index);
+//                row.createCell(0).setCellValue(rs.getString("Id_competion"));
+//                row.createCell(1).setCellValue(rs.getString("game_name"));
+//                row.createCell(2).setCellValue(rs.getString("dateofcomp"));
+//              
+//                index++;
+//
+//            }
+//            FileOutputStream fileOut = new FileOutputStream ("ListOfCompetitions.xlsx");
+//            wb.write(fileOut);
+//            fileOut.close();
+//            
+//         
+//          
+//            } catch (SQLException ex) {
+//                Logger.getLogger(CompetitionsController.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (IOException ex) {
+//                Logger.getLogger(CompetitionsController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Information Dialog");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Competitions details exported to excel Sheet");
+//            alert.show();
+//            //pst.close();
+//            //rs.close();
+//
+//            }));    
+             
+             
+             
             
         
     }    
@@ -106,19 +192,22 @@ public class CompetitionsController implements Initializable {
     
     @FXML
        private void Add(ActionEvent event) {
-        
+        //instance mél classe comp
        Competitions comp = new Competitions();
+       //kén l form fér8a mana3melech insert 
         if(!inputIdComp.getText().equals("")&&!inputGameNameComp.getText().equals("")){
+            //y7ot fy data mél form lel comp
         comp.setId_competion((Integer.parseInt( inputIdComp.getText())));
         comp.setGame_name(inputGameNameComp.getText());
         comp.setDateofcomp(inputDateofComp.getValue());
         }
         cd.insert(comp);
           System.out.println(comp.toString());
-    
+              //béch yafargh l form ba3d ma3mal insert
           inputIdComp.setText("");
           inputGameNameComp.setText("");
           inputDateofComp.setValue(null);
+          
           tableComp.setItems(cd.getAllCompetitions());
               
     }
@@ -176,6 +265,7 @@ public class CompetitionsController implements Initializable {
     
         @FXML
     private void clickTable(MouseEvent event) {
+        //béch yékhou (to retrieve) lobject mén selected row 
      Competitions comp =(Competitions) tableComp.getSelectionModel().getSelectedItem();
                 
           inputIdComp.setText(String.valueOf(comp.getId_competion()));
@@ -194,13 +284,19 @@ public class CompetitionsController implements Initializable {
     @FXML
     private void sortComp(ActionEvent event) {
         
+        //béch ta3mel sort 
+        //
         tableComp.setItems(FXCollections.observableArrayList(CompetitionsDao
+                //bech traja3lék l comp lkol m database
                 .getInstance().getAllCompetitions()
+                //trod list stream
                 .stream()
+                //t1 w t2 2 objets competition
                 .sorted((t1,t2)->{
-                  
+                  //comparaison entre 2 date
                 return t1.getDateofcomp().compareTo(t2.getDateofcomp());
                 })
+                //béch yraja3 stream list 
                 .collect(Collectors.toList())));
     }
     

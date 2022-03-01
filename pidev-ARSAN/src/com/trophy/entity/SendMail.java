@@ -44,9 +44,10 @@ public class SendMail {
     private String username = "trophyhunterteamleader@gmail.com";
     private String password = "teamleadertrophy2022...";
     
-    public void envoyer(String destinataire)
+    public void send(String destinataire)
     {
         Properties props = new Properties();
+        //defines whether an authentication is needed for the email server
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable","true");
         props.put("mail.smtp.host","smtp.gmail.com");

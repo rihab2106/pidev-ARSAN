@@ -24,12 +24,14 @@ import javafx.scene.control.TableColumn;
 public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
 
     private static CompetitionsDao instance;
-    private Statement st;
-    private ResultSet rs;
+    private Statement st; //yéxécuty béha l query
+    private ResultSet rs;//set of results ki ta33mél execute query yraja3lék set of results
 
     public CompetitionsDao() {
+        //ki t7él con m database tét7al marra barka 
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
+            //to create statement 
             st=cs.getCnx().createStatement();
         } catch (SQLException ex) {
             Logger.getLogger(CompetitionsDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,6 +39,7 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
     }
     
     public static CompetitionsDao getInstance(){
+        //béch yaamel instace marra barka (optimization)
         if(instance==null) 
             instance=new CompetitionsDao();
         return instance;
@@ -45,7 +48,9 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
     @Override
     public void insert(Competitions c) {
        try {
+           //open connection and create statement 
           st = ConnexionSingleton.openConnection().createStatement();
+          //use the insert query 
           st.executeUpdate("INSERT INTO Competitions (ID_COMPETION,GAME_NAME,DATEOFCOMP) VALUES ('"+c.getId_competion()+"','"+c.getGame_name()+"','"+c.getDateofcomp()+"')");
           
           //ConnexionSingleton.closeConnection();
@@ -80,8 +85,10 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
         rs  =  st.executeQuery("SELECT * FROM competitions where ID_COMPETION="+String.valueOf(Id_competion));
         
         while (rs.next()){
-            
+            //bech nsatiw value lél variable 
+         // comp b set ta3tih l variable ,,getint béch yraja3 int élly mawjouda fy  resultset fél colonne loula (1)
          co.setId_competion(rs.getInt(1));
+         //setter béch tsety game name w bech tekhouh mel colonne thenya w trodou string
          co.setGame_name(rs.getString(2));
          co.setDateofcomp(rs.getDate(3).toLocalDate());
         
@@ -102,6 +109,7 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
         public void update(Competitions c) {
         try{
         st = ConnexionSingleton.openConnection().createStatement();
+        //execute query
        st.executeUpdate("UPDATE `Competitions` SET `GAME_NAME`="+"'"+c.getGame_name()+"'"+",`DATEOFCOMP`="+"'"+c.getDateofcomp()+"'"+" WHERE ID_COMPETION = "+c.getId_competion());
       // ConnexionSingleton.closeConnection();
         }catch (SQLException ex) {

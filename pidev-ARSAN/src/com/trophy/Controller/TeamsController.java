@@ -10,9 +10,16 @@ import com.trophy.dao.TeamsDao;
 import com.trophy.entity.Competitions;
 import com.trophy.entity.SendMail;
 import com.trophy.entity.Teams;
+import com.trophy.utils.ConnexionSingleton;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -29,7 +37,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -66,6 +78,8 @@ public class TeamsController implements Initializable {
     private TableColumn colCreatorName;
      @FXML
     private Button gotocomp;
+      @FXML
+    private Button exportToExcel;
 
     /**
      * Initializes the controller class.
@@ -73,6 +87,7 @@ public class TeamsController implements Initializable {
    
     
      TeamsDao td = new TeamsDao();
+   
    
       @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,7 +129,69 @@ public class TeamsController implements Initializable {
             }
         });
     
-        // TODO
+         //exportToExcel = new Button ('Export to excel'); 
+               ConnexionSingleton cs = ConnexionSingleton.getInstance();
+//
+            exportToExcel.setOnAction((actionEvent -> {
+            exportToExcel.setFont(Font.font("Sansserif", 15));
+            String query = "select * from Teams";
+           try {
+        
+            Statement pst= cs.getCnx().createStatement();
+            ResultSet rs = pst.executeQuery(query);
+          
+//            //Apache POI Jar Link
+//            //https://www.apache.org/dyn/closer.lua/poi/release/bin/poi-bin-5.2.0-20220106.tgz
+//            
+            XSSFWorkbook wb = new XSSFWorkbook();
+            XSSFSheet sheet = wb.createSheet("List of Teams");
+            XSSFRow header = sheet.createRow(0);
+            header.createCell(0).setCellValue("id_team");
+            header.createCell(1).setCellValue("Competition Name");
+            header.createCell(2).setCellValue("team_name");
+            header.createCell(3).setCellValue("creator");
+         
+//            
+            sheet.autoSizeColumn(1);
+            sheet.autoSizeColumn(2);
+            sheet.setColumnWidth(3, 256*25);//256-character width 
+//            
+            sheet.setZoom(150); //scale(150%)
+//            
+
+
+
+               int index = 1; 
+               while (rs.next()) {
+               XSSFRow row = sheet.createRow(index);
+               row.createCell(0).setCellValue(rs.getString("ID_TEAM"));
+               row.createCell(1).setCellValue(CompetitionsDao.getInstance().displayById(rs.getInt("ID_COMPETION")).toString());
+               row.createCell(2).setCellValue(rs.getString("TEAM_NAME"));
+               row.createCell(3).setCellValue(rs.getString("CREATOR"));
+             
+                index++;
+
+            }
+            FileOutputStream fileOut = new FileOutputStream ("ListOfTeams.xlsx");
+            wb.write(fileOut);
+            fileOut.close();
+//            
+//         
+         
+            } catch (SQLException ex) {
+              Logger.getLogger(CompetitionsController.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (IOException ex) {
+               Logger.getLogger(CompetitionsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information Dialog");
+           alert.setHeaderText(null);
+           alert.setContentText("Teams details exported to excel Sheet");
+           alert.show();
+            //pst.close();
+            //rs.close();
+
+            }));    
     }  
 
     @FXML
@@ -138,7 +215,7 @@ public class TeamsController implements Initializable {
           tableTeams.setItems(td.getAllTeams());
           
           SendMail mail= new SendMail();
-          mail.envoyer("adtrophyhun@gmail.com");
+          mail.send("adtrophyhun@gmail.com");
           
         
     }
