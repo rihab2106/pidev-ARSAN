@@ -7,10 +7,15 @@ package com.trophy.Controller;
 
 import com.trophy.dao.ProductDao;
 import com.trophy.entity.Product;
+import com.trophy.utils.ConnexionSingleton;
+import com.trophy.utils.conx;
 import com.trophy.view.InsertController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.Optional;
@@ -27,6 +32,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.TableCell;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -34,18 +41,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import org.demo.Main;
+import retrofit2.Callback;
 
 /**
  * FXML Controller class
@@ -104,13 +115,13 @@ public class ProductController implements Initializable {
     private Stage stage;
     private Parent root;
     private Scene scene;
-    /**
-     * Initializes the controller class.
-     */
+    
+
+    //ooooooooooooooooooooooooooooooooooooooooooooooooooo
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       ObservableList <String> list = FXCollections.observableArrayList("Action-adventure Games","Survival and horror Games","Casual Games","Shooter Games","Strategy Games","Open World Games");  
-    
+        ObservableList <String> list = FXCollections.observableArrayList("Action-adventure Games","Survival and horror Games","Casual Games","Shooter Games","Strategy Games","Open World Games");
+        
         ComboCategory.setItems(list);
         
         //refere to table 
@@ -124,13 +135,36 @@ public class ProductController implements Initializable {
         
         
         table.setItems(pd.getAllProduct());
-        
-                }    
+    }    
   ProductDao pd = new ProductDao();
+    
     @FXML
-    private void Add(ActionEvent event) {
+    public void Add(ActionEvent event) throws IOException   {
+         
+       
+            System.out.println("nzlt aaliya ");
+           
+            
+            try{
+           Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Insert.fxml"));
+           
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+            
         
-        Product p = new Product();
+        } catch(IOException ex){
+            Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE,null ,ex);
+        }
+             
+        
+        
+            
+        
+        
+       /* Product p = new Product();
         if(!txtName.getText().equals("")&&!txtPrice.getText().equals("")&&!txtDiscount.getText().equals("")){
         p.setID_Product(ID);
         p.setPROD_Name(txtName.getText());
@@ -156,13 +190,22 @@ public class ProductController implements Initializable {
           txtPrice.setText("");
           txtDiscount.setText("");
           txtquantity.setText("");
-          table.setItems(pd.getAllProduct());
+          table.setItems(pd.getAllProduct());*/
     }
 
     @FXML
     private void Update(ActionEvent event) {
         
         Product pr = new Product();
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
           if(Float.parseFloat(txtPrice.getText())>0&&Integer.parseInt(txtquantity.getText())>0&&Float.parseFloat(txtDiscount.getText())>0){
           pr.setPROD_Name(txtName.getText());
@@ -203,6 +246,24 @@ public class ProductController implements Initializable {
         
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private void Delete(ActionEvent event) {
         Product pr = new Product();
@@ -217,24 +278,24 @@ public class ProductController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
             
             if (result.get() == ButtonType.OK) {
-                if(!txtName.getText().equals("")&&!txtPrice.getText().equals("")){
+                /*if(!txtName.getText().equals("")&&!txtPrice.getText().equals("")){
           pr.setPROD_Name(txtName.getText());
           pr.setPrice(Float.parseFloat(txtPrice.getText()));
           pr.setDiscount(Float.parseFloat(txtDiscount.getText()));
           pr.setCategory(ComboCategory.getValue().toString());
           pr.setQuantity(Integer.parseInt(txtquantity.getText()));
           pr.setID_Product(ID);
-          System.out.println(pr.getID_Product());
+          System.out.println(pr.getID_Product());*/
           pd.delete(ID);
          
-         txtName.setText("");
+         /*txtName.setText("");
           txtPrice.setText("");
           txtDiscount.setText("");
-          txtquantity.setText("");
+          txtquantity.setText("");*/
           
           table.setItems(pd.getAllProduct());
                 
-            }
+            /*}*/
         }}else {
             // when no part is selected
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -269,7 +330,7 @@ public class ProductController implements Initializable {
     @FXML
     private void clickTable(MouseEvent event) {
            Product pr =(Product) table.getSelectionModel().getSelectedItem();
-           txtName.setText(pr.getPROD_Name());
+           txtName.setText(pr.getPROD_Name()+"");
            txtPrice.setText(pr.getPrice()+"");
            txtDiscount.setText(pr.getDiscount()+"");
            txtquantity.setText(pr.getQuantity()+"");
@@ -337,6 +398,9 @@ public class ProductController implements Initializable {
        Stage window =(Stage)btnshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
+
+    
+    
 
     
         

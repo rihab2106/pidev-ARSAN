@@ -65,7 +65,6 @@ public class ShopController implements Initializable {
 
     @FXML
     private AnchorPane pane;
-    @FXML
     private ColorPicker colorPicker;
     private JFXHamburger hamburger;
     private JFXDrawer drawer;
@@ -104,7 +103,6 @@ public class ShopController implements Initializable {
         table.setItems(sd.getProducttoShop());
     }    
 private ObservableList<Product> cartItems = FXCollections.observableArrayList();
-    @FXML
     private void changeColor(ActionEvent event) {
         
         Color selectedColor = colorPicker.getValue();
@@ -206,7 +204,7 @@ public BorderPane mainBorderPaneForCheckoutUse;
 
     @FXML
     private void Exit(ActionEvent event) throws IOException  {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Product.fxml"));
        Stage window =(Stage)btnExit.getScene().getWindow();
        window.setScene(new Scene(root));
        

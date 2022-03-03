@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" onContextMenuRequested="#item" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.CartController">
    <children>
-      <VBox fillWidth="false" layoutX="10.0" layoutY="10.0" prefHeight="427.0" prefWidth="750.0" spacing="8.0">
+      <VBox fillWidth="false" layoutX="10.0" layoutY="10.0" prefHeight="427.0" prefWidth="849.0" spacing="8.0">
          <padding>
             <Insets left="16.0" right="16.0" />
          </padding>
@@ -32,6 +32,16 @@
                   <Insets bottom="8.0" />
                </padding>
             </Separator>
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="139.0" text="Subtotal after Discount:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="subtotalLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
             <TableView fx:id="cartTable" prefHeight="300.0" prefWidth="594.0">
                <columns>
                   <TableColumn fx:id="coverCol" editable="false" prefWidth="110.0" resizable="false" sortable="false" style="-fx-alignment: center;" />
@@ -48,19 +58,9 @@
                   <Insets bottom="8.0" top="8.0" />
                </padding>
                <children>
-                  <Button fx:id="btnshop" mnemonicParsing="false" onAction="#continueShopping" prefHeight="26.0" prefWidth="147.0" styleClass="my-button" text="Continue Shopping" />
-                  <Button layoutX="18.0" layoutY="18.0" mnemonicParsing="false" onAction="#proceedToCheckout" styleClass="my-button" text="Order Now" />
+                  <Button fx:id="btnshop" mnemonicParsing="false" onAction="#continueShopping" prefHeight="26.0" prefWidth="194.0" styleClass="my-button" text="Continue Shopping" />
+                  <Button layoutX="18.0" layoutY="18.0" mnemonicParsing="false" onAction="#proceedToCheckout" prefHeight="26.0" prefWidth="147.0" styleClass="my-button" text="Order Now" />
                   <Pane prefWidth="250.0" HBox.hgrow="ALWAYS" />
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="139.0" text="Subtotal after Discount:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="subtotalLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
                </children>
             </HBox>
          </children>

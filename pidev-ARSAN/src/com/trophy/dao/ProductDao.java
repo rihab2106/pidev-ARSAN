@@ -28,24 +28,14 @@ import javafx.event.Event;
 public class ProductDao implements ProductInterface<Product> {
 
     private static ProductDao instance;
-    private Statement st;
+    private   Statement st;
     private ResultSet rs;
 
-    public ProductDao() {
-        ConnexionSingleton cs=ConnexionSingleton.getInstance();
-        try {
-            st=cs.getCnx().createStatement();
-             
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
-    public static ProductDao getInstance(){
-        if(instance==null) 
-            instance=new ProductDao();
-        return instance;
-    }
+
+  
+
+    
     
     
     
