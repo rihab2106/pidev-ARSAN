@@ -127,6 +127,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.util.Locale;
+import java.util.regex.Pattern;
+import javafx.scene.control.TextFormatter;
 import javax.speech.AudioException;
 import javax.speech.Central;
 import javax.speech.EngineException;
@@ -570,6 +572,8 @@ public class QGamesController implements  Initializable {
         ChoiceBox tplat=new ChoiceBox();
         tplat.getItems().addAll("PS5","XBox sereis X","Nintendo","PC");
         TextField ttit=new TextField("nothing");
+        Pattern p=Pattern.compile("\\w");
+        
         //TextField tdiff=new TextField("nothing");
         ChoiceBox tdiff=new ChoiceBox(FXCollections.observableArrayList("Very easy","Easy","Medium","Hard","Impossible"));
         TextArea tdisc=new TextArea("nothing");
@@ -578,6 +582,7 @@ public class QGamesController implements  Initializable {
         GridPane.setMargin(gp, new Insets(20));
         tplat.setValue(t.getPlatform());
         tdisc.setText(t.getDescription());
+        
         ttit.setText(t.getTitle());
         tdiff.setValue(t.getDifficulty());
         
@@ -596,7 +601,8 @@ public class QGamesController implements  Initializable {
         
         ttit.textProperty().addListener((obj,old,ne)-> {
             
-        t.setTitle(ne);
+        //if (p.matcher(ne).matches())
+            t.setTitle(ne);
             TrophiesDao.getInstance().update(t);
         });
         tdiff.setOnAction(event-> {
@@ -698,6 +704,19 @@ public class QGamesController implements  Initializable {
     TextArea tdesc=new TextArea();
     ChoiceBox cb=new ChoiceBox(FXCollections.observableArrayList(CategoryDao.getInstance().DisplayAllList()));
     TextField trate =new TextField();
+    
+    trate.setTextFormatter(new TextFormatter<>(ch ->{
+    Pattern pp=Pattern.compile("[0-9.]+");
+    if (pp.matcher(ch.getControlNewText()).matches())
+        return ch;
+    return null;
+    }));
+    tname.setTextFormatter(new TextFormatter<>(ch -> {
+    Pattern pp=Pattern.compile("[A-Za-z-0-9]+");
+    if (pp.matcher(ch.getControlNewText()).matches())
+        return ch;
+    return null;
+    }));
     
     tdesc.setWrapText(true);
     
