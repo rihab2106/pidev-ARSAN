@@ -75,7 +75,7 @@ public class groupsdao implements groupinterface<Groups>{
     @Override
     public void insert(Groups o) {
 
- String req="insert into groups (ID_GROUP,NAME,IMG) values ('"+o.getID_GROUP()+"','"+o.getNAME()+"','"+o.getIMG()+"')";
+ String req="insert into groups (ID_GROUP,NAME) values ('"+o.getID_GROUP()+"','"+o.getNAME()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -94,7 +94,7 @@ public class groupsdao implements groupinterface<Groups>{
                p.setID_GROUP(rs.getInt(1));
                
                 p.setNAME(rs.getString(2));
-                p.setIMG(rs.getString(3));
+                //p.setIMG(rs.getString(3));
             //}  
         } catch (SQLException ex) {
             //Logger.getLogger(groupsdao.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,7 +107,7 @@ public class groupsdao implements groupinterface<Groups>{
     @Override
     public boolean update(Groups os) {
          
-        String qry = "UPDATE groups SET NAME = '"+os.getNAME()+"', IMG = '"+os.getIMG()+"' WHERE ID_GROUP = "+os.getID_GROUP();
+        String qry = "UPDATE groups SET NAME = '"+os.getNAME()+"' WHERE ID_GROUP = "+os.getID_GROUP();
         try{ if (st.executeUpdate(qry) > 0) {
                 return true;
      
@@ -130,7 +130,7 @@ public class groupsdao implements groupinterface<Groups>{
                 Groups p=new Groups();
                 p.setID_GROUP(rs.getInt(1));
                 p.setNAME(rs.getString(2));
-                p.setIMG(rs.getString(3));
+               // p.setIMG(rs.getString(3));
                
                 
                 ps.add(p);
@@ -156,7 +156,7 @@ public class groupsdao implements groupinterface<Groups>{
        Groups p = new Groups();
        p.setID_GROUP(rs.getInt(1));
        p.setNAME(rs.getString(2));
-       p.setIMG(rs.getString(3));
+       //p.setIMG(rs.getString(3));
       
        group.add(p);
     

@@ -88,7 +88,7 @@ public class GroupController implements Initializable {
     private void create(ActionEvent event) {
         
           Groups p = new Groups();
-        if(!textgname.getText().equals("") &&!textidgroup.getText().equals("")&&!textimage.getText().equals("")){
+        if(!textgname.getText().equals("") &&!textidgroup.getText().equals("")/*&&!textimage.getText().equals("")*/){
        
         p.setNAME(textgname.getText());
         p.setID_GROUP(Integer.parseInt(textidgroup.getText()));
@@ -114,17 +114,17 @@ public class GroupController implements Initializable {
         
             Groups p = new Groups();
         
-          if(!textgname.getText().equals("") ||!textidgroup.getText().equals("")||!textimage.getText().equals("")){
+          if(!textgname.getText().equals("") &&!textidgroup.getText().equals("")&&!textimage.getText().equals("")){
           
         p.setNAME(textgname.getText());
         p.setID_GROUP(Integer.parseInt(textidgroup.getText()));
-         //p.setIMG(textimage.getText());
+      
           
         pd.update(p);
           
            textgname.setText("");
           textidgroup.setText("");
-          //textimage.setText("");
+          textimage.setText("");
           tbgroup.setItems(pd.displayAll());
         
           
@@ -142,7 +142,7 @@ public class GroupController implements Initializable {
         
             Groups p = new Groups();
         
-          if(!textgname.getText().equals("") ||!textidgroup.getText().equals("")||!textimage.getText().equals("")){
+          if(!textgname.getText().equals("") ||!textidgroup.getText().equals("")){
           
         p.setNAME(textgname.getText());
         p.setID_GROUP(Integer.parseInt(textidgroup.getText()));
@@ -163,7 +163,7 @@ public class GroupController implements Initializable {
            Groups G =(Groups) tbgroup.getSelectionModel().getSelectedItem();
            textgname.setText(G.getNAME());
            textidgroup.setText(G.getID_GROUP()+"");
-           textimage.setText(G.getIMG());
+           //textimage.setText(G.getIMG());
        
            
     }

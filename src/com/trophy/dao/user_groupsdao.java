@@ -7,7 +7,7 @@ package com.trophy.dao;
 
 import com.trophy.Control.javaMail;
 import com.trophy.entity.Groups;
-import com.trophy.entity.Users;
+import com.trophy.entity.users;
 import com.trophy.entity.users_groups;
 import com.trophy.utils.ConnexionSingleton;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ import javafx.collections.ObservableList;
  *
  * @author lenovo
  */
-public class user_groupsdao implements  user_groupsinterface <users_groups,Users,Groups> {
+public class user_groupsdao implements  user_groupsinterface <users_groups,users,Groups> {
     
         
      private static user_groupsdao instance;

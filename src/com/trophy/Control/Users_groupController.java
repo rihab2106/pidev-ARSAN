@@ -7,7 +7,7 @@ package com.trophy.Control;
 //import javafx.mail.Message;
 import com.trophy.dao.user_groupsdao;
 import com.trophy.entity.Groups;
-import com.trophy.entity.Users;
+import com.trophy.entity.users;
 import com.trophy.entity.users_groups;
 import java.net.URL;
 import java.util.ResourceBundle;

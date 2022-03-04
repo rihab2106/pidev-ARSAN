@@ -5,7 +5,7 @@
  */
 package com.trophy.dao;
 
-import com.trophy.entity.Users;
+import com.trophy.entity.users;
 import java.util.List;
 import java.util.Map;
 

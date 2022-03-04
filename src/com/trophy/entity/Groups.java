@@ -16,8 +16,7 @@ import javafx.scene.control.Button;
 public class Groups {
     private int ID_GROUP ;
     private String NAME;
-    private String IMG;
-    private Button button;
+    
     
 
     public Groups() {
@@ -28,17 +27,11 @@ public class Groups {
         
         this.ID_GROUP = ID_GROUP;
         this.NAME = NAME;
-        this.IMG = IMG;
+       
       //  this.button=new Button("visit");
     }
 
-    public void setButton(Button button) {
-        this.button = button;
-    }
-
-    public Button getButton() {
-        return button;
-    }
+   
 
     public int getID_GROUP() {
         return ID_GROUP;
@@ -54,9 +47,7 @@ public class Groups {
         return NAME;
     }
 
-    public String getIMG() {
-        return IMG;
-    }
+   
 
     public void setID_GROUP(int ID_GROUP) {
         this.ID_GROUP = ID_GROUP;
@@ -71,16 +62,14 @@ public class Groups {
         this.NAME = NAME;
     }
 
-    public void setIMG(String IMG) {
-        this.IMG = IMG;
-    }
+   
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 83 * hash + this.ID_GROUP;
         hash = 83 * hash + Objects.hashCode(this.NAME);
-        hash = 83 * hash + Objects.hashCode(this.IMG);
+       
         return hash;
     }
 
@@ -102,15 +91,13 @@ public class Groups {
         if (!Objects.equals(this.NAME, other.NAME)) {
             return false;
         }
-        if (!Objects.equals(this.IMG, other.IMG)) {
-            return false;
-        }
+       
         return true;
     }
 
     @Override
     public String toString() {
-        return "Groups{" + "ID_GROUP=" + ID_GROUP + ", NAME=" + NAME + ", IMG=" + IMG + '}';
+        return "Groups{" + "ID_GROUP=" + ID_GROUP + ", NAME=" + NAME + '}';
     }
 
     public String getISACTIVE() {
