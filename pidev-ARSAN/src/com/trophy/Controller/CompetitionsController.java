@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,20 +89,23 @@ public class CompetitionsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-  //te5edh donné mé database w tcastéha l observable list w t'affichiha fy table
+  
  ObservableList<Competitions> listComp =(ObservableList<Competitions>)  CompetitionsDao.getInstance().getAllCompetitions();
-        //béch ya3ref kol colonne chnowa y7ot fiha (té5ou esm l attribute mél classe w t7ot l valeur mté3ou fél colonne)
-        tableComp.setItems(cd.getAllCompetitions());       
+
+        tableComp.setItems(cd.getAllCompetitions());  
+        
         colIdComp.setCellValueFactory(new PropertyValueFactory<>("Id_competion"));
         colNameGameComp.setCellValueFactory(new PropertyValueFactory<>("game_name"));
         colDateofComp.setCellValueFactory(new PropertyValueFactory<>("dateofcomp"));
           
         System.out.println(listComp);
         
+     
         
-        //classe bech ykoun fih text taatih listener w (old:élly mawjoud 9bal manmodify
-        //ne : élly béch nda5lou nlawéj 3lih -> lambda expression
-            SearchComp.textProperty().addListener((obj,old,ne)->{
+        
+        
+        
+           SearchComp.textProperty().addListener((obj,old,ne)->{
             tableComp.setItems(cd.getSearchCompetitions(ne));});
             
             
@@ -284,8 +289,7 @@ public class CompetitionsController implements Initializable {
     @FXML
     private void sortComp(ActionEvent event) {
         
-        //béch ta3mel sort 
-        //
+       
         tableComp.setItems(FXCollections.observableArrayList(CompetitionsDao
                 //bech traja3lék l comp lkol m database
                 .getInstance().getAllCompetitions()
@@ -300,9 +304,6 @@ public class CompetitionsController implements Initializable {
                 .collect(Collectors.toList())));
     }
     
-           
-    
-   
 }
     
 

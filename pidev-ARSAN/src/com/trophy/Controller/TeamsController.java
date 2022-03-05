@@ -103,9 +103,6 @@ public class TeamsController implements Initializable {
        tableTeams.setItems(td.getAllTeams());       
         colIdTeam.setCellValueFactory(new PropertyValueFactory<>("id_team"));
        colIdCompTeam.setCellValueFactory(new PropertyValueFactory<>("competitions"));
-//            colIdCompTeam.setCellValueFactory(cell->{
-//        return cell.getValue().getCompetitions().getGame_name();
-//    });
         colTeamName.setCellValueFactory(new PropertyValueFactory<>("team_name"));
         colCreatorName.setCellValueFactory(new PropertyValueFactory<>("creator"));
         System.out.println(listTeams);

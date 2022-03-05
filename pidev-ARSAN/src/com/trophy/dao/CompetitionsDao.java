@@ -85,8 +85,8 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
         rs  =  st.executeQuery("SELECT * FROM competitions where ID_COMPETION="+String.valueOf(Id_competion));
         
         while (rs.next()){
-            //bech nsatiw value lél variable 
-         // comp b set ta3tih l variable ,,getint béch yraja3 int élly mawjouda fy  resultset fél colonne loula (1)
+            //
+         //bech nsatiw value lél variable  getint béch yraja3 int élly mawjouda fy  resultset fél colonne loula (1)
          co.setId_competion(rs.getInt(1));
          //setter béch tsety game name w bech tekhouh mel colonne thenya w trodou string
          co.setGame_name(rs.getString(2));
@@ -146,7 +146,7 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
        return c;
    }
     
-    public ObservableList<Competitions> getSearchCompetitions(String name)
+  public ObservableList<Competitions> getSearchCompetitions(String name)
    {
    ObservableList<Competitions> competitions =FXCollections.observableArrayList();
    try {
@@ -163,7 +163,7 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
     
    }//ConnexionSingleton.closeConnection();
    }catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+         System.out.println(ex.getMessage());
            // ConnexionSingleton.closeConnection();
         }
    return competitions;
