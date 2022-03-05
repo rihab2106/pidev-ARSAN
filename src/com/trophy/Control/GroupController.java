@@ -128,7 +128,7 @@ public class GroupController implements Initializable {
           tbgroup.setItems(pd.displayAll());
         
           
-          tbgroup.setItems(pd.displayAll());
+          
           }     
         
         

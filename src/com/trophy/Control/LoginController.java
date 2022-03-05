@@ -41,6 +41,9 @@ public class LoginController implements Initializable {
     private  PasswordField tfLogPwd;
     @FXML
     private Button signin;
+   
+    @FXML
+    private TextField tfname;
 
     /**
      * Initializes the controller class.
@@ -60,14 +63,17 @@ public class LoginController implements Initializable {
     private void signin(ActionEvent event) {
         userdao us = new userdao();
         users user=new users();
-           if( (!tfLogEmail.getText().isEmpty()&& !tfLogPwd.getText().isEmpty()) ){
-               if(us.checklogin(tfLogEmail.getText(), tfLogPwd.getText())==true){
+           if( (!tfname.getText().isEmpty()&& !tfLogEmail.getText().isEmpty()&& !tfLogPwd.getText().isEmpty()) ){
+               if(us.checklogin(tfname.getText(),tfLogEmail.getText(), tfLogPwd.getText())==true){
+                   user.setFULL_NAME(tfname.getText());
+                   user.setEMAIL(tfLogEmail.getText());
+                   user.setPASSWORD(tfLogPwd.getText());
                    if((("admin1@esprit.tn".equals(tfLogEmail.getText()))&&("admin1".equals(tfLogPwd.getText())))
                            ||(("admin2@esprit.tn".equals(tfLogEmail.getText()))&&("admin2".equals(tfLogPwd.getText())))){
              try {
              Session.StartSession().setSessionUser(user);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/users_group.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/adminaccount.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -81,7 +87,7 @@ public class LoginController implements Initializable {
                        try {
              Session.StartSession().setSessionUser(user);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/users_group.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -95,7 +101,7 @@ public class LoginController implements Initializable {
                else{
                Alert alert = new Alert(Alert.AlertType.ERROR);
                alert.setTitle("User not found !!!  ");
-               alert.setContentText("Please verify your password or mail !!! ");
+               alert.setContentText("User not found !!! ");
                alert.show();
            }
                

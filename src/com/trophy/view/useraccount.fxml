@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Control.UseraccountController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="170.0" style="-fx-background-color: #8FBC8F;">
+         <children>
+            <Button fx:id="buttvisitgrp" mnemonicParsing="false" onAction="#visitgroup" prefHeight="39.0" prefWidth="170.0" text="Create group" />
+            <Button fx:id="busergroup" mnemonicParsing="false" onAction="#visitusergroup" prefHeight="38.0" prefWidth="170.0" text="Visit my groups" />
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="170.0" text="Menu" />
+            <Button fx:id="buttlogout" mnemonicParsing="false" onAction="#logoutbutt" prefHeight="34.0" prefWidth="170.0" text="Log out" />
+         </children>
+      </VBox>
+      <TextField fx:id="mailtext" layoutX="238.0" layoutY="124.0" prefHeight="26.0" prefWidth="202.0" promptText="mail" />
+      <TextField fx:id="usrname" layoutX="238.0" layoutY="89.0" prefHeight="26.0" prefWidth="201.0" promptText="full name" />
+      <TextField fx:id="passtext" layoutX="238.0" layoutY="158.0" prefHeight="26.0" prefWidth="202.0" promptText="password" />
+      <Button fx:id="buttupd" layoutX="266.0" layoutY="200.0" mnemonicParsing="false" onAction="#upaccount" prefHeight="26.0" prefWidth="142.0" text="Update my account" />
+      <Button fx:id="buttnddelet" layoutX="268.0" layoutY="245.0" mnemonicParsing="false" onAction="#delaccount" prefHeight="26.0" prefWidth="142.0" text="Delete my account" />
+      <Text layoutX="300.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Acount" wrappingWidth="124.2769775390625">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="iduse" layoutX="238.0" layoutY="53.0" prefHeight="26.0" prefWidth="202.0" promptText="your id" />
+   </children>
+</AnchorPane>

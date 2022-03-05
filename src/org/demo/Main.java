@@ -23,6 +23,7 @@ public class Main extends Application {
         try {
             //Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/users_group.fxml"));
              Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Login.fxml"));
+             //Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
            
             Scene scene = new Scene(root);
             stage.setScene(scene);

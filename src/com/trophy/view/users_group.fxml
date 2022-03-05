@@ -23,5 +23,6 @@
       <Button fx:id="buttadd" layoutX="456.0" layoutY="93.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="114.0" text="add friend" />
       <Button fx:id="unblockbutt" layoutX="458.0" layoutY="272.0" mnemonicParsing="false" onAction="#unblock" prefHeight="26.0" prefWidth="114.0" text="unblock" />
       <Button fx:id="showbutt" layoutX="457.0" layoutY="39.0" mnemonicParsing="false" onAction="#show" prefHeight="26.0" prefWidth="113.0" text="show users" />
+      <Button fx:id="bttback" layoutX="60.0" layoutY="348.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>

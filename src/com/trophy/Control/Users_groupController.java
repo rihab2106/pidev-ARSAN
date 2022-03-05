@@ -9,20 +9,26 @@ import com.trophy.dao.user_groupsdao;
 import com.trophy.entity.Groups;
 import com.trophy.entity.users;
 import com.trophy.entity.users_groups;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -58,6 +64,8 @@ public class Users_groupController  implements Initializable  {
     private Button showbutt;
     @FXML
     private TableColumn idgr;
+    @FXML
+    private Button bttback;
    
     /**
      * Initializes the controller class.
@@ -252,6 +260,22 @@ public class Users_groupController  implements Initializable  {
         
      tabl.setItems(pd.displayAllusers(Integer.parseInt(textgroup.getText())));
           textgroup.setText("");
+    }
+
+    @FXML
+    private void back(ActionEvent event) {
+        
+            try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/group.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            } catch (IOException ex) {
+                System.out.println("error in displaying Article");
+            }
     }
 
     

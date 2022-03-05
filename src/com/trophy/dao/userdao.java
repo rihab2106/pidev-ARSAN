@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -80,35 +82,31 @@ public class userdao implements userinterface<users, Groups> {
         }
 
     }
-
-    @Override
-    public List<users> displayAll() {
-
-        String req = "select * from users";
-        List<users> list = new ArrayList<>();
-
+     @Override
+     public ObservableList<users> displayAll() {
+       String req="select * from users";
+       ObservableList<users> ps =FXCollections.observableArrayList();
+        
         try {
-
-            rs = st.executeQuery(req);
-            while (rs.next()) {
-                users p = new users();
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                users p=new users();
                 p.setID_USER(rs.getInt(1));
                 p.setFULL_NAME(rs.getString(2));
-              
                 p.setEMAIL(rs.getString(3));
-                p.setPASSWORD(rs.getString(4));
                 p.setISACTIVE(rs.getInt(5));
-                p.setPRIVILEGE_(rs.getInt(6));
-
-                list.add(p);
+               
+                
+                ps.add(p);
             }
-
+            
         } catch (SQLException ex) {
             //Logger.getLogger(userdao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
+        return ps;
+        
+        
     }
-
     @Override
     public users displayById(int id) {
         String req = "select * from users where ID_USER  =" + id;
@@ -118,12 +116,10 @@ public class userdao implements userinterface<users, Groups> {
             // while(rs.next()){
             rs.next();
             p.setID_USER(rs.getInt(1));
-            p.setFULL_NAME(rs.getString(3));
+            p.setFULL_NAME(rs.getString(2));
         
-            p.setEMAIL(rs.getString(4));
-            p.setPASSWORD(rs.getString(5));
-            p.setISACTIVE(rs.getInt(6));
-            p.setPRIVILEGE_(rs.getInt(7));
+            p.setEMAIL(rs.getString(3));
+           
 
             //}  
         } catch (SQLException ex) {
@@ -134,10 +130,10 @@ public class userdao implements userinterface<users, Groups> {
     }
 
     @Override
-    public boolean update(users p) {
+    public boolean updateuser(users p) {
 
         String qry;
-        qry = "UPDATE users SET FULL_NAME = '" + p.getFULL_NAME() + "',  EMAIL = '" + p.getEMAIL() + "',PASSWORD ='" + p.getPASSWORD() + "' WHERE ID_USER  = " + p.getID_USER();
+        qry = "UPDATE `users` SET FULL_NAME = '" + p.getFULL_NAME() + "',  EMAIL = '" + p.getEMAIL() + "',PASSWORD ='" +cryptWithMD5(p.getPASSWORD())+ "' WHERE ID_USER="+p.getID_USER();
 
         try {
             if (st.executeUpdate(qry) > 0) {
@@ -150,10 +146,10 @@ public class userdao implements userinterface<users, Groups> {
         return false;
     }
 
-    @Override
-    public users displayacount() {
-        users p = new users();
-        String req = "select * from users where ID_USER  =" + p.getID_USER();
+    
+    public users displayacount(users p) {
+       
+        String req = "select * from users where EMAIL = "+p.getEMAIL();
 
         try {
             rs = st.executeQuery(req);
@@ -162,8 +158,8 @@ public class userdao implements userinterface<users, Groups> {
             p.setID_USER(rs.getInt(1));
             p.setFULL_NAME(rs.getString(2));
           
-            p.setEMAIL(rs.getString(4));
-            p.setPASSWORD(rs.getString(5));
+            p.setEMAIL(rs.getString(3));
+            p.setPASSWORD(rs.getString(4));
 
             //}  
         } catch (SQLException ex) {
@@ -213,11 +209,12 @@ public class userdao implements userinterface<users, Groups> {
 
    }
      
+     
     
-     public boolean checklogin(String email,String pwd){
+     public boolean checklogin(String fullname, String email,String pwd){
         try {
            
-            String request="SELECT * FROM users WHERE (EMAIL = '"+email+"' and PASSWORD = '"+cryptWithMD5(pwd)+"')";
+            String request="SELECT * FROM users WHERE (FULL_NAME = '"+fullname+"' and EMAIL = '"+email+"' and PASSWORD = '"+cryptWithMD5(pwd)+"' and ISACTIVE= 1 )";
             
                    rs = st.executeQuery(request);
             
@@ -230,6 +227,62 @@ public class userdao implements userinterface<users, Groups> {
      }
 
    
+      public boolean block(users p) {
 
+        String qry;
+        qry = "UPDATE users SET ISACTIVE = '0' WHERE ID_USER  = " + p.getID_USER();
+
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+             System.err.println(ex);
+        }
+        return false;
+    }
+
+      public boolean unblock(users p) {
+
+        String qry;
+        qry = "UPDATE users SET ISACTIVE = '1' WHERE ID_USER  = " + p.getID_USER();
+
+        try {
+            if (st.executeUpdate(qry) > 0) {
+                return true;
+            }
+
+        } catch (SQLException ex) {
+             System.err.println(ex);
+        }
+        return false;
+    }
+      
+      
+       public ObservableList<users> getSearchuser(String name)
+   {
+   ObservableList<users> group =FXCollections.observableArrayList();
+   try {
+   
+   rs = st.executeQuery("SELECT * FROM users WHERE FULL_NAME LIKE '%"+name+"%'");
+   
+   while(rs.next()){
+       users p = new users();
+        p.setID_USER(rs.getInt(1));
+        p.setFULL_NAME(rs.getString(2));
+        p.setEMAIL(rs.getString(3));
+        p.setISACTIVE(rs.getInt(5));
+               
+       group.add(p);
+    
+   }
+   }catch (SQLException ex) {
+            System.out.println(ex);
+        }
+   return group;
+   }
+    
+        
 
 }

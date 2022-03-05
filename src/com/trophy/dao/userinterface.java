@@ -17,8 +17,8 @@ public interface userinterface <T,V> {
     public void delete(T o);
     public List<T> displayAll();
     public T displayById(int id);
-    public T displayacount();
-    public boolean update(T os);
+    //public T displayacount();
+    public boolean updateuser(T os);
     
     
   }
