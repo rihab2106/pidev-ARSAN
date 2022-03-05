@@ -62,8 +62,8 @@ public class TeamsController implements Initializable {
     private Button btnDeleteTeam;
     @FXML
     private ChoiceBox inputIdCompT;
-    @FXML
-    private TextField inputCreatorName;
+//    @FXML
+//    private TextField inputCreatorName;
     @FXML
     private TextField SearchTeam;
     @FXML
@@ -74,8 +74,8 @@ public class TeamsController implements Initializable {
     private TableColumn<Teams,String> colIdCompTeam;
     @FXML
     private TableColumn colTeamName;
-    @FXML
-    private TableColumn colCreatorName;
+//    @FXML
+//    private TableColumn colCreatorName;
      @FXML
     private Button gotocomp;
       @FXML
@@ -104,7 +104,7 @@ public class TeamsController implements Initializable {
         colIdTeam.setCellValueFactory(new PropertyValueFactory<>("id_team"));
        colIdCompTeam.setCellValueFactory(new PropertyValueFactory<>("competitions"));
         colTeamName.setCellValueFactory(new PropertyValueFactory<>("team_name"));
-        colCreatorName.setCellValueFactory(new PropertyValueFactory<>("creator"));
+        //colCreatorName.setCellValueFactory(new PropertyValueFactory<>("creator"));
         System.out.println(listTeams);
     
         SearchTeam.textProperty().addListener((obj,old,ne)->{
@@ -146,7 +146,7 @@ public class TeamsController implements Initializable {
             header.createCell(0).setCellValue("id_team");
             header.createCell(1).setCellValue("Competition Name");
             header.createCell(2).setCellValue("team_name");
-            header.createCell(3).setCellValue("creator");
+            //header.createCell(3).setCellValue("creator");
          
 //            
             sheet.autoSizeColumn(1);
@@ -164,7 +164,7 @@ public class TeamsController implements Initializable {
                row.createCell(0).setCellValue(rs.getString("ID_TEAM"));
                row.createCell(1).setCellValue(CompetitionsDao.getInstance().displayById(rs.getInt("ID_COMPETION")).toString());
                row.createCell(2).setCellValue(rs.getString("TEAM_NAME"));
-               row.createCell(3).setCellValue(rs.getString("CREATOR"));
+               //row.createCell(3).setCellValue(rs.getString("CREATOR"));
              
                 index++;
 
@@ -195,11 +195,12 @@ public class TeamsController implements Initializable {
     private void Add(ActionEvent event) {
         
         Teams te = new Teams();
-        if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")&&!inputCreatorName.getText().equals("")){
+        if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")//&&!inputCreatorName.getText().equals("")
+                ){
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
         te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
-        te.setCreator(inputCreatorName.getText());
+       // te.setCreator(inputCreatorName.getText());
         }
         td.insert(te);
           System.out.println(te.toString());
@@ -207,7 +208,7 @@ public class TeamsController implements Initializable {
           inputIdTeam.setText("");
           inputIdCompT.setValue(null);
           inputTeamName.setText("");
-          inputCreatorName.setText("");
+         // inputCreatorName.setText("");
           
           tableTeams.setItems(td.getAllTeams());
           
@@ -221,12 +222,13 @@ public class TeamsController implements Initializable {
     private void Update(ActionEvent event) {
         
         Teams te = new Teams();
-        if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")&&!inputCreatorName.getText().equals(""))
+        if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")//&&!inputCreatorName.getText().equals("")
+                )
         {
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
         te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
-        te.setCreator(inputCreatorName.getText());
+      //  te.setCreator(inputCreatorName.getText());
         
         td.update(te);
            
@@ -235,7 +237,7 @@ public class TeamsController implements Initializable {
           inputIdTeam.setText("");
           inputIdCompT.setValue(null);
           inputTeamName.setText("");
-          inputCreatorName.setText("");
+          //inputCreatorName.setText("");
           
           tableTeams.setItems(td.getAllTeams());
           
@@ -247,18 +249,19 @@ public class TeamsController implements Initializable {
     private void Delete(ActionEvent event) {
         
          Teams te = new Teams();
-        if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")&&!inputCreatorName.getText().equals("")){
+        if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")//&&!inputCreatorName.getText().equals("")
+                ){
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
         te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
-        te.setCreator(inputCreatorName.getText());
+        //te.setCreator(inputCreatorName.getText());
         
         td.delete(te.getId_team());
         
          inputIdTeam.setText("");
           inputIdCompT.setValue(null);
           inputTeamName.setText("");
-          inputCreatorName.setText("");
+         // inputCreatorName.setText("");
           
           tableTeams.setItems(td.getAllTeams());
             }
@@ -271,7 +274,7 @@ public class TeamsController implements Initializable {
           inputIdTeam.setText(String.valueOf(te.getId_team()));
           inputIdCompT.setValue(te.getCompetitions());
           inputTeamName.setText(te.getTeam_name()+"");
-          inputCreatorName.setText(te.getCreator());  
+         // inputCreatorName.setText(te.getCreator());  
     }
     
 // @FXML

@@ -48,7 +48,7 @@ public class TeamsDao implements TeamsInterface<Teams> {
     public void insert(Teams t) {
             try {
           st = ConnexionSingleton.openConnection().createStatement();
-          st.executeUpdate("INSERT INTO `Teams`(`ID_TEAM`,`ID_COMPETION`,`TEAM_NAME`,`CREATOR`) VALUES ('"+t.getId_team()+"','"+t.getCompetitions().getId_competion()+"','"+t.getTeam_name()+"','"+t.getCreator()+"')");
+          st.executeUpdate("INSERT INTO `Teams`(`ID_TEAM`,`ID_COMPETION`,`TEAM_NAME`) VALUES ('"+t.getId_team()+"','"+t.getCompetitions().getId_competion()+"','"+t.getTeam_name()+"')");
           
           //ConnexionSingleton.closeConnection();
           }catch (SQLException ex){
@@ -83,7 +83,7 @@ public class TeamsDao implements TeamsInterface<Teams> {
     public void update(Teams t) {
         try{
         st = ConnexionSingleton.openConnection().createStatement();
-       st.executeUpdate("UPDATE `Teams` SET `ID_COMPETION`="+"'"+t.getCompetitions().getId_competion()+"'"+",`TEAM_NAME`="+"'"+t.getTeam_name()+"'"+",`CREATOR`="+"'"+t.getCreator()+"'"+" WHERE ID_TEAM  = "+t.getId_team());
+       st.executeUpdate("UPDATE `Teams` SET `ID_COMPETION`="+"'"+t.getCompetitions().getId_competion()+"'"+",`TEAM_NAME`="+"'"+t.getTeam_name()+"'"+" WHERE ID_TEAM  = "+t.getId_team());
       // ConnexionSingleton.closeConnection();
         }catch (SQLException ex) {
             Logger.getLogger(TeamsDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +104,7 @@ public class TeamsDao implements TeamsInterface<Teams> {
          te.setId_team(rs.getInt(1));
          te.setCompetitions(CompetitionsDao.getInstance().displayById(rs.getInt(2)));
          te.setTeam_name(rs.getString(3));
-         te.setCreator(rs.getString(4));
+         //te.setCreator(rs.getString(4));
          t.add(te);
         
         }
@@ -130,7 +130,7 @@ public class TeamsDao implements TeamsInterface<Teams> {
        te.setId_team(rs.getInt(1));
        te.setCompetitions(CompetitionsDao.getInstance().displayById(rs.getInt(2)));
        te.setTeam_name(rs.getString(3));
-       te.setCreator(rs.getString(4));
+       //te.setCreator(rs.getString(4));
        teams.add(te);
     
    }//ConnexionSingleton.closeConnection();

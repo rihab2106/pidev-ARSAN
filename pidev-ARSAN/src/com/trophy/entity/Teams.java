@@ -15,7 +15,7 @@ public class Teams {
      private int id_team;
      private Competitions competitions;
      private String team_name;
-     private String creator;
+    // private String creator;
 
     public Teams() { 
     }
@@ -24,7 +24,7 @@ public class Teams {
         this.id_team = id_team;
         this.competitions = competitions;
         this.team_name = team_name;
-        this.creator = creator;
+        //this.creator = creator;
     }
 
     public int getId_team() {
@@ -51,18 +51,25 @@ public class Teams {
         this.team_name = team_name;
     }
 
-    public String getCreator() {
-        return creator;
-    }
+//    public String getCreator() {
+//        return creator;
+//    }
+//
+//    public void setCreator(String creator) {
+//        this.creator = creator;
+//    }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
+//    @Override
+//    public String toString() {
+//        return "Teams{" + "id_team=" + id_team + ", competitions=" + competitions + ", team_name=" + team_name + ", creator=" + creator + '}';
+//    }
 
     @Override
     public String toString() {
-        return "Teams{" + "id_team=" + id_team + ", competitions=" + competitions + ", team_name=" + team_name + ", creator=" + creator + '}';
+        return "Teams{" + "id_team=" + id_team + ", competitions=" + competitions + ", team_name=" + team_name + '}';
     }
+    
+    
 
     @Override
     public int hashCode() {
@@ -70,7 +77,7 @@ public class Teams {
         hash = 79 * hash + this.id_team;
         hash = 79 * hash + Objects.hashCode(this.competitions);
         hash = 79 * hash + Objects.hashCode(this.team_name);
-        hash = 79 * hash + Objects.hashCode(this.creator);
+       // hash = 79 * hash + Objects.hashCode(this.creator);
         return hash;
     }
 
@@ -92,9 +99,9 @@ public class Teams {
         if (!Objects.equals(this.team_name, other.team_name)) {
             return false;
         }
-        if (!Objects.equals(this.creator, other.creator)) {
-            return false;
-        }
+//        if (!Objects.equals(this.creator, other.creator)) {
+//            return false;
+//        }
         if (!Objects.equals(this.competitions, other.competitions)) {
             return false;
         }
