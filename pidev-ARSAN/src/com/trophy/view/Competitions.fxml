@@ -23,7 +23,7 @@
                <children>
                   <Pane layoutX="23.0" layoutY="106.0" prefHeight="566.0" prefWidth="317.0">
                      <children>
-                        <TextField fx:id="inputIdComp" focusTraversable="false" layoutX="15.0" layoutY="33.0" opacity="0.8" prefHeight="40.0" prefWidth="289.0" promptText="Enter Competition Id">
+                        <TextField fx:id="inputIdComp" focusTraversable="false" layoutX="15.0" layoutY="53.0" opacity="0.8" prefHeight="40.0" prefWidth="289.0" promptText="Enter Competition Id">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -31,7 +31,7 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <TextField fx:id="inputGameNameComp" focusTraversable="false" layoutX="16.0" layoutY="105.0" opacity="0.8" prefHeight="50.0" prefWidth="289.0" promptText="Enter Game Name">
+                        <TextField fx:id="inputGameNameComp" focusTraversable="false" layoutX="15.0" layoutY="135.0" opacity="0.8" prefHeight="50.0" prefWidth="289.0" promptText="Enter Game Name">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -63,7 +63,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="181.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" />
+                        <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="219.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" />
                         <Text layoutX="-2.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hhhhh" wrappingWidth="289.0000034272671" />
                         <Button fx:id="gototeams" layoutX="33.0" layoutY="446.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="252.0" text="Teams" />
                      </children>
@@ -96,7 +96,7 @@
                                     </Label>
                                  </children>
                               </Pane>
-                              <Button fx:id="sortComp" layoutX="665.0" layoutY="53.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="114.0" text="Sort" />
+                              <Button fx:id="sortComp" layoutX="665.0" layoutY="65.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="114.0" text="Sort" />
                            </children>
                         </Pane>
                      </top>

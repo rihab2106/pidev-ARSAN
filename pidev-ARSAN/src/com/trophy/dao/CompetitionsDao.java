@@ -169,7 +169,20 @@ public class CompetitionsDao  implements CompetitionsInterface<Competitions> {
    return competitions;
    }
 
+    public Boolean Search(int id)
+   {
    
+       try {
+   st=ConnexionSingleton.openConnection().createStatement();
+   rs = st.executeQuery("SELECT * FROM Competitions WHERE ID_COMPETION ="+id);
+   return rs.next();
+   
+   }catch (SQLException ex) {
+         System.out.println(ex.getMessage());
+           // ConnexionSingleton.closeConnection();
+        }
+   return false;
+   }
    
 
     

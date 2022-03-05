@@ -140,6 +140,21 @@ public class TeamsDao implements TeamsInterface<Teams> {
         }
    return teams;
    }
+      
+          public Boolean SearchT(int id)
+   {
+   
+       try {
+   st=ConnexionSingleton.openConnection().createStatement();
+   rs = st.executeQuery("SELECT * FROM Teams WHERE ID_TEAM ="+id);
+   return rs.next();
+   
+   }catch (SQLException ex) {
+         System.out.println(ex.getMessage());
+           // ConnexionSingleton.closeConnection();
+        }
+   return false;
+   }
     
     
     

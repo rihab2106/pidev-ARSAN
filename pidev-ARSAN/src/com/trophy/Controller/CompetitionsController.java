@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,10 +32,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
@@ -189,7 +192,12 @@ public class CompetitionsController implements Initializable {
 //            }));    
              
              
-             
+//             inputIdComp.setTextFormatter(new TextFormatter<>(ch ->{     
+//    Pattern pp=Pattern.compile("[0-9]+");
+//    if (pp.matcher(ch.getControlNewText()).matches())
+//        return ch;
+//    return null;
+//    }));
             
         
     }    
@@ -202,14 +210,28 @@ public class CompetitionsController implements Initializable {
        //kén l form fér8a mana3melech insert 
         if(!inputIdComp.getText().equals("")&&!inputGameNameComp.getText().equals("")){
             //y7ot fy data mél form lel comp
+            if(CompetitionsDao.getInstance().Search((Integer.parseInt( inputIdComp.getText()))))
+            {
+                Alert a =new Alert(Alert.AlertType.WARNING,"ID already exists",ButtonType.OK); 
+           a.show();
+           return; 
+            }
         comp.setId_competion((Integer.parseInt( inputIdComp.getText())));
+        
         comp.setGame_name(inputGameNameComp.getText());
+        if(inputDateofComp.getValue().compareTo(LocalDate.now())<0)
+        {
+           Alert a =new Alert(Alert.AlertType.WARNING,"Date is already passed",ButtonType.OK); 
+           a.show();
+           return;
+        }
         comp.setDateofcomp(inputDateofComp.getValue());
+        
         }
         cd.insert(comp);
           System.out.println(comp.toString());
               //béch yafargh l form ba3d ma3mal insert
-          inputIdComp.setText("");
+          inputIdComp.setText(" ");
           inputGameNameComp.setText("");
           inputDateofComp.setValue(null);
           
@@ -224,8 +246,21 @@ public class CompetitionsController implements Initializable {
         
          Competitions comp = new Competitions();
         if(!inputIdComp.getText().equals("")&&!inputGameNameComp.getText().equals("")){
+            
+            if(!CompetitionsDao.getInstance().Search((Integer.parseInt(inputIdComp.getText()))))
+            {
+                Alert a =new Alert(Alert.AlertType.WARNING,"ID already exists",ButtonType.OK); 
+           a.show();
+           return; 
+            }
         comp.setId_competion((Integer.parseInt( inputIdComp.getText())));
         comp.setGame_name(inputGameNameComp.getText());
+        if(inputDateofComp.getValue().compareTo(LocalDate.now())<0)
+        {
+           Alert a =new Alert(Alert.AlertType.WARNING,"Date is already passed",ButtonType.OK); 
+           a.show();
+           return;
+        }
         comp.setDateofcomp(inputDateofComp.getValue());
         }        
         cd.update(comp);

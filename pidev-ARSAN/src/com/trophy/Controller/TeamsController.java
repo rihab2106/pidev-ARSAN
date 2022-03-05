@@ -31,6 +31,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -197,6 +198,12 @@ public class TeamsController implements Initializable {
         Teams te = new Teams();
         if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")//&&!inputCreatorName.getText().equals("")
                 ){
+             if(TeamsDao.getInstance().SearchT((Integer.parseInt(inputIdTeam.getText()))))
+            {
+                Alert a =new Alert(Alert.AlertType.WARNING,"ID already exists",ButtonType.OK); 
+           a.show();
+           return; 
+            }
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
         te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
@@ -225,6 +232,13 @@ public class TeamsController implements Initializable {
         if(!inputIdTeam.getText().equals("")&&!inputTeamName.getText().equals("")//&&!inputCreatorName.getText().equals("")
                 )
         {
+            
+            if(!TeamsDao.getInstance().SearchT((Integer.parseInt(inputIdTeam.getText()))))
+            {
+                Alert a =new Alert(Alert.AlertType.WARNING,"you can't change ID",ButtonType.OK); 
+           a.show();
+           return; 
+            }
         te.setId_team((Integer.parseInt( inputIdTeam.getText())));
         te.setCompetitions(CompetitionsDao.getInstance().displayById(((Competitions)inputIdCompT.getValue()).getId_competion()));
         te.setTeam_name(inputTeamName.getText());
