@@ -7,6 +7,7 @@ package com.trophy.view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -50,5 +51,15 @@ int Month,Year;
         year.setValueFactory(valueFactoryyear);
         Year =year.getValue();
     }    
+
+    @FXML
+    private void Order(ActionEvent event) {
+        
+        
+    }
+
+    @FXML
+    private void Exit(ActionEvent event) {
+    }
     
 }

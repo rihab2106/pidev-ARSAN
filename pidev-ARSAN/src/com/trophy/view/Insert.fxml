@@ -66,7 +66,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
-      <Button fx:id="btnAdd" focusTraversable="false" layoutX="14.0" layoutY="502.0" mnemonicParsing="false" onAction="#Add" prefHeight="42.0" prefWidth="138.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" text="        Insert" textFill="#fcf8f8">
+      <Button fx:id="btnAdd" focusTraversable="false" layoutX="154.0" layoutY="502.0" mnemonicParsing="false" onAction="#Add" prefHeight="42.0" prefWidth="138.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" text="        Insert" textFill="#fcf8f8">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -74,19 +74,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fitHeight="43.0" fitWidth="75.0" layoutX="26.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="43.0" fitWidth="75.0" layoutX="166.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Css/add.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnUpdate" focusTraversable="false" layoutX="293.0" layoutY="503.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="132.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" text="     Update" textFill="#fcf8f8">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
       <ImageView fitHeight="43.0" fitWidth="75.0" layoutX="293.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Css/icons8-update-100.png" />
@@ -102,7 +94,7 @@
             <Font name="Cambria" size="12.0" />
          </font>
       </Text>
-      <Text fill="#efe9e9" fontSmoothingType="LCD" layoutX="20.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Product           Name" wrappingWidth="118.0081787109375">
+      <Text fill="#efe9e9" fontSmoothingType="LCD" layoutX="20.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Product   " wrappingWidth="118.0081787109375">
          <font>
             <Font name="Cambria" size="12.0" />
          </font>

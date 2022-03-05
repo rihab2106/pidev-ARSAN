@@ -74,8 +74,7 @@ private Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cartTable.setPlaceholder(new Label("Your shopping cart is empty..."));
-       
-         ShopDao sd = new ShopDao();
+        ShopDao sd = new ShopDao();
          
          cartTable.setItems(sd.getProducttoShop());
          
@@ -109,15 +108,6 @@ private Scene scene;
             }
             
         });
-         
-         
-         
-          
-        
-     
-     
-     
-     
      removeCol.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
         removeCol.setCellFactory(param -> new TableCell<Product,Product>(){
             private final Hyperlink removeFromCart = new Hyperlink("");
@@ -150,12 +140,16 @@ private Scene scene;
                 });
             }
         });     
-       
+         
     
     
     }    
 
+    public void cartitems(){
     
+   
+       
+    }
      
     
     

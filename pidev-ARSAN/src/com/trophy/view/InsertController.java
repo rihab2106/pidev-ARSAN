@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -55,10 +56,9 @@ public class InsertController implements Initializable {
     @FXML
     private Button btnAdd;
     @FXML
-    private Button btnUpdate;
-    @FXML
     private Button btnExit;
 NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+private Parent root ;
     /**
      * Initializes the controller class.
      */
@@ -100,9 +100,9 @@ int ID;
         p.setQuantity(Integer.parseInt(txtquantity.getText()));
         }
         
+         pd.insert(p);
          
-         
-    pd.insert(p);
+    
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setHeaderText(null);
@@ -117,20 +117,21 @@ int ID;
           txtDiscount.setText("");
           txtquantity.setText("");
           
-
-            //ProductController pc = new ProductController();
+       /*FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Product.fxml"));
+        root = loader.load();
+        ProductController productcontroller = loader.getController();
+        productcontroller.displaypro();
+            //ProductController pc = new ProductController();*/
             
     }}
          
           
-    @FXML
-    private void Update(ActionEvent event) {
-    }
 
     @FXML
-    private void Exit(ActionEvent event) {
+    private void Exit(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnExit.getScene().getWindow();
         stage.close();
+         
              
     }
 

@@ -141,7 +141,7 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
             cartItems.add(getSelectedProduct());
            cartButton.setText("Cart (" + String.valueOf(cartItems.size()) + ")");
            CartController c = new CartController();
-            
+           
            /*int q=cartItems.get(0).getQuantity()-1;
            pr.setQuantity(q);
            System.out.println(q);*/
@@ -186,7 +186,7 @@ public BorderPane mainBorderPaneForCheckoutUse;
     }
 
     @FXML
-    private void showCart(ActionEvent event) {
+    private void showCart(ActionEvent event)  {
         try{
            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Cart.fxml"));
            
@@ -195,11 +195,17 @@ public BorderPane mainBorderPaneForCheckoutUse;
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
-            
+            FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Cart.fxml"));
+             Parent roott = loader.load();
+        CartController cartcontroller = loader.getController();
+        cartcontroller.cartitems();
         
         } catch(IOException ex){
             Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE,null ,ex);
         }
+        
+        
+        
     }
 
     @FXML

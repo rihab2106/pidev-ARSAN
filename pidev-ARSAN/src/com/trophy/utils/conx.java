@@ -27,7 +27,7 @@ public class conx {
             st=cs.getCnx().createStatement();
              
         } catch (SQLException ex) {
-            Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(conx.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

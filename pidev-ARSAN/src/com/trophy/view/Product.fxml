@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="661.0" prefWidth="1517.0" style="-fx-background-color: #010101;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.ProductController">
+<AnchorPane id="AnchorPane" prefHeight="662.0" prefWidth="1328.0" style="-fx-background-color: #010101;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.ProductController">
    <children>
       <AnchorPane layoutX="371.0" layoutY="93.0" prefHeight="554.0" prefWidth="824.0">
          <children>
@@ -23,7 +23,7 @@
                <top>
                   <Pane prefHeight="75.0" prefWidth="926.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="txtName" focusTraversable="false" layoutX="162.0" layoutY="24.0" opacity="0.8" prefHeight="41.0" prefWidth="231.0" promptText="Entre Product Name">
+                        <TextField fx:id="txtSearch" focusTraversable="false" layoutX="151.0" layoutY="-2.0" onKeyTyped="#searchp" opacity="0.8" prefHeight="50.0" prefWidth="235.0" promptText="Enter Name ...." style="-fx-background-radius: 50; -fx-background-color: #FFFFFF;">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -31,19 +31,47 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <TextField fx:id="txtquantity" focusTraversable="false" layoutX="425.0" layoutY="28.0" opacity="0.8" prefHeight="43.0" prefWidth="172.0" promptText="Enter Quantity">
+                        <Button layoutX="418.0" layoutY="4.0" mnemonicParsing="false" onAction="#Search" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50;" textFill="#fffdfd">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </TextField>
+                        </Button>
+                        <ImageView fitHeight="40.0" fitWidth="31.0" layoutX="432.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-search-80.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnDESC" focusTraversable="false" layoutX="740.0" layoutY="4.0" mnemonicParsing="false" onAction="#DESC" prefHeight="27.0" prefWidth="49.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" textFill="#fcf8f8">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="753.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-sort-amount-up-reversed-50.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btnASC" focusTraversable="false" layoutX="806.0" layoutY="3.0" mnemonicParsing="false" onAction="#ASC" prefHeight="40.0" prefWidth="49.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" textFill="#fcf8f8">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <ImageView fx:id="DESCBut" fitHeight="21.0" fitWidth="23.0" layoutX="820.0" layoutY="13.0" onDragDetected="#DESC" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-ascending-sorting-64.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                </top>
                <center>
-                  <TableView fx:id="table" onMouseClicked="#clickTable" prefHeight="333.0" prefWidth="926.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="table" editable="true" onMouseClicked="#clickTable" prefHeight="333.0" prefWidth="926.0" BorderPane.alignment="CENTER">
                      <columns>
                         <TableColumn fx:id="name" prefWidth="141.5999755859375" text="Name" />
                         <TableColumn fx:id="price" prefWidth="140.800048828125" sortable="false" text="Price" />
@@ -58,7 +86,8 @@
                   </TableView>
                </center>
             </BorderPane>
-            <TextField fx:id="txtSearch" focusTraversable="false" layoutX="-39.0" layoutY="29.0" opacity="0.8" prefHeight="40.0" prefWidth="270.0" promptText="Entre Name ...." style="-fx-background-radius: 50; -fx-background-color: #FFFFFF;">
+            <AnchorPane layoutX="-102.0" layoutY="-15.0" prefHeight="4.0" prefWidth="1208.0" />
+            <TextField fx:id="txtPrice" focusTraversable="false" layoutX="272.0" layoutY="507.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" promptText="Entre Price">
                <font>
                   <Font size="23.0" />
                </font>
@@ -66,36 +95,35 @@
                   <Blend />
                </effect>
             </TextField>
-            <AnchorPane layoutX="-102.0" layoutY="-15.0" prefHeight="4.0" prefWidth="1208.0">
-               <children>
-                  <Button layoutX="1046.0" layoutY="8.0" mnemonicParsing="false" onAction="#Search" prefHeight="40.0" prefWidth="82.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 50;" textFill="#fffdfd">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </Button>
-                  <ImageView fitHeight="40.0" fitWidth="31.0" layoutX="1057.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Css/icons8-search-80.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="txtPrice" focusTraversable="false" layoutX="522.0" layoutY="1.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" promptText="Entre Price">
-                     <font>
-                        <Font size="23.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </TextField>
-                  <TextField fx:id="txtDiscount" focusTraversable="false" layoutX="702.0" layoutY="6.0" opacity="0.8" prefHeight="43.0" prefWidth="172.0" promptText="Enter Discount">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <effect>
-                        <Blend />
-                     </effect>
-                  </TextField>
-               </children>
-            </AnchorPane>
+            <TextField fx:id="txtDiscount" focusTraversable="false" layoutX="477.0" layoutY="511.0" opacity="0.8" prefHeight="43.0" prefWidth="172.0" promptText="Enter Discount">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </TextField>
+            <TextField fx:id="txtquantity" focusTraversable="false" layoutX="663.0" layoutY="511.0" opacity="0.8" prefHeight="43.0" prefWidth="172.0" promptText="Enter Quantity">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </TextField>
+            <TextField fx:id="txtName" focusTraversable="false" layoutX="14.0" layoutY="507.0" opacity="0.8" prefHeight="34.0" prefWidth="242.0" promptText="Entre Product Name">
+               <font>
+                  <Font size="23.0" />
+               </font>
+               <effect>
+                  <Blend />
+               </effect>
+            </TextField>
+            <ComboBox fx:id="ComboCategory" focusTraversable="false" layoutX="869.0" layoutY="513.0" onAction="#select" prefHeight="40.0" prefWidth="222.0" promptText="Category" style="-fx-fill: #2bc20e; -fx-background-radius: 20;" visibleRowCount="3">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-86.0" layoutY="-15.0" prefHeight="77.0" prefWidth="1196.0">
@@ -119,7 +147,7 @@
       </AnchorPane>
       <Pane layoutY="96.0" prefHeight="566.0" prefWidth="314.0" styleClass="proright" stylesheets="@../Css/product.css">
          <children>
-            <Button fx:id="btnAdd" focusTraversable="false" layoutX="84.0" layoutY="131.0" mnemonicParsing="false" onAction="#Add" prefHeight="42.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="Manage Product" textFill="#fcf8f8">
+            <Button fx:id="btnAdd" focusTraversable="false" layoutX="81.0" layoutY="184.0" mnemonicParsing="false" onAction="#Add" prefHeight="42.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="           Insert" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -127,7 +155,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnRefrech" focusTraversable="false" layoutX="143.0" layoutY="197.0" mnemonicParsing="false" onAction="#Refrech" prefHeight="41.0" prefWidth="99.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Refrech" textFill="#fcf8f8">
+            <Button fx:id="btnshop" focusTraversable="false" layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onAction="#switchshop" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #010101; -fx-background-radius: 8;" text="Check the shop" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -135,15 +163,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnshop" focusTraversable="false" layoutX="-25.0" layoutY="338.0" mnemonicParsing="false" onAction="#switchshop" prefHeight="42.0" prefWidth="194.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Check the shop" textFill="#fcf8f8">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="btnDelete" focusTraversable="false" layoutX="143.0" layoutY="370.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 50;" text="          Delete" textFill="#fcf8f8">
+            <Button fx:id="btnDelete" focusTraversable="false" layoutX="81.0" layoutY="315.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="          Delete" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -151,12 +171,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="43.0" fitWidth="75.0" layoutX="162.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Css/icons8-delete-100.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnDelete1" focusTraversable="false" layoutX="72.0" layoutY="439.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 50;" text="         Convert" textFill="#fcf8f8">
+            <Button fx:id="btnDelete1" focusTraversable="false" layoutX="88.0" layoutY="391.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="         Convert" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -164,12 +179,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="43.0" fitWidth="75.0" layoutX="75.0" layoutY="438.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Css/icons8-microsoft-excel-100.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="btnUpdate" focusTraversable="false" layoutX="111.0" layoutY="243.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 50;" text="           Update" textFill="#fcf8f8">
+            <Button fx:id="btnUpdate" focusTraversable="false" layoutX="81.0" layoutY="253.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="          Update" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -182,38 +192,12 @@
                   <Image url="@../Css/trophyhunter.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="btnrefrechtable" fitHeight="43.0" fitWidth="50.0" layoutX="225.0" layoutY="109.0" onMouseClicked="#refrechhhh" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Css/icons8-hexagon-synchronize-48.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <Button fx:id="btnDESC" focusTraversable="false" layoutX="1214.0" layoutY="34.0" mnemonicParsing="false" onAction="#DESC" prefHeight="27.0" prefWidth="49.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" textFill="#fcf8f8">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ImageView fitHeight="27.0" fitWidth="24.0" layoutX="1224.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-sort-amount-up-reversed-50.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="btnASC" focusTraversable="false" layoutX="1314.0" layoutY="28.0" mnemonicParsing="false" onAction="#ASC" prefHeight="40.0" prefWidth="49.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" textFill="#fcf8f8">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <ImageView fx:id="DESCBut" fitHeight="21.0" fitWidth="23.0" layoutX="1325.0" layoutY="34.0" onDragDetected="#DESC" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-ascending-sorting-64.png" />
-         </image>
-      </ImageView>
-      <ComboBox fx:id="ComboCategory" focusTraversable="false" layoutX="1084.0" layoutY="136.0" onAction="#select" prefHeight="40.0" prefWidth="235.0" promptText="Category" style="-fx-fill: #2bc20e; -fx-background-radius: 20;" visibleRowCount="3">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ComboBox>
    </children>
 </AnchorPane>

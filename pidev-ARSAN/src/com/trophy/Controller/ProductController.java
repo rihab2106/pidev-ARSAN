@@ -7,9 +7,14 @@ package com.trophy.Controller;
 
 import com.trophy.dao.ProductDao;
 import com.trophy.entity.Product;
+import com.trophy.entity.Notificationtwi;
+import static com.trophy.entity.Notificationtwi.ACCOUNT_SID;
+import static com.trophy.entity.Notificationtwi.AUTH_TOKEN;
 import com.trophy.utils.ConnexionSingleton;
 import com.trophy.utils.conx;
 import com.trophy.view.InsertController;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +49,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -54,6 +60,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javafx.util.converter.DefaultStringConverter;
+import javafx.util.converter.FloatStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import org.controlsfx.control.Notifications;
 import org.demo.Main;
 import retrofit2.Callback;
@@ -108,13 +117,13 @@ public class ProductController implements Initializable {
     @FXML
     private TableColumn Quantity;
     @FXML
-    private Button btnRefrech;
-    @FXML
     private Button btnshop;
     
     private Stage stage;
     private Parent root;
     private Scene scene;
+    @FXML
+    private ImageView btnrefrechtable;
     
 
     //ooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -135,9 +144,61 @@ public class ProductController implements Initializable {
         
         
         table.setItems(pd.getAllProduct());
+         table.setEditable(true);
+        name.setCellFactory(TextFieldTableCell.forTableColumn());
+        name.setOnEditCommit(new EventHandler<CellEditEvent<Product,String>>() {
+            @Override
+            public void handle(CellEditEvent<Product, String> event) {
+               Product p =event.getRowValue();
+               p.setPROD_Name(event.getNewValue());
+            }
+        });
+        price.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+        price.setOnEditCommit(new EventHandler<CellEditEvent<Product,Float>>() {
+            @Override
+            public void handle(CellEditEvent<Product, Float> event) {
+               Product p =event.getRowValue();
+               p.setPrice(event.getNewValue());
+            }
+        });
+        Quantity.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        Quantity.setOnEditCommit(new EventHandler<CellEditEvent<Product,Integer>>() {
+            @Override
+            public void handle(CellEditEvent<Product,Integer> event) {
+               Product p =event.getRowValue();
+               p.setQuantity(event.getNewValue());
+            }
+        });
+        discount.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+        discount.setOnEditCommit(new EventHandler<CellEditEvent<Product,Float>>() {
+            @Override
+            public void handle(CellEditEvent<Product,Float> event) {
+               Product p =event.getRowValue();
+               p.setDiscount(event.getNewValue());
+            }
+        });
+        
+        //Category.setCellFactory(TextFieldTableCell.forTableColumn());
+        
     }    
   ProductDao pd = new ProductDao();
-    
+    /*public void  displaypro( ){
+        Product pt =(Product) table.getSelectionModel().getSelectedItem();
+        if (pt== null){
+        System.out.println("tzed item");
+        table.setItems(pd.getAllProduct());
+        id.setCellValueFactory(new PropertyValueFactory<>("ID_Product"));
+        name.setCellValueFactory(new PropertyValueFactory<>("PROD_Name"));
+        price.setCellValueFactory(new PropertyValueFactory<>("Price"));
+        Category.setCellValueFactory(new PropertyValueFactory<>("Category"));
+        discount.setCellValueFactory(new PropertyValueFactory<>("Discount"));
+        Quantity.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
+        
+        
+        table.setItems(pd.getAllProduct());
+        
+        refresh();}
+    }*/
     @FXML
     public void Add(ActionEvent event) throws IOException   {
          
@@ -201,20 +262,17 @@ public class ProductController implements Initializable {
         
         
         
+     
         
         
-        
-        
-        
-        
-          if(Float.parseFloat(txtPrice.getText())>0&&Integer.parseInt(txtquantity.getText())>0&&Float.parseFloat(txtDiscount.getText())>0){
+      if(Float.parseFloat(txtPrice.getText())>0&&Integer.parseInt(txtquantity.getText())>0&&Float.parseFloat(txtDiscount.getText())>0){
           pr.setPROD_Name(txtName.getText());
           pr.setPrice(Float.parseFloat(txtPrice.getText()));
           pr.setDiscount(Float.parseFloat(txtDiscount.getText()));
-          pr.setCategory(ComboCategory.getValue().toString());
+         
           pr.setQuantity(Integer.parseInt(txtquantity.getText()));
           pr.setID_Product(ID);
-          
+          pr.setCategory(ComboCategory.getValue().toString());
           
         pd.update(pr);
          /* Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -230,10 +288,10 @@ public class ProductController implements Initializable {
                         
                         
                     refresh();
-          txtName.setText("");
+         /* txtName.setText("");
           txtPrice.setText("");
           txtDiscount.setText("");
-          txtquantity.setText("");
+          txtquantity.setText("");*/
          
           table.setItems(pd.getAllProduct());
           }else {
@@ -360,7 +418,6 @@ public class ProductController implements Initializable {
     private void DESC(MouseEvent event) {
     }
 
-    @FXML
     private void Refrech(ActionEvent event) {
         
             
@@ -397,6 +454,52 @@ public class ProductController implements Initializable {
        root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
        Stage window =(Stage)btnshop.getScene().getWindow();
        window.setScene(new Scene(root));
+    }
+
+   
+
+   Notificationtwi n = new Notificationtwi();
+   
+
+    @FXML
+    private void refrechhhh(MouseEvent event) {
+         id.setCellValueFactory(new PropertyValueFactory<>("ID_Product"));
+        name.setCellValueFactory(new PropertyValueFactory<>("PROD_Name"));
+        price.setCellValueFactory(new PropertyValueFactory<>("Price"));
+        Category.setCellValueFactory(new PropertyValueFactory<>("Category"));
+        discount.setCellValueFactory(new PropertyValueFactory<>("Discount"));
+        Quantity.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
+        table.setItems(pd.getAllProduct());
+        
+       
+        table.getItems().forEach(( t )->{
+           Product e=(Product)t;
+       if (e.getQuantity()<1){
+          n.notif(e.getPROD_Name());
+       
+        Image img = new Image("/com/trophy/Css/icons8-alert-64.png");
+        Notifications notificationBuilder = Notifications.create()
+                .title("Warning").text("the product "+e.getPROD_Name()+" expires soon ")
+                .graphic(new ImageView(img))
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.TOP_LEFT)
+                .onAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+               System.out.println("Clicked on Notifications");
+            }
+                });
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
+       }
+           
+       });
+    }
+
+    @FXML
+    private void searchp(KeyEvent event) {
+         table.setItems(pd.getSearchProduct(txtSearch.getText()));
+        
     }
 
     
