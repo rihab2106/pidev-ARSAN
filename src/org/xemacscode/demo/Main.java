@@ -36,7 +36,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException{
         
         this.primaryStage=primaryStage;
-         parentPage = FXMLLoader.load(getClass().getResource("/com/trophy/view/QGames.fxml"));
+         parentPage = FXMLLoader.load(getClass().getResource("/com/trophy/view/FrontGames.fxml"));
         
          Scene scene = new Scene(parentPage);
         

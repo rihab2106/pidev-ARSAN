@@ -31,12 +31,16 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
 
@@ -99,7 +103,7 @@ public class FrontGamesController implements Initializable {
         l.setLabelFor(img);
         vbox.getChildren().addAll(img,l);
         vbox.setAlignment(Pos.CENTER);
-                
+        
         game_grid.addRow((int)j,vbox);
          j+=0.5;
             } catch (FileNotFoundException ex) {
@@ -155,6 +159,8 @@ public class FrontGamesController implements Initializable {
         VBox vbox=new VBox(hbox,acc);
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(5);
+        
+        
         ScrollPane s=new ScrollPane(vbox);
         s.minHeight(588);
         s.minWidth(895);
