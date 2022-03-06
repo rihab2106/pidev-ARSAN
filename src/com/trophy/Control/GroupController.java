@@ -51,8 +51,6 @@ public class GroupController implements Initializable {
     @FXML
     private TableView tbgroup;
     @FXML
-    private TableColumn colimage;
-    @FXML
     private TableColumn colgroup;
     @FXML
     private TableColumn colname;
@@ -62,8 +60,9 @@ public class GroupController implements Initializable {
     private TextField textgname;
     @FXML
     private TextField textidgroup;
-    @FXML
     private TextField textimage;
+    @FXML
+    private Button bback;
 
      @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -158,7 +157,6 @@ public class GroupController implements Initializable {
           }     
           
     }
-    @FXML
     private void clickTable2(MouseEvent event) {
            Groups G =(Groups) tbgroup.getSelectionModel().getSelectedItem();
            textgname.setText(G.getNAME());
@@ -188,15 +186,28 @@ public class GroupController implements Initializable {
 
         
         
-              //Parent root = FXMLLoader.load(GroupController.class.getResource("users_group.fxml"));
+              
             Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/users_group.fxml"));
        
-      //Stage stage = (Stage) visitbutt.getScene().getWindow();
-    Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-   Scene  scene = new Scene(root);              
-  stage.setScene(scene);
-  stage.show();
+      
+            Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene  scene = new Scene(root);              
+            stage.setScene(scene);
+            stage.show();
   
+    }
+
+    @FXML
+    private void backtoaccount(ActionEvent event) throws IOException {
+            
+            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
+       
+      
+            Stage  stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene  scene = new Scene(root);              
+            stage.setScene(scene);
+            stage.show();
+        
     }
    
     

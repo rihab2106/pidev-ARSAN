@@ -134,7 +134,7 @@ public class userdao implements userinterface<users, Groups> {
 
         String qry;
         qry = "UPDATE `users` SET FULL_NAME = '" + p.getFULL_NAME() + "',  EMAIL = '" + p.getEMAIL() + "',PASSWORD ='" +cryptWithMD5(p.getPASSWORD())+ "' WHERE ID_USER="+p.getID_USER();
-
+         //qry = "UPDATE `users` SET FULL_NAME = '" + p.getFULL_NAME() + "',  EMAIL = '" + p.getEMAIL() + "',PASSWORD ='" +cryptWithMD5(p.getPASSWORD())+ "' WHERE EMAIL = "+p.getEMAIL();
         try {
             if (st.executeUpdate(qry) > 0) {
                 return true;
@@ -149,7 +149,7 @@ public class userdao implements userinterface<users, Groups> {
     
     public users displayacount(users p) {
        
-        String req = "select * from users where EMAIL = "+p.getEMAIL();
+        String req = "select * from users where WHERE ID_USER="+p.getID_USER();
 
         try {
             rs = st.executeQuery(req);
@@ -159,7 +159,7 @@ public class userdao implements userinterface<users, Groups> {
             p.setFULL_NAME(rs.getString(2));
           
             p.setEMAIL(rs.getString(3));
-            p.setPASSWORD(rs.getString(4));
+            //p.setPASSWORD(rs.getString(4));
 
             //}  
         } catch (SQLException ex) {
