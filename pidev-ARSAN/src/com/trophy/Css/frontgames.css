@@ -1,0 +1,30 @@
+
+.colorx{
+   -fx-text-fill : linear-gradient(to right bottom, #00FFFF, #FFE53B);
+    
+    
+}
+.gradientmaincolor{
+    
+    -fx-background-color : linear-gradient(to right bottom, #00FFFF, #FFE53B);
+}
+.proright
+{
+-fx-background-color : linear-gradient(to right bottom, #00FFFF, #FFE53B);
+-fx-background-radius :  0 110 0 0;
+}
+.button1
+{
+-fx-background-color : #68da23;
+-fx-background-radius :  30 0 0 30;
+}
+.logo
+{
+-fx-background-color :#FFFFFF;
+-fx-background-radius :  0 0 50 50;
+}
+
+.linear-grad
+{
+    -fx-background-color: linear-gradient(to bottom left, #A868A0, #2D75E8);
+}

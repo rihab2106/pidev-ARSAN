@@ -29,8 +29,6 @@ public class HomeController implements Initializable {
     @FXML
     private Button lblProducts;
     @FXML
-    private Button lblServices;
-    @FXML
     private Button Iblusers;
     @FXML
     private Button IblTrophies;
@@ -38,6 +36,10 @@ public class HomeController implements Initializable {
     private ImageView imgshop;
     @FXML
     private ImageView btncompetition;
+    @FXML
+    private ImageView btntrophy;
+    @FXML
+    private Button lblNews;
 
     /**
      * Initializes the controller class.
@@ -48,21 +50,24 @@ public class HomeController implements Initializable {
     }    
 
     @FXML
-    private void openProducts(ActionEvent event) {
+    private void openProducts(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
+       Stage window =(Stage)imgshop.getScene().getWindow();
+       window.setScene(new Scene(root));
     }
 
-    @FXML
-    private void openServices(ActionEvent event) {
-    }
 
     @FXML
-    private void openusers(ActionEvent event) {
+    private void openusers(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
+       Stage window =(Stage)imgshop.getScene().getWindow();
+       window.setScene(new Scene(root));
     }
 
     @FXML
     private void showshop(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Product.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
        Stage window =(Stage)imgshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
@@ -78,6 +83,24 @@ public class HomeController implements Initializable {
     private void showcompetition(MouseEvent event) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Competitions.fxml"));
        Stage window =(Stage)btncompetition.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void showgames(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/FrontGames.fxml"));
+       Stage window =(Stage)btntrophy.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void opennews(ActionEvent event) {
+    }
+
+    @FXML
+    private void opentrophies(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/FrontGames.fxml"));
+       Stage window =(Stage)imgshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
     

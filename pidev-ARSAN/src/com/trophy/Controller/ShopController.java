@@ -245,7 +245,7 @@ public BorderPane mainBorderPaneForCheckoutUse;
 
     @FXML
     private void Exit(ActionEvent event) throws IOException  {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Product.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Home.fxml"));
        Stage window =(Stage)btnExit.getScene().getWindow();
        window.setScene(new Scene(root));
        

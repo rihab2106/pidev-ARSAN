@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author rihab bns
  */
-public class ConnexionSingleton {
+public class ConnexionSingleton  {
     private static String url="jdbc:mysql://127.0.0.1:3306/games";
     private String login="root";
     private String pwd="";
@@ -27,7 +27,7 @@ public class ConnexionSingleton {
     }
     
     
-    private ConnexionSingleton() {
+     private ConnexionSingleton() {
         try {
             cnx=DriverManager.getConnection(url, login, pwd);
         } catch (SQLException ex) {
