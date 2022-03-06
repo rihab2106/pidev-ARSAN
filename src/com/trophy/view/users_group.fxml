@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Control.Users_groupController">
+   <children>
+      <TableView fx:id="tabl" layoutX="46.0" layoutY="84.0" prefHeight="234.0" prefWidth="383.0">
+        <columns>
+          <TableColumn fx:id="frlist" prefWidth="76.0" text="IDFriends" />
+            <TableColumn fx:id="statusfriend1" prefWidth="84.0" text="staus" />
+            <TableColumn fx:id="name1" prefWidth="113.5999755859375" text="name" />
+            <TableColumn fx:id="idgr" prefWidth="115.2000732421875" text="IDGroup" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textfriend" layoutX="277.0" layoutY="40.0" promptText="Id friend " />
+      <Button fx:id="blockbutt" layoutX="458.0" layoutY="233.0" mnemonicParsing="false" onAction="#block" prefHeight="26.0" prefWidth="114.0" text="block" />
+      <Button fx:id="textdelet" layoutX="457.0" layoutY="145.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="114.0" text="delete friend " />
+      <TextField fx:id="textgroup" layoutX="29.0" layoutY="40.0" promptText="Id group" />
+      <Button fx:id="buttadd" layoutX="456.0" layoutY="93.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="114.0" text="add friend" />
+      <Button fx:id="unblockbutt" layoutX="458.0" layoutY="272.0" mnemonicParsing="false" onAction="#unblock" prefHeight="26.0" prefWidth="114.0" text="unblock" />
+      <Button fx:id="showbutt" layoutX="457.0" layoutY="39.0" mnemonicParsing="false" onAction="#show" prefHeight="26.0" prefWidth="113.0" text="show users" />
+   </children>
+</AnchorPane>
