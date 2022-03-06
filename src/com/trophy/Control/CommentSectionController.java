@@ -15,7 +15,9 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.ResourceBundle;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -25,17 +27,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import javax.imageio.ImageIO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -71,16 +83,23 @@ public class CommentSectionController implements Initializable {
     private TableView commentview;
     @FXML
     private TableColumn LIKES;
-    @FXML
-    private TableColumn DISLIKES;
+    
     @FXML
     private TableColumn content;
-    @FXML
     private TableColumn<Comment, Void> likeanddislike;
     @FXML
     private Button previous;
-    @FXML
     private TableColumn<Comment, Void> DISLIKE1;
+    @FXML
+    private Button Addcombtn;
+    @FXML
+    private TextField commentfield;
+    @FXML
+    private Button Addcombtn1;
+    @FXML
+    private Button DONEBTN;
+    @FXML
+    private ContextMenu CM;
 
     public void InitData(News news, ObservableList<Comment> comments) throws MalformedURLException, IOException {
         selectedNews = news;
@@ -120,7 +139,6 @@ public class CommentSectionController implements Initializable {
 
         content.setCellValueFactory(new PropertyValueFactory<>("comcontent"));
         LIKES.setCellValueFactory(new PropertyValueFactory<>("likes"));
-        DISLIKES.setCellValueFactory(new PropertyValueFactory<>("dislikes"));
         commentview.setBackground(Background.EMPTY);
     }
 
@@ -128,80 +146,50 @@ public class CommentSectionController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       DISLIKE1.setVisible(false);
+       
+       
+       MenuItem mi=new MenuItem("Like");
+       MenuItem mi2=new MenuItem("Dislike");
+       
+       //Comment c=new Comment();
+       mi.setOnAction(evt->{
+       Comment comment = (Comment) commentview.getSelectionModel().getSelectedItem();
+
+       //c.setComcontent(comment.getComcontent());
+       //c.setLikes(comment.getLikes());
+       comment.setLikes(comment.getLikes()+1);
+       cd.update(comment, selectedNews);
+       
+       commentview.setItems(cd.getAllComments(selectedNews));
+      
+       CM.getItems().add(mi2);
+       CM.getItems().remove(mi);
+       
+       
+       
+       
+       });
+       mi2.setOnAction(evt->{
+       Comment comment = (Comment) commentview.getSelectionModel().getSelectedItem();
+
+       comment.setLikes(comment.getLikes()-1);
+       cd.update(comment, selectedNews);
+       commentview.setItems(cd.getAllComments(selectedNews));
+              CM.getItems().add(mi);
+              CM.getItems().remove(mi2);
+       
+       
+       });
+       
+       CM.getItems().add(mi);
+       
+       
+       
+       
+                
 
 {     
-      likeanddislike.setCellFactory(col -> new TableCell<Comment, Void>() {
-     //   private final Button button2;
-        private final Button button;
-
-        {  
-            button = new Button("Like");
-            button.setOnAction(evt -> {
-               
-                Comment item = (Comment) getTableRow().getItem();
-                item.setLikes(item.getLikes()+1);
-                
-                
-                cd.update(item, selectedNews);
-                likeanddislike.setVisible(false);
-                DISLIKE1.setVisible(true);
-                commentview.setItems(cd.getAllComments(selectedNews));
-                System.out.println(cd.getAllComments(selectedNews));
-               /*button2.setOnAction(evt2 -> {
-            Comment item2 = (Comment) getTableRow().getItem();
-                item2.setDislikes(item2.getDislikes()+1);
-                button2.setVisible(false);
-                button.setVisible(true);
-                cd.update(item2, selectedNews);
-                commentview.setItems(cd.getAllComments(selectedNews));
-                System.out.println(cd.getAllComments(selectedNews));
-
-
-
-});
-
-
-
-
-*/
-            });
-        }
-
-        @Override
-        protected void updateItem(Void item, boolean empty) {
-            super.updateItem(item, empty);
-            setGraphic(empty ? null : button);
-        }
-        
-    });
-
-            DISLIKE1.setCellFactory(col -> new TableCell<Comment, Void>() {
-            private final Button button2;
-                { button2=new Button("Dislike");
-               button2.setOnAction(evt->{ button2.getText();
-                Comment item2 = (Comment) getTableRow().getItem();
-                item2.setDislikes(item2.getDislikes()+1);
-                likeanddislike.setVisible(true);
-                DISLIKE1.setVisible(false);
-                cd.update(item2, selectedNews);
-                commentview.setItems(cd.getAllComments(selectedNews));
-                System.out.println(cd.getAllComments(selectedNews));
-                
-                });}
-                
-                
-                
-        @Override
-        protected void updateItem(Void item2, boolean empty) {
-            super.updateItem(item2, empty);
-            setGraphic(empty ? null : button2);
-            
-        }
-        
-        
-        
-        });       
+       
     }}
             
             
@@ -231,4 +219,81 @@ public class CommentSectionController implements Initializable {
         stage.show();
     }
 
+   
+
+    
+
+    @FXML
+    private void ADDNEWITEM(MouseEvent event) {
+       /* AddCom.setVisible(true);
+        AddCom.setCellFactory(col -> new TableCell<Comment, String>() {
+     //   private final Button button2;
+        private final Button button;
+
+        {  
+            button = new Button("Add");
+            button.setOnAction(evt -> {
+               
+                Comment item = (Comment) getTableRow().getItem();
+                item.setLikes(0);
+                item.setDislikes(0);
+                item.setNews(selectedNews);
+                item.setComcontent(item.getComcontent());
+                cd.insert(item, selectedNews);
+                
+                
+                
+                commentview.setItems(cd.getAllComments(selectedNews));
+    });
+                    }});*/}
+
+
+    @FXML
+    private void ADDCOMMENT(KeyEvent event) {
+    }
+
+    @FXML
+    private void Addcomment(ActionEvent event) {
+       
+        
+        if (!commentfield.getText().isEmpty())
+        { Comment comment = new Comment();
+          comment.setComcontent(commentfield.getText());
+          cd.insert(comment, selectedNews);
+          commentview.setItems(cd.getAllComments(selectedNews));
+          commentfield.setText("");
+        }
+        else {
+    Alert a=new Alert(Alert.AlertType.WARNING,"Field is Empty",ButtonType.OK);
+              
+              a.setContentText("Field is empty");
+              a.setTitle("Input Error");
+              a.setGraphic(null);
+              a.setHeaderText("Can't insert an empty comment");
+              a.show();
+              refresh();
+              
+        }
+    }
+
+    @FXML
+    private void displayfield(ActionEvent event) {
+        commentfield.setVisible(true);
+        Addcombtn1.setVisible(true);
+        DONEBTN.setVisible(true);
+        
+    }
+
+    @FXML
+    private void hidefield(ActionEvent event) {
+        Addcombtn1.setVisible(false);
+        commentfield.setVisible(false);
+        DONEBTN.setVisible(false);
+    }
+
+    @FXML
+    private void ClickTable(MouseEvent event) {
+    }
+
+    
 }

@@ -25,6 +25,7 @@ import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.ResourceBundle;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -35,7 +36,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -154,6 +157,16 @@ public class NewssController implements Initializable {
             n.setContent(txtheadline111.getText());
             n.setHeadline(txtheadline1.getText());
             n.setImgurl(txtheadline11.getText());
+        }        else {
+    Alert a=new Alert(Alert.AlertType.WARNING,"Field is Empty",ButtonType.OK);
+              
+              a.setContentText("Field is empty");
+              a.setTitle("Input Error");
+              a.setGraphic(null);
+              a.setHeaderText("Can't insert an empty News");
+              a.show();
+              refresh();
+              
         }
         nd.insert(n);
         System.out.println(n.toString());
@@ -311,6 +324,16 @@ public class NewssController implements Initializable {
         if (!AddComment.getText().equals("")) {
             cm.setIdcomm(idc);
             cm.setComcontent(AddComment.getText());
+        }        else {
+    Alert a=new Alert(Alert.AlertType.WARNING,"Field is Empty",ButtonType.OK);
+              
+              a.setContentText("Field is empty");
+              a.setTitle("Input Error");
+              a.setGraphic(null);
+              a.setHeaderText("Can't insert an empty comment");
+              a.show();
+              refresh();
+              
         }
         cd.insert(cm, n);
         AddComment.setText("");
