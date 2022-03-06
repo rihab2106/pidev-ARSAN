@@ -260,13 +260,30 @@ public class ProductController implements Initializable {
         Product pr = new Product();
         
         
+         if(txtName.getText().equals("")||txtPrice.getText().equals("")||txtDiscount.getText().equals("")||txtquantity.getText().equals("")|| ComboCategory.getSelectionModel().getSelectedItem()== null){
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("there is a missing field!");
+                    alert.show();
+                    refresh();
+           }else if(!(txtName.getText().matches("[a-zA-Z]+"))  && !(txtName.getText().contains("-"))&& !(txtName.getText().contains("_"))&& !(txtName.getText().contains(" "))){
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Product name should contain only Letters , spaces ,- or _!");
+                    alert.show();
+                    refresh();
         
-        
-     
-        
-        
-      if(Float.parseFloat(txtPrice.getText())>0&&Integer.parseInt(txtquantity.getText())>0&&Float.parseFloat(txtDiscount.getText())>0){
-          pr.setPROD_Name(txtName.getText());
+                   
+       }else if (!(txtPrice.getText().toString().matches("[0-9]+"))|| !(txtquantity.getText().toString().matches("[1-9]+")) || !(txtDiscount.getText().toString().matches("[0-9]+")) ){Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    
+       alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("the Price, quantity and Discount should be a digital number and quantity should at least 1");
+                    alert.show();
+                    refresh();} else {
+           pr.setPROD_Name(txtName.getText());
           pr.setPrice(Float.parseFloat(txtPrice.getText()));
           pr.setDiscount(Float.parseFloat(txtDiscount.getText()));
          
@@ -275,11 +292,7 @@ public class ProductController implements Initializable {
           pr.setCategory(ComboCategory.getValue().toString());
           
         pd.update(pr);
-         /* Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Product updated successfuly!");
-                    alert.show();*/
+         
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Success!");
                         alert.setHeaderText("Successfully Updated Product Information!");
@@ -293,14 +306,12 @@ public class ProductController implements Initializable {
           txtDiscount.setText("");
           txtquantity.setText("");*/
          
-          table.setItems(pd.getAllProduct());
-          }else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error!");
-                    alert.setHeaderText("Discount ,Price and quantity  value can not be lower than 0 !");
-                    alert.setContentText(null);
-                    alert.showAndWait();
-          }  
+          table.setItems(pd.getAllProduct());}
+        
+     
+        
+        
+      
         
     }
 

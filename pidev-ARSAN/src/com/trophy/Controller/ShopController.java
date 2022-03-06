@@ -6,6 +6,8 @@
 package com.trophy.Controller;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
@@ -35,6 +37,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -53,6 +56,9 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 
@@ -89,6 +95,10 @@ public class ShopController implements Initializable {
     private Hyperlink cartButton;
     @FXML
     private Button btnExit;
+    @FXML
+    private Button coupnBtn;
+    @FXML
+    private Label coupon;
     /**
      * Initializes the controller class.
      */
@@ -140,8 +150,11 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
             
             cartItems.add(getSelectedProduct());
            cartButton.setText("Cart (" + String.valueOf(cartItems.size()) + ")");
-           CartController c = new CartController();
-           
+           /*if ( cartItems.add(getSelectedProduct())){
+           FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Cart.fxml"));
+        Parent root = loader.load();
+        CartController cartcontroller = loader.getController();
+        cartcontroller.cartitems();}*/
            /*int q=cartItems.get(0).getQuantity()-1;
            pr.setQuantity(q);
            System.out.println(q);*/
@@ -171,7 +184,29 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
         return cartItems;
     }
     
-    
+    @FXML
+    public void showCart(ActionEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Cart.fxml"));
+        AnchorPane cart = loader.load();
+        CartController cartController = loader.getController();
+        cartController.updatedCartButton = cartButton;
+        cartController.mainBorderPaneForCheckoutUse = pane;
+        cartController.cartitems(this);
+        pane.getChildren().addAll(cart);
+       
+
+
+       // pane.getParent().setVisible(true);
+       
+                
+       /* pane.getLeftAnchor(cart);
+        pane.getRightAnchor(cart);
+        pane.getBottomAnchor(cart);
+        pane.getTopAnchor(cart);*/
+       
+        
+        
+            }
      
      
      
@@ -185,8 +220,7 @@ public BorderPane mainBorderPaneForCheckoutUse;
         
     }
 
-    @FXML
-    private void showCart(ActionEvent event)  {
+    private void showCart1(ActionEvent event)  {
         try{
            Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Cart.fxml"));
            
@@ -198,7 +232,7 @@ public BorderPane mainBorderPaneForCheckoutUse;
             FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Cart.fxml"));
              Parent roott = loader.load();
         CartController cartcontroller = loader.getController();
-        cartcontroller.cartitems();
+        /*cartcontroller.cartitems();*/
         
         } catch(IOException ex){
             Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE,null ,ex);
@@ -214,6 +248,27 @@ public BorderPane mainBorderPaneForCheckoutUse;
        Stage window =(Stage)btnExit.getScene().getWindow();
        window.setScene(new Scene(root));
        
+    }
+
+    @FXML
+    private void showcoupons(ActionEvent event) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+
+       Request request = new Request.Builder()
+	.url("https://cashnjoy-com-free-coupon-codes-v1.p.rapidapi.com/api/vcodes-api.php?siteid=zi00001")
+	.get()
+	.addHeader("x-rapidapi-host", "cashnjoy-com-free-coupon-codes-v1.p.rapidapi.com")
+	.addHeader("x-rapidapi-key", "8e98077110msh3fba1864b104aa6p1f98fajsna13a5e5ab73e")
+	.build();
+    Response response = client.newCall(request).execute();
+     System.out.println(response.isSuccessful());
+     ObjectMapper obj = new ObjectMapper();
+     JsonNode jn = obj.readTree(response.body().string());
+    
+    }
+
+    @FXML
+    private void showcoupon(MouseEvent event) {
     }
     
 }

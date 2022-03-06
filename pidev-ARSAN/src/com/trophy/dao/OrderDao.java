@@ -27,7 +27,7 @@ public class OrderDao {
     public void insert(Order O) {
           try {
           st = ConnexionSingleton.openConnection().createStatement();
-          st.executeUpdate("INSERT INTO `order`(`OrderID`, `CardNumber`, `CardPassword`, `Name`, `Month`, `Year`) VALUES ('"+O.getOrderID()+"','"+O.getCardNumber()+"','"+O.getCardNumber()+"','"+O.getName()+"','"+O.getMonth()+"','"+O.getYear()+"')");
+          st.executeUpdate("INSERT INTO `order`(`OrderID`, `CardNumber`, `CardPassword`, `Name`, `Month`, `Year`) VALUES ('"+O.getOrderID()+"','"+O.getCardNumber()+"','"+O.getCardPassword()+"','"+O.getName()+"','"+O.getMonth()+"','"+O.getYear()+"')");
           ConnexionSingleton.closeConnection();
           }catch (SQLException ex){
           ConnexionSingleton.closeConnection();

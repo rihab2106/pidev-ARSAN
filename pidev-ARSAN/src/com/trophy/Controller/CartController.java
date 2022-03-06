@@ -5,6 +5,7 @@
  */
 package com.trophy.Controller;
 
+import com.trophy.dao.ProductDao;
 import com.trophy.dao.ShopDao;
 import com.trophy.entity.Product;
 import java.io.IOException;
@@ -33,6 +34,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -60,7 +62,7 @@ public class CartController implements Initializable {
 public Hyperlink updatedCartButton;
  
 private ShopController shopController;
-public BorderPane mainBorderPaneForCheckoutUse;
+public AnchorPane mainBorderPaneForCheckoutUse;
 NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.FRANCE);
 private Stage stage;
 private Parent root;
@@ -74,15 +76,27 @@ private Scene scene;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cartTable.setPlaceholder(new Label("Your shopping cart is empty..."));
-        ShopDao sd = new ShopDao();
-         
-         cartTable.setItems(sd.getProducttoShop());
+        
          
          
-         for (Product product : cartTable.getItems()){
+         
+         
+         
+         
+    
+    
+    }    
+
+    public void cartitems(ShopController shopController){
+        this.shopController = shopController;
+        cartTable.setItems(shopController.getCartItems());
+        ProductDao pd = new ProductDao();
+       
+    for (Product product : cartTable.getItems()){
             
          total = total+ (product.getPrice()- (product.getPrice()*(product.getDiscount()/100)));
-         
+         product.setQuantity((product.getQuantity())-1);
+         pd.update(product);
          String currencyPrice = currencyFormatter.format(total);
           subtotalLabel.setText(currencyPrice); 
                     
@@ -140,14 +154,6 @@ private Scene scene;
                 });
             }
         });     
-         
-    
-    
-    }    
-
-    public void cartitems(){
-    
-   
        
     }
      

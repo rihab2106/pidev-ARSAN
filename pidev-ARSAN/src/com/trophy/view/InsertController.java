@@ -89,21 +89,38 @@ int ID;
                     alert.setContentText("there is a missing field!");
                     alert.show();
                     refresh();
-           }else{
-          
-        if(!txtName.getText().equals("")&&!txtPrice.getText().equals("")&&!txtDiscount.getText().equals("")){
-        p.setID_Product(ID);
+           }else if(!(txtName.getText().matches("[a-zA-Z]+"))  && !(txtName.getText().contains("-"))&& !(txtName.getText().contains("_"))&& !(txtName.getText().contains(" "))){
+          Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Product name should contain only Letters , spaces ,- or _!");
+                    alert.show();
+                    refresh();
+        
+                   
+       }else if (!(txtPrice.getText().toString().matches("[0-9]+"))|| !(txtquantity.getText().toString().matches("[1-9]+")) || !(txtDiscount.getText().toString().matches("[0-9]+")) ){Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    
+       alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("the Price, quantity and Discount should be a digital number and quantity should at least 1");
+                    alert.show();
+                    refresh();} 
+    else {
+           
+           
+           
+                p.setID_Product(ID);
         p.setPROD_Name(txtName.getText());
         p.setPrice(Float.parseFloat(txtPrice.getText()));
         p.setCategory(ComboCategory.getValue().toString());
         p.setDiscount(Float.parseFloat(txtDiscount.getText()));
         p.setQuantity(Integer.parseInt(txtquantity.getText()));
-        }
+        
         
          pd.insert(p);
          
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
     
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setHeaderText(null);
                     alert.setContentText("Product added successfuly!");
@@ -116,14 +133,14 @@ int ID;
           txtPrice.setText("");
           txtDiscount.setText("");
           txtquantity.setText("");
+           }
+        
           
        /*FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Product.fxml"));
         root = loader.load();
         ProductController productcontroller = loader.getController();
         productcontroller.displaypro();
-            //ProductController pc = new ProductController();*/
-            
-    }}
+            //ProductController pc = new ProductController();*/}
          
           
 
