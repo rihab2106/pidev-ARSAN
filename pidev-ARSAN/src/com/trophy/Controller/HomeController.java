@@ -64,5 +64,12 @@ public class HomeController implements Initializable {
        Stage window =(Stage)imgshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
+
+    @FXML
+    private void showuser(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
+       Stage window =(Stage)imgshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
     
 }

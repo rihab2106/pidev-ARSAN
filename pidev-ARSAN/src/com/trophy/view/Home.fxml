@@ -111,11 +111,16 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <Label alignment="CENTER" layoutX="-6.0" layoutY="146.0" prefHeight="17.0" prefWidth="174.0" text="ffff" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="-6.0" layoutY="146.0" prefHeight="17.0" prefWidth="174.0" text="users" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="60.0" layoutY="60.0" onMouseClicked="#showuser" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-macaron-100.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
@@ -242,7 +247,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Line endX="-3.79998779296875" endY="582.9818115234375" layoutY="75.0" startX="-3.79998779296875" startY="-57.818172454833984" stroke="#2bc20e" />
+                  <Line endX="-3.79998779296875" endY="582.9818115234375" layoutY="75.0" startX="-3.79998779296875" startY="-57.818172454833984" stroke="#401fca" />
                </children>
             </Pane>
          </children>

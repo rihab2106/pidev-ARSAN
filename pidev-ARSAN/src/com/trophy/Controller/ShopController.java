@@ -192,6 +192,7 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
         cartController.updatedCartButton = cartButton;
         cartController.mainBorderPaneForCheckoutUse = pane;
         cartController.cartitems(this);
+        pane.getChildren().clear();
         pane.getChildren().addAll(cart);
        
 

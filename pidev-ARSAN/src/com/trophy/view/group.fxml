@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.GroupController">
+   <children>
+      <Button fx:id="createbutton" layoutX="19.0" layoutY="21.0" mnemonicParsing="false" onAction="#create" prefHeight="31.0" prefWidth="108.0" text="create Group" />
+      <Button fx:id="updatebutton" layoutX="26.0" layoutY="180.0" mnemonicParsing="false" onAction="#update" text="Update Group" />
+      <Button fx:id="deletebutton" layoutX="30.0" layoutY="221.0" mnemonicParsing="false" onAction="#delete" text="Delete Group" />
+      <Button fx:id="searchbutton" layoutX="509.0" layoutY="24.0" mnemonicParsing="false" onAction="#searchgroup" text="search" />
+      <TextField fx:id="searchtext" layoutX="272.0" layoutY="24.0" promptText="group name" />
+      <TableView fx:id="tbgroup" layoutX="150.0" layoutY="62.0" prefHeight="236.0" prefWidth="300.0">
+        <columns>
+          <TableColumn fx:id="colgroup" prefWidth="119.20001220703125" text="Id group" />
+            <TableColumn fx:id="colname" prefWidth="178.4000244140625" text="Group Name" />
+            <TableColumn fx:id="colnbutt" minWidth="0.0" prefWidth="0.0" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textgname" layoutX="12.0" layoutY="79.0" prefHeight="25.0" prefWidth="123.0" promptText="group name" />
+      <TextField fx:id="textidgroup" layoutX="12.0" layoutY="123.0" prefHeight="25.0" prefWidth="123.0" promptText="id group" />
+      <VBox layoutY="317.0" prefHeight="83.0" prefWidth="600.0" style="-fx-background-color: #8FBC8F;">
+         <children>
+            <Button fx:id="bback" alignment="BOTTOM_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#backtoaccount" text="Account" />
+            <Button fx:id="visitbutt" alignment="TOP_LEFT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#visit" prefHeight="26.0" prefWidth="93.0" text="visit group" translateX="500.0" />
+         </children>
+      </VBox>
+   </children>
+</Pane>

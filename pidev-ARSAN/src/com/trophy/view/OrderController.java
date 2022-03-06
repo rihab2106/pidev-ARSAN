@@ -73,7 +73,7 @@ int Month,Year,ID;
                     alert.setContentText("NUMBER ON THe CARD is Composed of 16 number!");
                     alert.show();
                     refresh();
-           }else if (!(TXTPASS.getText().length()==4) ||!(TXTPASS.getText().toString().matches("[0-9]+"))){
+           }else if (!(TXTPASS.getText().length()==3) ||!(TXTPASS.getText().toString().matches("[0-9]+"))){
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Information Dialog");
                     alert.setHeaderText(null);

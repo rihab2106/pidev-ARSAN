@@ -11,7 +11,7 @@ import com.trophy.entity.Notificationtwi;
 import static com.trophy.entity.Notificationtwi.ACCOUNT_SID;
 import static com.trophy.entity.Notificationtwi.AUTH_TOKEN;
 import com.trophy.utils.ConnexionSingleton;
-import com.trophy.utils.conx;
+
 import com.trophy.view.InsertController;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
