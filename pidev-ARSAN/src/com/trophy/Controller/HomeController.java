@@ -36,6 +36,8 @@ public class HomeController implements Initializable {
     private Button IblTrophies;
     @FXML
     private ImageView imgshop;
+    @FXML
+    private ImageView btncompetition;
 
     /**
      * Initializes the controller class.
@@ -69,6 +71,13 @@ public class HomeController implements Initializable {
     private void showuser(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
        Stage window =(Stage)imgshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void showcompetition(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Competitions.fxml"));
+       Stage window =(Stage)btncompetition.getScene().getWindow();
        window.setScene(new Scene(root));
     }
     

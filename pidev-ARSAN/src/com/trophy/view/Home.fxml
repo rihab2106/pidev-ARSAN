@@ -172,11 +172,16 @@
                               </LinearGradient>
                            </fill>
                         </Circle>
-                        <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="oooo" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Competitions" textFill="WHITE">
                            <font>
                               <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Label>
+                        <ImageView fx:id="btncompetition" fitHeight="54.0" fitWidth="54.0" layoutX="63.0" layoutY="60.0" onMouseClicked="#showcompetition" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Css/icons8-delivery-100.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <Pane layoutX="316.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
