@@ -282,7 +282,20 @@ public class userdao implements userinterface<users, Groups> {
         }
    return group;
    }
-    
+   public boolean checkID(int id){
+        try {
+           
+            String request="SELECT * FROM users ID_USER="+id;
+            
+                   rs = st.executeQuery(request);
+            
+            return rs.next();
+        } catch (SQLException ex) {
+            //Logger.getLogger(UsersService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+     
+     } 
         
 
 }

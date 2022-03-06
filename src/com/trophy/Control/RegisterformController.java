@@ -72,9 +72,11 @@ public class RegisterformController implements Initializable {
 //       
 //     
 //    }
+      
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         submit.setOnAction(event->{
              if( (fulnametxt.getText().isEmpty()|| passtext.getText().isEmpty()
                  || idtext.getText().isEmpty()|| emailtext.getText().isEmpty() ) ){
@@ -84,21 +86,51 @@ public class RegisterformController implements Initializable {
                alert.setContentText("Please fill in the filds !!! ");
                alert.show();
                
+               
            }
+              
+             
+             
+             
            else{
                     
-                      
-              
+                  int ID_USER = Integer.parseInt(idtext.getText());
+                userdao pd = new userdao();    
+              if(pd.checkID(ID_USER)==false){
+               
+                     
+                       Alert alert = new Alert(Alert.AlertType.ERROR);
+               alert.setTitle("User can not be created !!! ");
+               alert.setContentText("id already exist try agin please ");
+               alert.show();
+               try {
+             
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/registerform.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            } catch (IOException ex) {
+                System.out.println("error in displaying the interface");
+            }  
+ 
+            
+               
+               
+                     }
+             
            
              
-            int ID_USER = Integer.parseInt(idtext.getText());
+           
            
             
             users u = new users( ID_USER,fulnametxt.getText(),emailtext.getText(),
             passtext.getText());
            
             
-          userdao pd = new userdao();
+        
                 
             pd.insert(u);
             fulnametxt.setText("");
