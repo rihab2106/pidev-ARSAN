@@ -162,7 +162,7 @@
                               <Font name="Arial Bold" size="13.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="btnnews" fitHeight="54.0" fitWidth="54.0" layoutX="57.0" layoutY="60.0" onMouseClicked="#showuser" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="btnnews" fitHeight="54.0" fitWidth="54.0" layoutX="57.0" layoutY="60.0" onMouseClicked="#showNews" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Css/icons8-news-48.png" />
                            </image>

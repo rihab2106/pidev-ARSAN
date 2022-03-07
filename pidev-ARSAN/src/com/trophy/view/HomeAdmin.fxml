@@ -1,36 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.trophy.Controller.HomeAdminController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.HomeAdminController">
    <children>
-      <ImageView fx:id="btnshop" fitHeight="79.0" fitWidth="91.0" layoutX="42.0" layoutY="146.0" onMouseClicked="#showshop" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-shop-64.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="91.0" layoutX="146.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-competitions-64.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="91.0" layoutX="260.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-users-64.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="91.0" layoutX="389.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-news-48.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="79.0" fitWidth="91.0" layoutX="498.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Css/icons8-games-64.png" />
-         </image>
-      </ImageView>
+      <GridPane layoutX="58.0" layoutY="147.0" prefHeight="106.0" prefWidth="483.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ImageView fx:id="btnshop" fitHeight="79.0" fitWidth="91.0" onMouseClicked="#showshop" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Css/icons8-shop-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="game_back" fitHeight="79.0" fitWidth="91.0" onMouseClicked="#showGames" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../Css/icons8-competitions-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="79.0" fitWidth="91.0" onMouseClicked="#show_user" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../Css/icons8-users-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="79.0" fitWidth="91.0" onMouseClicked="#show_news" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../Css/icons8-news-48.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="79.0" fitWidth="91.0" onMouseClicked="#show_competition" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+               <image>
+                  <Image url="@../Css/icons8-games-64.png" />
+               </image>
+            </ImageView>
+            <Label text="Shop" GridPane.rowIndex="1" />
+            <Label text="Games&amp;Trophies" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Users" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="News" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="Competitions" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

@@ -76,8 +76,6 @@ public class CompetitionsController implements Initializable {
     private Button sortComp;
       @FXML
     private Button gototeams;
-        @FXML
-    private Button exportToExcel;
       
      
     /**
@@ -85,6 +83,8 @@ public class CompetitionsController implements Initializable {
      */
     
        CompetitionsDao cd = new CompetitionsDao();
+    @FXML
+    private Button comphome;
   
    
    
@@ -337,6 +337,13 @@ public class CompetitionsController implements Initializable {
                 })
                 //béch yraja3 stream list 
                 .collect(Collectors.toList())));
+    }
+
+    @FXML
+    private void showHome(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Home.fxml"));
+       Stage window =(Stage)comphome.getScene().getWindow();
+       window.setScene(new Scene(root));
     }
     
 }

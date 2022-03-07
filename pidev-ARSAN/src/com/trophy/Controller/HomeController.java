@@ -101,5 +101,12 @@ public class HomeController implements Initializable {
     private void opentrophies(ActionEvent event) throws IOException {
         
     }
+
+    @FXML
+    private void showNews(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/UserView.fxml"));
+       Stage window =(Stage)imgshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
     
 }

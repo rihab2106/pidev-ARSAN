@@ -39,7 +39,7 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <Button fx:id="btnAddComp" focusTraversable="false" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#Add" prefHeight="42.0" prefWidth="83.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="ADD" textFill="#fcf8f8">
+                        <Button fx:id="btnAddComp" focusTraversable="false" layoutX="14.0" layoutY="338.0" mnemonicParsing="false" onAction="#Add" prefHeight="42.0" prefWidth="83.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="ADD" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
@@ -47,7 +47,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnUpdateComp" focusTraversable="false" layoutX="106.0" layoutY="339.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Update" textFill="#fcf8f8">
+                        <Button fx:id="btnUpdateComp" focusTraversable="false" layoutX="106.0" layoutY="339.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Update" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnDeleteComp" focusTraversable="false" layoutX="205.0" layoutY="340.0" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Delete" textFill="#fcf8f8">
+                        <Button fx:id="btnDeleteComp" focusTraversable="false" layoutX="205.0" layoutY="340.0" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="90.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Delete" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -65,12 +65,20 @@
                         </Button>
                         <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="219.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" />
                         <Text layoutX="-2.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hhhhh" wrappingWidth="289.0000034272671" />
-                        <Button fx:id="gototeams" layoutX="33.0" layoutY="446.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="252.0" text="Teams" />
+                        <Button fx:id="gototeams" layoutX="33.0" layoutY="446.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="252.0" styleClass="button4" stylesheets="@../Css/product.css" text="Teams" textFill="#fffafa">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Button>
                      </children>
                      <padding>
                         <Insets bottom="25.0" top="30.0" />
                      </padding>
                   </Pane>
+                  <Button fx:id="comphome" layoutX="60.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#showHome" prefHeight="32.0" prefWidth="73.0" styleClass="button1" stylesheets="@../Css/product.css" text="HOME" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="356.0" layoutY="11.0" prefHeight="649.0" prefWidth="820.0">

@@ -26,6 +26,8 @@ public class HomeAdminController implements Initializable {
 
     @FXML
     private ImageView btnshop;
+    @FXML
+    private ImageView game_back;
 
     /**
      * Initializes the controller class.
@@ -38,6 +40,34 @@ public class HomeAdminController implements Initializable {
     @FXML
     private void showshop(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Product.fxml"));
+       Stage window =(Stage)btnshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void showGames(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/QGames.fxml"));
+       Stage window =(Stage)btnshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void show_user(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
+       Stage window =(Stage)btnshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void show_news(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Newss.fxml"));
+       Stage window =(Stage)btnshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
+    @FXML
+    private void show_competition(MouseEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Competitions.fxml"));
        Stage window =(Stage)btnshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
