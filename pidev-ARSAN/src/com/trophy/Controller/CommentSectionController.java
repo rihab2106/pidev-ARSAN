@@ -68,8 +68,6 @@ public class CommentSectionController implements Initializable {
     @FXML
     private Button loginbtn;
     @FXML
-    private Button signupbtn;
-    @FXML
     private Text hl1;
     @FXML
     private TextArea desc1;
@@ -100,6 +98,8 @@ public class CommentSectionController implements Initializable {
     private Button DONEBTN;
     @FXML
     private ContextMenu CM;
+    @FXML
+    private Button btnback;
 
     public void InitData(News news, ObservableList<Comment> comments) throws MalformedURLException, IOException {
         selectedNews = news;
@@ -204,9 +204,6 @@ public class CommentSectionController implements Initializable {
     private void login(ActionEvent event) {
     }
 
-    @FXML
-    private void signup(ActionEvent event) {
-    }
 
     private Stage stage;
 
@@ -295,6 +292,21 @@ public class CommentSectionController implements Initializable {
 
     @FXML
     private void ClickTable(MouseEvent event) {
+    }
+
+    @FXML
+    private void Back(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/UserView.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            } catch (IOException ex) {
+                System.out.println("error , you can Logout ");
+            }
     }
 
     

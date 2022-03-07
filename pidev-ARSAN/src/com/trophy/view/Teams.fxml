@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.TeamsController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.TeamsController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="671.0" prefWidth="1186.0" style="-fx-background-color: #010101;" styleClass="mainFxmlClass" stylesheets="">
          <children>
@@ -22,7 +22,7 @@
                <children>
                   <Pane layoutX="23.0" layoutY="106.0" prefHeight="566.0" prefWidth="317.0">
                      <children>
-                        <TextField fx:id="inputIdTeam" focusTraversable="false" layoutX="13.0" layoutY="94.0" opacity="0.8" prefHeight="40.0" prefWidth="289.0" promptText="Enter Team Id">
+                        <TextField fx:id="inputIdTeam" focusTraversable="false" layoutX="13.0" layoutY="94.0" opacity="0.8" prefHeight="40.0" prefWidth="289.0" promptText="Enter Team Id" style="-fx-background-radius: 15;">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -30,7 +30,7 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <TextField fx:id="inputTeamName" focusTraversable="false" layoutX="13.0" layoutY="271.0" opacity="0.8" prefHeight="50.0" prefWidth="289.0" promptText="Enter Team Name">
+                        <TextField fx:id="inputTeamName" focusTraversable="false" layoutX="13.0" layoutY="271.0" opacity="0.8" prefHeight="50.0" prefWidth="289.0" promptText="Enter Team Name" style="-fx-background-radius: 15;">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -38,13 +38,13 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <Button fx:id="btnAddTeam" focusTraversable="false" layoutX="13.0" layoutY="408.0" mnemonicParsing="false" onAction="#Add" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="ADD" textFill="#fcf8f8">
+                        <Button fx:id="btnAddTeam" focusTraversable="false" layoutX="13.0" layoutY="408.0" mnemonicParsing="false" onAction="#Add" prefHeight="39.0" prefWidth="90.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="ADD" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
                            
                         </Button>
-                        <Button fx:id="btnUpdateTeam" focusTraversable="false" layoutX="115.0" layoutY="409.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="90.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Update" textFill="#fcf8f8">
+                        <Button fx:id="btnUpdateTeam" focusTraversable="false" layoutX="115.0" layoutY="409.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Update" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -52,7 +52,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="btnDeleteTeam" focusTraversable="false" layoutX="214.0" layoutY="410.0" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Delete" textFill="#fcf8f8">
+                        <Button fx:id="btnDeleteTeam" focusTraversable="false" layoutX="214.0" layoutY="410.0" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="90.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Delete" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -60,12 +60,21 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <ChoiceBox fx:id="inputIdCompT" layoutX="13.0" layoutY="188.0" prefHeight="50.0" prefWidth="289.0" />
+                        <ChoiceBox fx:id="inputIdCompT" layoutX="13.0" layoutY="188.0" prefHeight="50.0" prefWidth="289.0" style="-fx-background-radius: 15;" />
                         <Button fx:id="gotocomp" layoutX="66.0" layoutY="495.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="189.0" text="Competitions" />
                      </children>
                      <padding>
                         <Insets bottom="25.0" top="30.0" />
                      </padding>
+                  </Pane>
+                  <Pane layoutX="-97.0" layoutY="-106.0" prefHeight="195.0" prefWidth="410.0" rotate="-149.0" style="-fx-background-radius: 70;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
+                     <children>
+                        <Label layoutX="28.0" layoutY="54.0" prefHeight="27.0" prefWidth="135.0" rotate="148.5" text="Teams" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                     </children>
                   </Pane>
                </children>
             </AnchorPane>
@@ -75,7 +84,7 @@
                      <top>
                         <Pane prefHeight="144.0" prefWidth="820.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TextField fx:id="SearchTeam" focusTraversable="false" layoutX="156.0" layoutY="61.0" opacity="0.8" prefHeight="28.0" prefWidth="409.0" promptText="Enter Team Name">
+                              <TextField fx:id="SearchTeam" focusTraversable="false" layoutX="14.0" layoutY="96.0" opacity="0.8" prefHeight="28.0" prefWidth="409.0" promptText="Enter Team Name">
                                  <font>
                                     <Font size="23.0" />
                                  </font>
@@ -83,25 +92,16 @@
                                     <Blend />
                                  </effect>
                               </TextField>
-                              <Pane layoutX="52.0" prefHeight="61.0" prefWidth="317.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 5;">
-                                 <children>
-                                    <Label layoutX="25.0" layoutY="17.0" prefHeight="27.0" prefWidth="135.0" text="Teams" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <Button fx:id="exportToExcel" layoutX="692.0" layoutY="96.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" text="Export Excel" />
+                              <Button fx:id="exportToExcel" layoutX="692.0" layoutY="96.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="108.0" styleClass="button4" stylesheets="@../Css/product.css" text="Export Excel" />
                            </children>
                         </Pane>
                      </top>
                      <bottom>
                         <TableView fx:id="tableTeams" onMouseClicked="#clickTable" prefHeight="500.0" prefWidth="830.0" BorderPane.alignment="CENTER">
                            <columns>
-                              <TableColumn fx:id="colIdTeam" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Id Team" />
-                              <TableColumn fx:id="colIdCompTeam" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Name Competition" />
-                              <TableColumn fx:id="colTeamName" prefWidth="75.0" style="-fx-background-color: #2bc20e;" text="Team Name" />
+                              <TableColumn fx:id="colIdTeam" prefWidth="75.0" text="Id Team" />
+                              <TableColumn fx:id="colIdCompTeam" prefWidth="75.0" text="Name Competition" />
+                              <TableColumn fx:id="colTeamName" prefWidth="75.0" text="Team Name" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

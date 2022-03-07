@@ -9,22 +9,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.AdminaccountController">
+<AnchorPane id="AnchorPane" prefHeight="453.0" prefWidth="855.0" style="-fx-background-color: #010101;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.AdminaccountController">
    <children>
-      <VBox prefHeight="454.0" prefWidth="219.0" style="-fx-background-color: #8FBC8F;">
+      <VBox prefHeight="454.0" prefWidth="219.0" style="-fx-background-color: #010101;">
          <children>
-            <Text fill="#430909" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" wrappingWidth="218.40000000000003">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" wrappingWidth="218.40000000000003">
                <font>
                   <Font size="29.0" />
                </font>
             </Text>
-            <Button fx:id="bttndelete" mnemonicParsing="false" onAction="#deleteuser" prefHeight="37.0" prefWidth="219.0" text="Delete" />
-            <Button fx:id="buttblock" mnemonicParsing="false" onAction="#block" prefHeight="36.0" prefWidth="219.0" text="Block" />
-            <Button fx:id="ub" mnemonicParsing="false" onAction="#unblock" prefHeight="36.0" prefWidth="219.0" text="UnBlock" />
-            <Button fx:id="logouttxt" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="219.0" text="Log out" />
+            <Button fx:id="bttndelete" mnemonicParsing="false" onAction="#deleteuser" prefHeight="37.0" prefWidth="219.0" styleClass="button4" stylesheets="@../Css/product.css" text="Delete" />
+            <Button fx:id="buttblock" mnemonicParsing="false" onAction="#block" prefHeight="36.0" prefWidth="219.0" styleClass="button4" stylesheets="@../Css/product.css" text="Block" />
+            <Button fx:id="ub" mnemonicParsing="false" onAction="#unblock" prefHeight="36.0" prefWidth="219.0" styleClass="button4" stylesheets="@../Css/product.css" text="UnBlock" />
+            <Button fx:id="logouttxt" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="219.0" styleClass="button4" stylesheets="@../Css/product.css" text="Log out" />
          </children>
       </VBox>
-      <TableView fx:id="tbadmin" layoutX="289.0" layoutY="127.0" prefHeight="254.0" prefWidth="526.0">
+      <TableView fx:id="tbadmin" layoutX="289.0" layoutY="127.0" prefHeight="254.0" prefWidth="526.0" stylesheets="@../Css/product.css">
         <columns>
           <TableColumn fx:id="idfield" prefWidth="118.39996337890625" text="ID_USER " />
           <TableColumn fx:id="flfield" prefWidth="160.0" text="FULL_NAME" />
@@ -33,9 +33,9 @@
         </columns>
       </TableView>
       <TextField fx:id="txtsearch" layoutX="522.0" layoutY="44.0" promptText="search" />
-      <Button fx:id="buttsearch" layoutX="748.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchuser" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8FBC8F;" text="Search" />
+      <Button fx:id="buttsearch" layoutX="748.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchuser" prefHeight="26.0" prefWidth="76.0" styleClass="button4" stylesheets="@../Css/product.css" text="Search" />
       <TextField fx:id="iduser" layoutX="226.0" layoutY="44.0" prefHeight="26.0" prefWidth="184.0" promptText="ID user" />
-      <Button fx:id="bts" layoutX="751.0" layoutY="86.0" mnemonicParsing="false" onAction="#sortusers" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #8FBC8F;" text="Sort" />
-      <Button fx:id="reftext" layoutX="226.0" layoutY="13.0" mnemonicParsing="false" onAction="#refresh" style="-fx-background-color: #8FBC8F;" text="Refresh" />
+      <Button fx:id="bts" layoutX="751.0" layoutY="86.0" mnemonicParsing="false" onAction="#sortusers" prefHeight="26.0" prefWidth="70.0" styleClass="button4" stylesheets="@../Css/product.css" text="Sort" />
+      <Button fx:id="reftext" layoutX="226.0" layoutY="13.0" mnemonicParsing="false" onAction="#refresh" styleClass="button4" stylesheets="@../Css/product.css" text="Refresh" />
    </children>
 </AnchorPane>

@@ -161,7 +161,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="REFRESH" focusTraversable="false" layoutX="974.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshnewsapi" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Refresh" textFill="#fcf8f8">
+            <Button fx:id="REFRESH" focusTraversable="false" layoutX="1325.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshnewsapi" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Refresh" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -169,27 +169,31 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="111.0" layoutY="12.0" prefHeight="57.0" prefWidth="189.0" text="Admin View" textFill="WHITE">
+            <TextField fx:id="searchhl" layoutX="974.0" layoutY="62.0" onKeyTyped="#search" promptText="Search Headline" style="-fx-background-radius: 15;" />
+            <TextField fx:id="searchdesc" layoutX="1130.0" layoutY="62.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="389.0" promptText="Search Description" style="-fx-background-radius: 15;" />
+            <Button fx:id="btnHome" focusTraversable="false" layoutX="1446.0" layoutY="10.0" mnemonicParsing="false" onAction="#HomeAdmin" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Home" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="417.0" layoutY="11.0" prefHeight="57.0" prefWidth="189.0" text="Admin View" textFill="WHITE">
                <font>
                   <Font name="Bodoni MT Condensed" size="39.0" />
                </font>
             </Label>
-            <ImageView fitHeight="118.0" fitWidth="189.0" layoutX="-38.0" layoutY="-18.0">
+         </children>
+      </AnchorPane>
+      <Pane layoutX="-195.0" layoutY="-292.0" prefHeight="303.0" prefWidth="467.0" rotate="-142.8" style="-fx-background-radius: 70;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
+         <children>
+            <ImageView fitHeight="118.0" fitWidth="189.0" layoutX="-32.0" layoutY="-6.0" rotate="144.5">
                <image>
                   <Image url="@../Css/Untitled%20design.png" />
                </image>
             </ImageView>
-            <TextField fx:id="searchhl" layoutX="974.0" layoutY="62.0" onKeyTyped="#search" promptText="Search Headline" style="-fx-background-radius: 15;" />
-            <TextField fx:id="searchdesc" layoutX="1130.0" layoutY="62.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="389.0" promptText="Search Description" style="-fx-background-radius: 15;" />
-            <Button fx:id="btnHome" focusTraversable="false" layoutX="295.0" layoutY="20.0" mnemonicParsing="false" onAction="#HomeAdmin" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Home" textFill="#fcf8f8">
-               <font>
-                  <Font name="System Bold" size="19.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children>
-      </AnchorPane>
+      </Pane>
    </children>
 </AnchorPane>

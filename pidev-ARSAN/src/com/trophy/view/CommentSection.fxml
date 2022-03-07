@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -25,26 +24,7 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="-9.0" onMouseEntered="#ADDNEWITEM" prefHeight="1000.0" prefWidth="1594.0" style="-fx-background-color: #010101;" styleClass="mainFxmlClass" stylesheets="@../Css/Stylee1.css">
          <children>
-            <Pane layoutX="645.0" prefHeight="61.0" prefWidth="317.0" style="-fx-background-radius: 5;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
-               <children>
-                  <Label layoutX="57.0" layoutY="2.0" prefHeight="57.0" prefWidth="239.0" text="Comment Section" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label layoutX="69.0" layoutY="12.0" prefHeight="58.0" prefWidth="123.0" text="User View" textFill="#00afc7">
-               <font>
-                  <Font name="Bodoni MT Condensed" size="39.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="12.0" layoutY="12.0">
-               <image>
-                  <Image url="@../../../../../../../../../Downloads/test.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="loginbtn" focusTraversable="false" layoutX="1202.0" layoutY="27.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="123.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Login" textFill="#fcf8f8">
+            <Button fx:id="loginbtn" focusTraversable="false" layoutX="1305.0" layoutY="27.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="123.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Login" textFill="#fcf8f8">
                <font>
                   <Font name="Aldhabi" size="28.0" />
                </font>
@@ -52,7 +32,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="signupbtn" focusTraversable="false" layoutX="1339.0" layoutY="27.0" mnemonicParsing="false" onAction="#signup" prefHeight="69.0" prefWidth="189.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Sign up" textFill="#fcf8f8">
+            <Button fx:id="btnback" focusTraversable="false" layoutX="1453.0" layoutY="27.0" mnemonicParsing="false" onAction="#Back" prefHeight="52.0" prefWidth="114.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Back" textFill="#fcf8f8">
                <font>
                   <Font name="Aldhabi" size="28.0" />
                </font>
@@ -128,5 +108,14 @@
             </Button>
          </children>
       </AnchorPane>
+      <Pane layoutX="-87.0" layoutY="-273.0" prefHeight="303.0" prefWidth="467.0" rotate="-69.6" style="-fx-background-radius: 70;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
+         <children>
+            <Label layoutX="-43.0" layoutY="176.0" prefHeight="57.0" prefWidth="239.0" rotate="66.4" text="Comment Section" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

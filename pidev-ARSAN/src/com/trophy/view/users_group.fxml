@@ -5,8 +5,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.Users_groupController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #010101;" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.Users_groupController">
    <children>
       <TableView fx:id="tabl" layoutX="46.0" layoutY="84.0" prefHeight="234.0" prefWidth="383.0">
         <columns>
@@ -16,13 +18,23 @@
             <TableColumn fx:id="idgr" prefWidth="115.2000732421875" text="IDGroup" />
         </columns>
       </TableView>
-      <TextField fx:id="textfriend" layoutX="279.0" layoutY="40.0" promptText="Id friend " styleClass="button4" />
-      <Button fx:id="blockbutt" layoutX="458.0" layoutY="233.0" mnemonicParsing="false" onAction="#block" prefHeight="26.0" prefWidth="114.0" styleClass="button4" text="block" />
-      <Button fx:id="textdelet" layoutX="457.0" layoutY="145.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="114.0" styleClass="button4" text="delete friend " />
-      <TextField fx:id="textgroup" layoutX="29.0" layoutY="40.0" promptText="Id group" styleClass="button4" />
-      <Button fx:id="buttadd" layoutX="456.0" layoutY="93.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="114.0" styleClass="button4" text="add friend" />
-      <Button fx:id="unblockbutt" layoutX="458.0" layoutY="272.0" mnemonicParsing="false" onAction="#unblock" prefHeight="26.0" prefWidth="114.0" styleClass="button4" stylesheets="@../Css/product.css" text="unblock" />
-      <Button fx:id="showbutt" layoutX="457.0" layoutY="39.0" mnemonicParsing="false" onAction="#show" prefHeight="26.0" prefWidth="113.0" styleClass="button4" text="show users" />
-      <Button fx:id="bttback" layoutX="60.0" layoutY="348.0" mnemonicParsing="false" onAction="#back" styleClass="button4" text="Back" />
+      <TextField fx:id="textfriend" layoutX="420.0" layoutY="53.0" promptText="Id friend " styleClass="button4">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></TextField>
+      <Button fx:id="blockbutt" layoutX="458.0" layoutY="278.0" mnemonicParsing="false" onAction="#block" prefHeight="26.0" prefWidth="114.0" styleClass="button4" text="block" textFill="WHITE" />
+      <Button fx:id="textdelet" layoutX="458.0" layoutY="227.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="114.0" styleClass="button4" text="delete friend " textFill="WHITE" />
+      <TextField fx:id="textgroup" layoutX="219.0" layoutY="53.0" promptText="Id group" styleClass="button4">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></TextField>
+      <Button fx:id="buttadd" layoutX="456.0" layoutY="188.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="114.0" styleClass="button4" text="add friend" textFill="WHITE" />
+      <Button fx:id="unblockbutt" layoutX="458.0" layoutY="318.0" mnemonicParsing="false" onAction="#unblock" prefHeight="26.0" prefWidth="114.0" styleClass="button4" stylesheets="@../Css/product.css" text="unblock" textFill="WHITE" />
+      <Button fx:id="showbutt" layoutX="458.0" layoutY="151.0" mnemonicParsing="false" onAction="#show" prefHeight="26.0" prefWidth="113.0" styleClass="button4" text="show users" textFill="WHITE" />
+      <Button fx:id="bttback" layoutX="60.0" layoutY="348.0" mnemonicParsing="false" onAction="#back" styleClass="button4" text="Back" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Pane layoutX="-142.0" layoutY="-319.0" prefHeight="298.0" prefWidth="467.0" rotate="-66.8" style="-fx-background-radius: 70;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" />
    </children>
 </AnchorPane>

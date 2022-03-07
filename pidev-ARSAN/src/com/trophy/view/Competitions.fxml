@@ -23,7 +23,7 @@
                <children>
                   <Pane layoutX="23.0" layoutY="106.0" prefHeight="566.0" prefWidth="317.0">
                      <children>
-                        <TextField fx:id="inputIdComp" focusTraversable="false" layoutX="15.0" layoutY="53.0" opacity="0.8" prefHeight="40.0" prefWidth="289.0" promptText="Enter Competition Id">
+                        <TextField fx:id="inputIdComp" focusTraversable="false" layoutX="15.0" layoutY="53.0" opacity="0.8" prefHeight="40.0" prefWidth="289.0" promptText="Enter Competition Id" style="-fx-background-radius: 15;">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -31,7 +31,7 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <TextField fx:id="inputGameNameComp" focusTraversable="false" layoutX="15.0" layoutY="135.0" opacity="0.8" prefHeight="50.0" prefWidth="289.0" promptText="Enter Game Name">
+                        <TextField fx:id="inputGameNameComp" focusTraversable="false" layoutX="15.0" layoutY="135.0" opacity="0.8" prefHeight="50.0" prefWidth="289.0" promptText="Enter Game Name" style="-fx-background-radius: 15;">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -63,7 +63,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="219.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" />
+                        <DatePicker fx:id="inputDateofComp" layoutX="14.0" layoutY="219.0" prefHeight="50.0" prefWidth="289.0" promptText="Select Date Of Competition" style="-fx-background-radius: 15;" />
                         <Text layoutX="-2.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hhhhh" wrappingWidth="289.0000034272671" />
                         <Button fx:id="gototeams" layoutX="33.0" layoutY="446.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="252.0" styleClass="button4" stylesheets="@../Css/product.css" text="Teams" textFill="#fffafa">
                            <font>
@@ -74,11 +74,6 @@
                         <Insets bottom="25.0" top="30.0" />
                      </padding>
                   </Pane>
-                  <Button fx:id="comphome" layoutX="60.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#showHome" prefHeight="32.0" prefWidth="73.0" styleClass="button1" stylesheets="@../Css/product.css" text="HOME" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="356.0" layoutY="11.0" prefHeight="649.0" prefWidth="820.0">
@@ -87,7 +82,7 @@
                      <top>
                         <Pane prefHeight="120.0" prefWidth="820.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TextField fx:id="SearchComp" focusTraversable="false" layoutX="156.0" layoutY="61.0" opacity="0.8" prefHeight="28.0" prefWidth="409.0" promptText="Enter Competition Name">
+                              <TextField fx:id="SearchComp" focusTraversable="false" layoutX="156.0" layoutY="61.0" opacity="0.8" prefHeight="28.0" prefWidth="409.0" promptText="Enter Competition Name" style="-fx-background-radius: 15;">
                                  <font>
                                     <Font size="23.0" />
                                  </font>
@@ -95,16 +90,12 @@
                                     <Blend />
                                  </effect>
                               </TextField>
-                              <Pane layoutX="52.0" prefHeight="61.0" prefWidth="317.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
-                                 <children>
-                                    <Label layoutX="25.0" layoutY="17.0" prefHeight="27.0" prefWidth="135.0" text="Competitions" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                              <Button fx:id="sortComp" layoutX="665.0" layoutY="65.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="114.0" text="Sort" />
+                              <Button fx:id="sortComp" layoutX="665.0" layoutY="65.0" mnemonicParsing="false" onAction="#sortComp" prefHeight="42.0" prefWidth="114.0" styleClass="button4" stylesheets="@../Css/product.css" text="Sort" />
+                              <Button fx:id="comphome" layoutX="758.0" layoutY="-9.0" mnemonicParsing="false" onMouseClicked="#showHome" prefHeight="32.0" prefWidth="73.0" styleClass="button1" stylesheets="@../Css/product.css" text="HOME" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </Pane>
                      </top>
@@ -123,6 +114,19 @@
                   </BorderPane>
                </children>
             </AnchorPane>
+            <Pane layoutX="-87.0" layoutY="-273.0" prefHeight="303.0" prefWidth="467.0" rotate="-135.0" style="-fx-background-radius: 70;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
+               <children>
+                  <Pane layoutX="-8.0" layoutY="52.0" prefHeight="61.0" prefWidth="154.0" rotate="135.0" style="-fx-background-radius: 20;" stylesheets="@../Css/product.css">
+                     <children>
+                        <Label layoutY="17.0" prefHeight="27.0" prefWidth="135.0" text="Competitions" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>

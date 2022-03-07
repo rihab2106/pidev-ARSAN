@@ -19,7 +19,7 @@
          <children>
             <SplitPane layoutX="-3.0" prefHeight="546.0" prefWidth="950.0">
                <items>
-                  <Pane prefHeight="546.0" prefWidth="963.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
+                  <Pane prefHeight="546.0" prefWidth="963.0" style="-fx-background-color: #010101;" stylesheets="@../Css/product.css">
                      <children>
                         <ImageView fitHeight="131.0" fitWidth="253.0" layoutX="-66.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -34,7 +34,7 @@
                               <TableColumn fx:id="Category" prefWidth="275.20013427734375" text="Category" />
                           </columns>
                         </TableView>
-                        <Pane layoutX="671.0" layoutY="-10.0" prefHeight="97.0" prefWidth="329.0" style="-fx-background-color: #010101; -fx-background-radius: 50;">
+                        <Pane layoutX="671.0" layoutY="-10.0" prefHeight="97.0" prefWidth="329.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor">
                            <children>
                               <ImageView fx:id="Cart" fitHeight="48.0" fitWidth="48.0" layoutX="24.0" layoutY="14.0" onMouseClicked="#ViewCart" pickOnBounds="true" preserveRatio="true">
                                  <image>

@@ -7,26 +7,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.UseraccountController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #010101;" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.UseraccountController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="170.0" style="-fx-background-color: #8FBC8F;">
+      <VBox prefHeight="400.0" prefWidth="170.0" stylesheets="@../Css/product.css">
          <children>
-            <Button fx:id="buttvisitgrp" mnemonicParsing="false" onAction="#visitgroup" prefHeight="39.0" prefWidth="170.0" text="Create group" />
-            <Button fx:id="busergroup" mnemonicParsing="false" onAction="#visitusergroup" prefHeight="38.0" prefWidth="170.0" text="Visit my groups" />
-            <Button fx:id="btnHome" mnemonicParsing="false" onAction="#Home" prefHeight="35.0" prefWidth="170.0" text="Home" />
-            <Button fx:id="buttlogout" mnemonicParsing="false" onAction="#logoutbutt" prefHeight="34.0" prefWidth="170.0" text="Log out" />
+            <Button fx:id="buttvisitgrp" mnemonicParsing="false" onAction="#visitgroup" prefHeight="39.0" prefWidth="170.0" styleClass="button4" text="Create group" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="busergroup" mnemonicParsing="false" onAction="#visitusergroup" prefHeight="38.0" prefWidth="170.0" styleClass="button4" text="Visit my groups" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btnHome" mnemonicParsing="false" onAction="#Home" prefHeight="43.0" prefWidth="170.0" styleClass="button4" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="buttlogout" mnemonicParsing="false" onAction="#logoutbutt" prefHeight="45.0" prefWidth="170.0" styleClass="button4" text="Log out" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
       </VBox>
-      <TextField fx:id="mailtext" layoutX="238.0" layoutY="124.0" prefHeight="26.0" prefWidth="202.0" promptText="mail" />
-      <TextField fx:id="usrname" layoutX="238.0" layoutY="89.0" prefHeight="26.0" prefWidth="201.0" promptText="full name" />
-      <TextField fx:id="passtext" layoutX="238.0" layoutY="158.0" prefHeight="26.0" prefWidth="202.0" promptText="password" />
-      <Button fx:id="buttupd" layoutX="238.0" layoutY="200.0" mnemonicParsing="false" onAction="#upaccount" prefHeight="26.0" prefWidth="202.0" text="Update my account" />
-      <Button fx:id="buttnddelet" layoutX="236.0" layoutY="245.0" mnemonicParsing="false" onAction="#delaccount" prefHeight="26.0" prefWidth="202.0" text="Delete my account" />
-      <Text layoutX="300.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Acount" wrappingWidth="124.2769775390625">
+      <TextField fx:id="mailtext" layoutX="269.0" layoutY="146.0" prefHeight="26.0" prefWidth="202.0" promptText="mail" style="-fx-background-radius: 15;" />
+      <TextField fx:id="usrname" layoutX="269.0" layoutY="104.0" prefHeight="26.0" prefWidth="201.0" promptText="full name" style="-fx-background-radius: 15;" />
+      <TextField fx:id="passtext" layoutX="269.0" layoutY="187.0" prefHeight="26.0" prefWidth="202.0" promptText="password" style="-fx-background-radius: 15;" />
+      <Button fx:id="buttupd" layoutX="276.0" layoutY="268.0" mnemonicParsing="false" onAction="#upaccount" prefHeight="26.0" prefWidth="202.0" styleClass="button4" text="Update my account" />
+      <Button fx:id="buttnddelet" layoutX="276.0" layoutY="320.0" mnemonicParsing="false" onAction="#delaccount" prefHeight="26.0" prefWidth="202.0" styleClass="button4" text="Delete my account" />
+      <Text fill="WHITE" layoutX="300.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Acount" wrappingWidth="154.67694091796875">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="iduse" layoutX="238.0" layoutY="53.0" prefHeight="26.0" prefWidth="202.0" promptText="your id" />
+      <TextField fx:id="iduse" layoutX="269.0" layoutY="56.0" prefHeight="26.0" prefWidth="202.0" promptText="your id" style="-fx-background-radius: 15;" />
    </children>
 </AnchorPane>

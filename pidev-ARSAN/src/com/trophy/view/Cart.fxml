@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onContextMenuRequested="#item" prefHeight="595.0" prefWidth="957.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.CartController">
+<AnchorPane id="AnchorPane" onContextMenuRequested="#item" prefHeight="595.0" prefWidth="957.0" style="-fx-background-color: #010101;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.CartController">
    <children>
       <VBox fillWidth="false" layoutX="-1.0" prefHeight="596.0" prefWidth="958.0" spacing="8.0">
          <padding>
             <Insets left="16.0" right="16.0" />
          </padding>
          <children>
-            <Label prefHeight="30.0" prefWidth="610.0" text="Your Shopping Cart:">
+            <Label prefHeight="30.0" prefWidth="610.0" text="Your Shopping Cart:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -32,12 +32,12 @@
                   <Insets bottom="8.0" />
                </padding>
             </Separator>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="139.0" text="Subtotal after Discount:">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="139.0" text="Subtotal after Discount:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="subtotalLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label">
+            <Label fx:id="subtotalLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

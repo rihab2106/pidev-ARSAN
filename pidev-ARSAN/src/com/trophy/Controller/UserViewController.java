@@ -213,6 +213,18 @@ public class UserViewController implements Initializable {
 
     @FXML
     private void login(ActionEvent event) {
+        
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/Login.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            } catch (IOException ex) {
+                System.out.println("error , you can Logout ");
+            }
     }
 
     @FXML
