@@ -158,12 +158,18 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
             alert.getDialogPane().setHeaderText(null);
             alert.showAndWait().filter(response -> response == ButtonType.OK);
             
-        } else {
-             Statement st;
-            Product pr = new Product();
+        } else  if (getSelectedProduct().getQuantity()<1){
             
-            cartItems.add(getSelectedProduct());
-           cartButton.setText("Cart (" + String.valueOf(cartItems.size()) + ")");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Dialog");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Sorry , This Items is no more available!");
+                    alert.show();
+                    refresh();
+             }else{Statement st;
+              cartItems.add(getSelectedProduct());
+           cartButton.setText("Cart (" + String.valueOf(cartItems.size()) + ")");}
+              
            /*if ( cartItems.add(getSelectedProduct())){
            FXMLLoader loader = new FXMLLoader (getClass().getResource("/com/trophy/view/Cart.fxml"));
         Parent root = loader.load();
@@ -192,7 +198,7 @@ private ObservableList<Product> cartItems = FXCollections.observableArrayList();
             //System.out.println("Product Added To Cart");
         }
         
-    }
+    
     
      public ObservableList<Product> getCartItems() {
         return cartItems;
