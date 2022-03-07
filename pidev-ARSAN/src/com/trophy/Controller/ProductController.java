@@ -276,13 +276,14 @@ public class ProductController implements Initializable {
                     refresh();
         
                    
-       }else if (!(txtPrice.getText().toString().matches("[0-9]+"))|| !(txtquantity.getText().toString().matches("[1-9]+")) || !(txtDiscount.getText().toString().matches("[0-9]+")) ){Alert alert = new Alert(Alert.AlertType.INFORMATION);
+       }else if (!(txtPrice.getText().toString().matches("[0-9]+"))&& !(txtquantity.getText().toString().matches("[1-9]+")) && !(txtDiscount.getText().toString().matches("[0-9]+")) ){Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     
        alert.setTitle("Information Dialog");
                     alert.setHeaderText(null);
                     alert.setContentText("the Price, quantity and Discount should be a digital number and quantity should at least 1");
                     alert.show();
-                    refresh();} else {
+                    refresh();} 
+       else {
            pr.setPROD_Name(txtName.getText());
           pr.setPrice(Float.parseFloat(txtPrice.getText()));
           pr.setDiscount(Float.parseFloat(txtDiscount.getText()));

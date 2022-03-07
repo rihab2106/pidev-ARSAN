@@ -22,7 +22,7 @@
 }
 .button1
 {
--fx-background-color : #68da23;
+-fx-background-color : #47c3fd;
 -fx-background-radius :  30 0 0 30;
 }
 .logo
@@ -97,7 +97,7 @@
     -fx-background-color : #141124;
     -fx-border-color:  #141124;
     -fx-border-radius: 30;
-    -fx-text-fill: white;
+    -fx-text-fill: blueviolet;
     
    -fx-font-weight: bold;
    -fx-alignment: CENTER_LEFT;
@@ -139,7 +139,7 @@
 }
 .table-row-cell:hover {
     -fx-background-color : linear-gradient(to right bottom, #47c3fd, #47c3fd, #950ece);
-    -fx-text-background-color: Pink;
+    -fx-text-background-color: blue;
 }
 .table-row-cell:odd{
      -fx-background-color : linear-gradient(to right bottom, #FFFFFF, #950ece,#47c3fd);

@@ -73,7 +73,7 @@ public class LoginController implements Initializable {
              try {
              Session.StartSession().setSessionUser(user);
             FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/adminaccount.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/HomeAdmin.fxml"));
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

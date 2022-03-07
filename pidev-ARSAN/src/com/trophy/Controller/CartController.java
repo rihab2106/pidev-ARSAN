@@ -180,6 +180,13 @@ private Scene scene;
     private void item(ContextMenuEvent event) {
     }
 
+    @FXML
+    private void backtoshop(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
+       Stage window =(Stage)btnshop.getScene().getWindow();
+       window.setScene(new Scene(root));
+    }
+
     
 
     

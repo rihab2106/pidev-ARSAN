@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.view.OrderController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="368.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.view.OrderController">
    <children>
       <ImageView fitHeight="113.0" fitWidth="368.0" layoutX="-35.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,7 +26,7 @@
       <Text layoutX="23.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expiry date" />
       <Spinner fx:id="month" layoutX="23.0" layoutY="236.0" prefHeight="25.0" prefWidth="58.0" />
       <Spinner fx:id="year" layoutX="91.0" layoutY="236.0" prefHeight="25.0" prefWidth="104.0" />
-      <Button fx:id="btndone" layoutX="286.0" layoutY="379.0" mnemonicParsing="false" onAction="#Order" text="Done" />
-      <Button fx:id="btnexit" layoutX="30.0" layoutY="379.0" mnemonicParsing="false" onAction="#Exit" text="Exit" />
+      <Button fx:id="btndone" layoutX="286.0" layoutY="379.0" mnemonicParsing="false" onAction="#Order" styleClass="button1" text="Done" />
+      <Button fx:id="btnexit" layoutX="30.0" layoutY="379.0" mnemonicParsing="false" onAction="#Exit" styleClass="button1" text="Exit" />
    </children>
 </Pane>

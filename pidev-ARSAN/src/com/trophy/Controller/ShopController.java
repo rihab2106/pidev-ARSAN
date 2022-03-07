@@ -98,7 +98,11 @@ public class ShopController implements Initializable {
     @FXML
     private Button coupnBtn;
     @FXML
-    private Label coupon;
+    private Hyperlink givewayhyperlink;
+    @FXML
+    private ImageView giveawaypic;
+    @FXML
+    private Hyperlink givewaytitle;
     /**
      * Initializes the controller class.
      */
@@ -256,20 +260,20 @@ public BorderPane mainBorderPaneForCheckoutUse;
         OkHttpClient client = new OkHttpClient();
 
        Request request = new Request.Builder()
-	.url("https://cashnjoy-com-free-coupon-codes-v1.p.rapidapi.com/api/vcodes-api.php?siteid=zi00001")
+	.url("https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.steam.android&type=game.loot")
 	.get()
-	.addHeader("x-rapidapi-host", "cashnjoy-com-free-coupon-codes-v1.p.rapidapi.com")
+	.addHeader("x-rapidapi-host", "gamerpower.p.rapidapi.com")
 	.addHeader("x-rapidapi-key", "8e98077110msh3fba1864b104aa6p1f98fajsna13a5e5ab73e")
 	.build();
     Response response = client.newCall(request).execute();
      System.out.println(response.isSuccessful());
      ObjectMapper obj = new ObjectMapper();
      JsonNode jn = obj.readTree(response.body().string());
-    
+     System.out.println(jn.get(7).get("open_giveaway_url").asText());
+     givewayhyperlink.setText(jn.get(7).get("open_giveaway_url").asText());
+     givewaytitle.setText(jn.get(1).get("title").asText());
+     //giveawaypic.setImage(newImage(jn.get(1).get("title")));
     }
 
-    @FXML
-    private void showcoupon(MouseEvent event) {
-    }
     
 }
