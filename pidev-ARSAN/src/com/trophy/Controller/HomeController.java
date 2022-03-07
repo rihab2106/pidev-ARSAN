@@ -40,6 +40,10 @@ public class HomeController implements Initializable {
     private ImageView btntrophy;
     @FXML
     private Button lblNews;
+    @FXML
+    private ImageView btnuser;
+    @FXML
+    private ImageView btnnews;
 
     /**
      * Initializes the controller class.
@@ -51,17 +55,13 @@ public class HomeController implements Initializable {
 
     @FXML
     private void openProducts(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
-       Stage window =(Stage)imgshop.getScene().getWindow();
-       window.setScene(new Scene(root));
+        
     }
 
 
     @FXML
     private void openusers(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/useraccount.fxml"));
-       Stage window =(Stage)imgshop.getScene().getWindow();
-       window.setScene(new Scene(root));
+       
     }
 
     @FXML
@@ -99,9 +99,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private void opentrophies(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/FrontGames.fxml"));
-       Stage window =(Stage)imgshop.getScene().getWindow();
-       window.setScene(new Scene(root));
+        
     }
     
 }

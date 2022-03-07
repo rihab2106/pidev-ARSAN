@@ -11,6 +11,7 @@ import com.trophy.entity.Trophies;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -18,12 +19,14 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,6 +46,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -60,6 +64,8 @@ public class FrontGamesController implements Initializable {
     private AnchorPane game_paine2;
     @FXML
     private Button game_return;
+    @FXML
+    private Button btnHome;
 
     /**
      * Initializes the controller class.
@@ -123,6 +129,22 @@ public class FrontGamesController implements Initializable {
        game_return.setVisible(false);
        });
         
+        btnHome.setOnAction(e ->{
+            
+           Parent root;
+           try {
+               root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Home.fxml"));
+               Stage window =(Stage)btnHome.getScene().getWindow();
+       window.setScene(new Scene(root));
+           } catch (IOException ex) {
+               Logger.getLogger(FrontGamesController.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       
+
+          
+       
+       btnHome.setVisible(false);
+       });
     }    
     
     private Node TrophiesNode(Games g) throws FileNotFoundException{

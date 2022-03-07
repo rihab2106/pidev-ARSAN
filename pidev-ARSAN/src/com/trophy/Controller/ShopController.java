@@ -15,10 +15,17 @@ import com.trophy.dao.ProductDao;
 import com.trophy.dao.ShopDao;
 import com.trophy.entity.Product;
 import com.trophy.utils.ConnexionSingleton;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.Statement;
+import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -42,6 +49,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -56,9 +64,11 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.imageio.ImageIO;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.jsoup.Jsoup;
 
 
 
@@ -256,7 +266,7 @@ public BorderPane mainBorderPaneForCheckoutUse;
     }
 
     @FXML
-    private void showcoupons(ActionEvent event) throws IOException {
+    private void showcoupons(ActionEvent event) throws IOException, URISyntaxException {
         OkHttpClient client = new OkHttpClient();
 
        Request request = new Request.Builder()
@@ -270,10 +280,26 @@ public BorderPane mainBorderPaneForCheckoutUse;
      ObjectMapper obj = new ObjectMapper();
      JsonNode jn = obj.readTree(response.body().string());
      System.out.println(jn.get(7).get("open_giveaway_url").asText());
+      
      givewayhyperlink.setText(jn.get(7).get("open_giveaway_url").asText());
      givewaytitle.setText(jn.get(1).get("title").asText());
-     //giveawaypic.setImage(newImage(jn.get(1).get("title")));
+     givewayhyperlink.setOnAction(ee ->{
+            try {
+                Desktop.getDesktop().browse(new URI(jn.get(7).get("open_giveaway_url").asText()));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+     });
+     org.jsoup.Connection.Response d=Jsoup.connect(jn.get(4).get("image").asText())
+             .ignoreContentType(true)
+             .execute();
+     
+        
+     giveawaypic.setImage(new Image(d.bodyStream()));
     }
+
 
     
 }

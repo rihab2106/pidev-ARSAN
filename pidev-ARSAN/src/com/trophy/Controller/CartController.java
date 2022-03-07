@@ -95,8 +95,8 @@ private Scene scene;
     for (Product product : cartTable.getItems()){
             
          total = total+ (product.getPrice()- (product.getPrice()*(product.getDiscount()/100)));
-         product.setQuantity((product.getQuantity())-1);
-         pd.update(product);
+         //product.setQuantity((product.getQuantity())-1);
+       //  pd.update(product);
          String currencyPrice = currencyFormatter.format(total);
           subtotalLabel.setText(currencyPrice); 
                     

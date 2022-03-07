@@ -19,7 +19,7 @@ public class Notificationtwi {
         Message message = Message.creator(
                 new com.twilio.type.PhoneNumber("+21628564711"),
                 "MGe9c9b8c623ffc333c419a522028b894f",
-                "A product  " +s+" exprises , Please check The shop")
+                "A product  " +s+" exprises , Please check The shop and remove it ")
         .create();
         System.out.println(message.getSid());
     }

@@ -29,6 +29,7 @@
             <Button fx:id="delete_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" />
             <TextField fx:id="game_in_search" prefHeight="42.0" prefWidth="317.0" promptText="Search game " />
             <Button fx:id="game_stat" mnemonicParsing="false" onAction="#show_stat" prefHeight="40.0" prefWidth="90.0" text="Show Stat" />
+            <Button fx:id="btnhome" mnemonicParsing="false" onAction="#showHome" prefHeight="40.0" prefWidth="90.0" text="Home" />
          </children>
          <opaqueInsets>
             <Insets />

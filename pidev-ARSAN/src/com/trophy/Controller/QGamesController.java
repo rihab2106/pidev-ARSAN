@@ -187,6 +187,8 @@ public class QGamesController implements  Initializable {
     
    // private Synthesizer syn;
     private com.sun.speech.freetts.Voice v;
+    @FXML
+    private Button btnhome;
    
 
     /**
@@ -999,6 +1001,10 @@ public class QGamesController implements  Initializable {
             
             pop.setContentNode(box);
             pop.show(game_cercle);
+    }
+
+    @FXML
+    private void showHome(ActionEvent event) {
     }
     
     

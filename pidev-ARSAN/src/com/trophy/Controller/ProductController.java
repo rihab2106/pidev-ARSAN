@@ -491,7 +491,7 @@ public class ProductController implements Initializable {
        
         Image img = new Image("/com/trophy/Css/icons8-alert-64.png");
         Notifications notificationBuilder = Notifications.create()
-                .title("Warning").text("the product "+e.getPROD_Name()+" expires soon ")
+                .title("Warning").text("the product "+e.getPROD_Name()+" expires soon , please remove it ")
                 .graphic(new ImageView(img))
                 .hideAfter(Duration.seconds(5))
                 .position(Pos.TOP_LEFT)

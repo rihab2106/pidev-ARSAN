@@ -21,9 +21,9 @@
                <items>
                   <Pane prefHeight="546.0" prefWidth="963.0" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
                      <children>
-                        <ImageView fitHeight="147.0" fitWidth="198.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="131.0" fitWidth="253.0" layoutX="-66.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Css/trophyhunter.png" />
+                              <Image url="@../Css/Untitled%20design.png" />
                            </image>
                         </ImageView>
                         <TableView fx:id="table" layoutX="14.0" layoutY="125.0" prefHeight="378.0" prefWidth="638.0" stylesheets="@../Css/product.css">

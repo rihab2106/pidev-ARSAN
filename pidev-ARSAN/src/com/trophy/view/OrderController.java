@@ -6,19 +6,26 @@
 package com.trophy.view;
 
 import com.trophy.dao.OrderDao;
+import com.trophy.dao.ProductDao;
 import com.trophy.entity.Order;
+import com.trophy.entity.Product;
+import java.io.IOException;
 import java.net.URL;
 import static java.time.zone.ZoneRulesProvider.refresh;
 import java.util.ResourceBundle;
 import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -99,6 +106,10 @@ int Month,Year,ID;
         o.setCardPassword(TXTPASS.getText());
         o.setName(TXTNAME.getText());
         od.insert(o);
+        Product product= new Product();
+        ProductDao pd = new ProductDao();
+         product.setQuantity((product.getQuantity())-1);
+         pd.update(product);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
     
                     alert.setTitle("Information Dialog");
@@ -111,7 +122,11 @@ int Month,Year,ID;
     }
 
     @FXML
-    private void Exit(ActionEvent event) {
+    private void Exit(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/Shop.fxml"));
+       Stage window =(Stage)btnexit.getScene().getWindow();
+       window.setScene(new Scene(root));
+        
     }
     
 }

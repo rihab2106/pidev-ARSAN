@@ -67,5 +67,6 @@
             <URL value="@../Css/product.css" />
          </stylesheets>
       </Pane>
+      <Button fx:id="btnHome" layoutX="461.0" layoutY="81.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="69.0" styleClass="button1" stylesheets="@../Css/product.css" text="Home" />
    </children>
 </AnchorPane>
