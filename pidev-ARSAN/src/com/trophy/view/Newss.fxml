@@ -21,7 +21,7 @@
          <children>
             <AnchorPane layoutX="-97.0" layoutY="85.0" prefHeight="686.0" prefWidth="1656.0" style="-fx-background-color: #010101;" stylesheets="@../Css/product.css">
                <children>
-                  <Pane layoutX="23.0" layoutY="42.0" prefHeight="596.0" prefWidth="646.0">
+                  <Pane layoutX="23.0" layoutY="42.0" prefHeight="596.0" prefWidth="646.0" style="-fx-background-radius: 15;">
                      <children>
                         <TableView fx:id="commentview" layoutX="81.0" layoutY="419.0" prefHeight="168.0" prefWidth="732.0">
                            <columns>
@@ -30,7 +30,7 @@
                               <TableColumn fx:id="DISLIKES" prefWidth="90.39996337890625" text="Dislikes" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="AddComment" focusTraversable="false" layoutX="85.0" layoutY="574.0" opacity="0.8" prefHeight="50.0" prefWidth="376.0" promptText="Add Admin Comment">
+                        <TextField fx:id="AddComment" focusTraversable="false" layoutX="85.0" layoutY="574.0" opacity="0.8" prefHeight="50.0" prefWidth="376.0" promptText="Add Admin Comment" style="-fx-background-radius: 15;">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -38,7 +38,7 @@
                               <Blend />
                            </effect>
                         </TextField>
-                        <Button fx:id="addimg" focusTraversable="false" layoutX="81.0" layoutY="355.0" mnemonicParsing="false" onAction="#AddIMG" prefHeight="41.0" prefWidth="163.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Add Image" textFill="#fcf8f8">
+                        <Button fx:id="addimg" focusTraversable="false" layoutX="81.0" layoutY="355.0" mnemonicParsing="false" onAction="#AddIMG" prefHeight="41.0" prefWidth="163.0" style="-fx-background-radius: 15;" styleClass="button4" stylesheets="@../Css/product.css" text="Add Image" textFill="#fcf8f8">
                            <font>
                               <Font name="System Bold" size="19.0" />
                            </font>
@@ -48,13 +48,13 @@
                         </Button>
                         <ImageView fx:id="IMGVIEW1" fitHeight="377.0" fitWidth="376.0" layoutX="81.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="IMGVIEW2" fitHeight="377.0" fitWidth="376.0" layoutX="399.0" layoutY="-55.0" pickOnBounds="true" preserveRatio="true" />
-                        <TextArea fx:id="txtcontent" layoutX="461.0" layoutY="34.0" opacity="0.85" prefHeight="377.0" prefWidth="412.0" promptText="Description" />
+                        <TextArea fx:id="txtcontent" layoutX="461.0" layoutY="34.0" opacity="0.85" prefHeight="377.0" prefWidth="412.0" promptText="Description" style="-fx-background-radius: 15;" />
                      </children>
                      <padding>
                         <Insets bottom="25.0" top="30.0" />
                      </padding>
                   </Pane>
-                  <Button fx:id="btnAdd" focusTraversable="false" layoutX="918.0" layoutY="594.0" mnemonicParsing="false" onAction="#Add" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="ADD" textFill="#fcf8f8">
+                  <Button fx:id="btnAdd" focusTraversable="false" layoutX="918.0" layoutY="594.0" mnemonicParsing="false" onAction="#Add" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" text="ADD" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -62,7 +62,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnUpdate" focusTraversable="false" layoutX="1127.0" layoutY="594.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="98.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Update" textFill="#fcf8f8">
+                  <Button fx:id="btnUpdate" focusTraversable="false" layoutX="1127.0" layoutY="594.0" mnemonicParsing="false" onAction="#Update" prefHeight="40.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" text="Update" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -70,7 +70,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnDelete" focusTraversable="false" layoutX="1027.0" layoutY="594.0" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Delete" textFill="#fcf8f8">
+                  <Button fx:id="btnDelete" focusTraversable="false" layoutX="1027.0" layoutY="594.0" mnemonicParsing="false" onAction="#Delete" prefHeight="32.0" prefWidth="90.0" style="-fx-background-radius: 8;" styleClass="button4" text="Delete" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -78,7 +78,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TextField fx:id="txtheadline1" focusTraversable="false" layoutX="910.0" layoutY="352.0" opacity="0.8" prefHeight="50.0" prefWidth="478.0" promptText="HEADLINE">
+                  <TextField fx:id="txtheadline1" focusTraversable="false" layoutX="910.0" layoutY="352.0" opacity="0.8" prefHeight="50.0" prefWidth="478.0" promptText="HEADLINE" style="-fx-background-radius: 15;">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -86,7 +86,7 @@
                         <Blend />
                      </effect>
                   </TextField>
-                  <TextField fx:id="txtheadline11" focusTraversable="false" layoutX="908.0" layoutY="522.0" onMousePressed="#InsertImage" opacity="0.8" prefHeight="47.0" prefWidth="478.0" promptText="Test the existance of the image">
+                  <TextField fx:id="txtheadline11" focusTraversable="false" layoutX="908.0" layoutY="522.0" onMousePressed="#InsertImage" opacity="0.8" prefHeight="47.0" prefWidth="478.0" promptText="Test the existance of the image" style="-fx-background-radius: 15;">
                      <font>
                         <Font size="21.0" />
                      </font>
@@ -94,7 +94,7 @@
                         <Blend />
                      </effect>
                   </TextField>
-                  <TextField fx:id="txtheadline111" focusTraversable="false" layoutX="908.0" layoutY="411.0" opacity="0.8" prefHeight="99.0" prefWidth="720.0" promptText="contentadd">
+                  <TextField fx:id="txtheadline111" focusTraversable="false" layoutX="908.0" layoutY="411.0" opacity="0.8" prefHeight="99.0" prefWidth="720.0" promptText="contentadd" style="-fx-background-radius: 15;">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -110,7 +110,7 @@
                         <TableColumn fx:id="imgurl" minWidth="0.0" prefWidth="110.4000244140625" text="IMGURL" />
                     </columns>
                   </TableView>
-                  <TextField fx:id="txtheadline" focusTraversable="false" layoutX="487.0" layoutY="17.0" opacity="0.8" prefHeight="50.0" prefWidth="333.0" promptText="Headline">
+                  <TextField fx:id="txtheadline" focusTraversable="false" layoutX="487.0" layoutY="17.0" opacity="0.8" prefHeight="50.0" prefWidth="333.0" promptText="Headline" style="-fx-background-radius: 15;">
                      <font>
                         <Font size="23.0" />
                      </font>
@@ -142,7 +142,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="userview" focusTraversable="false" layoutX="1400.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchtouserview" prefHeight="42.0" prefWidth="241.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="User View ---&gt;" textFill="#fcf8f8">
+                  <Button fx:id="userview" focusTraversable="false" layoutX="1400.0" layoutY="613.0" mnemonicParsing="false" onAction="#switchtouserview" prefHeight="42.0" prefWidth="241.0" style="-fx-background-radius: 8;" styleClass="button4" text="User View ---&gt;" textFill="#fcf8f8">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -152,7 +152,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <Pane layoutX="645.0" prefHeight="61.0" prefWidth="317.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 5;">
+            <Pane layoutX="645.0" prefHeight="61.0" prefWidth="317.0" style="-fx-background-radius: 20;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
                <children>
                   <Label layoutX="71.0" layoutY="2.0" prefHeight="57.0" prefWidth="189.0" text="News Section" textFill="WHITE">
                      <font>
@@ -161,7 +161,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="REFRESH" focusTraversable="false" layoutX="974.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshnewsapi" prefHeight="41.0" prefWidth="98.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Refresh" textFill="#fcf8f8">
+            <Button fx:id="REFRESH" focusTraversable="false" layoutX="974.0" layoutY="10.0" mnemonicParsing="false" onAction="#refreshnewsapi" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Refresh" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -169,18 +169,26 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="69.0" layoutY="12.0" prefHeight="57.0" prefWidth="189.0" text="Admin View" textFill="WHITE">
+            <Label layoutX="111.0" layoutY="12.0" prefHeight="57.0" prefWidth="189.0" text="Admin View" textFill="WHITE">
                <font>
                   <Font name="Bodoni MT Condensed" size="39.0" />
                </font>
             </Label>
-            <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="12.0" layoutY="12.0">
+            <ImageView fitHeight="118.0" fitWidth="189.0" layoutX="-38.0" layoutY="-18.0">
                <image>
-                  <Image url="@../../../../test.png" />
+                  <Image url="@../Css/Untitled%20design.png" />
                </image>
             </ImageView>
-            <TextField fx:id="searchhl" layoutX="974.0" layoutY="62.0" onKeyTyped="#search" promptText="Search Headline" />
-            <TextField fx:id="searchdesc" layoutX="1130.0" layoutY="62.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="389.0" promptText="Search Description" />
+            <TextField fx:id="searchhl" layoutX="974.0" layoutY="62.0" onKeyTyped="#search" promptText="Search Headline" style="-fx-background-radius: 15;" />
+            <TextField fx:id="searchdesc" layoutX="1130.0" layoutY="62.0" onKeyTyped="#search" prefHeight="26.0" prefWidth="389.0" promptText="Search Description" style="-fx-background-radius: 15;" />
+            <Button fx:id="btnHome" focusTraversable="false" layoutX="295.0" layoutY="20.0" mnemonicParsing="false" onAction="#HomeAdmin" prefHeight="41.0" prefWidth="98.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Home" textFill="#fcf8f8">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </children>

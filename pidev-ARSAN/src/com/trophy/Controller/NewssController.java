@@ -131,6 +131,8 @@ public class NewssController implements Initializable {
     private TextField searchhl;
     @FXML
     private TextField searchdesc;
+    @FXML
+    private Button btnHome;
 
     /**
      * Initializes the controller class.
@@ -510,5 +512,9 @@ public class NewssController implements Initializable {
         stage.setScene(scene);
         stage.show();
         
+    }
+
+    @FXML
+    private void HomeAdmin(ActionEvent event) {
     }
 }

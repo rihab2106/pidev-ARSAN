@@ -128,7 +128,9 @@ import org.jsoup.nodes.Element;
 
 import java.util.Locale;
 import java.util.regex.Pattern;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextFormatter;
+import javafx.stage.Stage;
 import javax.speech.AudioException;
 import javax.speech.Central;
 import javax.speech.EngineException;
@@ -1004,7 +1006,10 @@ public class QGamesController implements  Initializable {
     }
 
     @FXML
-    private void showHome(ActionEvent event) {
+    private void showHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/trophy/view/HomeAdmin.fxml"));
+       Stage window =(Stage)btnhome.getScene().getWindow();
+       window.setScene(new Scene(root));
     }
     
     

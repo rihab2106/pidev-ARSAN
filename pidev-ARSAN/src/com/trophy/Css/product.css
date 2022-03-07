@@ -7,13 +7,13 @@
 
 
 .colorx{
-   -fx-text-fill : linear-gradient(to right bottom, #47c3fd, #401fca, #950ece);
+   -fx-text-fill : linear-gradient(to right bottom, #3d156b, #401fca, #950ece);
     
     
 }
 .gradientmaincolor{
     
-    -fx-background-color : linear-gradient(to right bottom, #47c3fd, #401fca, #950ece);
+    -fx-background-color : linear-gradient(to right bottom,  #47c3fd,#950ece,#401fca);
 }
 .proright
 {
@@ -125,7 +125,7 @@
     -fx-background-color: transparent;
 }*/
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #950ece,#47c3fd);
+    -fx-background-color: linear-gradient(to bottom,  #950ece,#47c3fd);
     -fx-background-radius: 7px 7px 0px 0px;
     -fx-background-insets: 0 11px 0 0;
     -fx-padding: 0 0 5px 0;
@@ -142,12 +142,12 @@
     -fx-text-background-color: blue;
 }
 .table-row-cell:odd{
-     -fx-background-color : linear-gradient(to right bottom, #FFFFFF, #950ece,#47c3fd);
+     -fx-background-color : linear-gradient(to right bottom,  #950ece,#47c3fd);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
 .table-row-cell:even{
-     -fx-background-color : linear-gradient(to right bottom, #47c3fd, #FFFFFF, #950ece);
+     -fx-background-color : linear-gradient(to right bottom, #47c3fd,  #950ece);
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em;
 }
@@ -165,10 +165,10 @@
     -fx-padding: 2;
 }
 .table-view .virtual-flow .scroll-bar:vertical .thumb{
-    -fx-background-color:  linear-gradient(to bottom, #FFFFFF,#47c3fd, #401fca);
+    -fx-background-color:  linear-gradient(to bottom, #47c3fd, #401fca);
 }
 .table-view .virtual-flow .scroll-bar:horizontal .thumb {
-    -fx-background-color:  linear-gradient(to right,  #FFFFFF,#47c3fd, #401fca);
+    -fx-background-color:  linear-gradient(to right,  #47c3fd, #401fca);
 }
 .table-row-cell:highlighted {
     -fx-background-color:  #401fca;

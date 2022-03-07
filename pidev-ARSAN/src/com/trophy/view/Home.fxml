@@ -306,6 +306,11 @@
                      </children>
                   </Pane>
                   <Line endX="-3.79998779296875" endY="582.9818115234375" layoutY="75.0" startX="-3.79998779296875" startY="-57.818172454833984" stroke="#401fca" />
+                  <Button fx:id="btnlogout" layoutX="676.0" layoutY="25.0" mnemonicParsing="false" onAction="#logoutt" prefHeight="54.0" prefWidth="75.0" styleClass="button4" stylesheets="@../Css/product.css" text="Log out" textFill="#f7f6f6">
+                     <font>
+                        <Font name="Dubai Bold" size="13.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>

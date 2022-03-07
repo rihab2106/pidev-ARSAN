@@ -23,7 +23,7 @@
                <top>
                   <Pane prefHeight="75.0" prefWidth="926.0" BorderPane.alignment="CENTER">
                      <children>
-                        <TextField fx:id="txtSearch" focusTraversable="false" layoutX="153.0" layoutY="15.0" onKeyTyped="#searchp" opacity="0.8" prefHeight="50.0" prefWidth="235.0" promptText="Enter Name ...." style="-fx-background-radius: 50; -fx-background-color: #FFFFFF;">
+                        <TextField fx:id="txtSearch" focusTraversable="false" layoutX="153.0" layoutY="15.0" onKeyTyped="#searchp" opacity="0.8" prefHeight="50.0" prefWidth="235.0" promptText="Enter Name ...." style="-fx-background-radius: 50;" styleClass="button4">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -87,7 +87,7 @@
                </left>
             </BorderPane>
             <AnchorPane layoutX="-102.0" layoutY="-15.0" prefHeight="4.0" prefWidth="1208.0" />
-            <TextField fx:id="txtPrice" focusTraversable="false" layoutX="204.0" layoutY="509.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" promptText="Entre Price">
+            <TextField fx:id="txtPrice" focusTraversable="false" layoutX="204.0" layoutY="509.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" styleClass="button4" stylesheets="@../Css/product.css">
                <font>
                   <Font size="23.0" />
                </font>
@@ -95,7 +95,7 @@
                   <Blend />
                </effect>
             </TextField>
-            <TextField fx:id="txtDiscount" focusTraversable="false" layoutX="438.0" layoutY="512.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" promptText="Enter Discount">
+            <TextField fx:id="txtDiscount" focusTraversable="false" layoutX="438.0" layoutY="512.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" styleClass="button4" stylesheets="@../Css/product.css">
                <font>
                   <Font size="20.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Blend />
                </effect>
             </TextField>
-            <TextField fx:id="txtquantity" focusTraversable="false" layoutX="653.0" layoutY="512.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0" promptText="Enter Quantity">
+            <TextField fx:id="txtquantity" focusTraversable="false" layoutX="653.0" layoutY="512.0" opacity="0.8" prefHeight="43.0" prefWidth="187.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -111,7 +111,7 @@
                   <Blend />
                </effect>
             </TextField>
-            <TextField fx:id="txtName" focusTraversable="false" layoutX="-26.0" layoutY="509.0" opacity="0.8" prefHeight="50.0" prefWidth="187.0" promptText="Entre Product Name">
+            <TextField fx:id="txtName" focusTraversable="false" layoutX="-26.0" layoutY="509.0" opacity="0.8" prefHeight="50.0" prefWidth="187.0" styleClass="button4" stylesheets="@../Css/product.css">
                <font>
                   <Font size="23.0" />
                </font>
@@ -171,7 +171,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnDelete1" focusTraversable="false" layoutX="88.0" layoutY="391.0" mnemonicParsing="false" onAction="#Delete" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="         Convert" textFill="#fcf8f8">
+            <Button fx:id="btnHome" focusTraversable="false" layoutX="83.0" layoutY="391.0" mnemonicParsing="false" onAction="#showHome" prefHeight="40.0" prefWidth="138.0" style="-fx-background-color: #010101; -fx-background-radius: 50;" text="        Home" textFill="#fcf8f8">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -187,9 +187,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="128.0" fitWidth="194.0" layoutX="31.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="140.0" fitWidth="254.0" layoutX="14.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Css/trophyhunter.png" />
+                  <Image url="@../Css/Untitled%20design.png" />
                </image>
             </ImageView>
             <ImageView fx:id="btnrefrechtable" fitHeight="43.0" fitWidth="50.0" layoutX="225.0" layoutY="109.0" onMouseClicked="#refrechhhh" pickOnBounds="true" preserveRatio="true">

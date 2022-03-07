@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,6 +45,8 @@ public class HomeController implements Initializable {
     private ImageView btnuser;
     @FXML
     private ImageView btnnews;
+    @FXML
+    private Button btnlogout;
 
     /**
      * Initializes the controller class.
@@ -108,5 +111,21 @@ public class HomeController implements Initializable {
        Stage window =(Stage)imgshop.getScene().getWindow();
        window.setScene(new Scene(root));
     }
+
+    @FXML
+    private void logoutt(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/Login.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            } catch (IOException ex) {
+                System.out.println("error , you can Logout ");
+            }
+    }
+    
     
 }

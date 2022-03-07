@@ -26,7 +26,7 @@
                               <Image url="@../Css/Untitled%20design.png" />
                            </image>
                         </ImageView>
-                        <TableView fx:id="table" layoutX="14.0" layoutY="125.0" prefHeight="378.0" prefWidth="638.0" stylesheets="@../Css/product.css">
+                        <TableView fx:id="table" layoutX="14.0" layoutY="125.0" prefHeight="378.0" prefWidth="632.0" stylesheets="@../Css/product.css">
                           <columns>
                             <TableColumn fx:id="Name" prefWidth="127.19996643066406" text="Product Name" />
                             <TableColumn fx:id="Price" prefWidth="85.5999755859375" text="Price " />
@@ -66,7 +66,7 @@
                            </font>
                         </Button>
                         <Hyperlink fx:id="givewayhyperlink" layoutX="684.0" layoutY="197.0" prefHeight="24.0" prefWidth="253.0" text="Hyperlink" />
-                        <ImageView fx:id="giveawaypic" fitHeight="150.0" fitWidth="200.0" layoutX="694.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="giveawaypic" fitHeight="244.0" fitWidth="292.0" layoutX="652.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true" />
                         <Hyperlink fx:id="givewaytitle" layoutX="684.0" layoutY="237.0" prefHeight="24.0" prefWidth="253.0" text="Hyperlink" />
                      </children>
                   </Pane>

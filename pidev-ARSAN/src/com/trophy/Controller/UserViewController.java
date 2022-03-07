@@ -85,9 +85,9 @@ public class UserViewController implements Initializable {
     @FXML
     private ImageView imageview3;
     @FXML
-    private Button loginbtn;
+    private Button btnBack;
     @FXML
-    private Button signupbtn;
+    private Button loginbtn1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -216,7 +216,19 @@ public class UserViewController implements Initializable {
     }
 
     @FXML
-    private void signup(ActionEvent event) {
+    private void Back(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/trophy/view/Home.fxml"));
+        Parent root=loader.load();
+        Scene scene=new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+        CommentSectionController controller= loader.getController();
+        ObservableList<News> LN = nd.getAllNews();
+        List<News> tail = LN.subList(Math.max(LN.size() - 3, 0), LN.size());
+        ObservableList<Comment> LC = cd.getAllComments(tail.get(0));
+        controller.InitData(tail.get(2), LC);
     }
 
 }

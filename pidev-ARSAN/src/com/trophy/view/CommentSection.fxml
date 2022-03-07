@@ -25,7 +25,7 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="-9.0" onMouseEntered="#ADDNEWITEM" prefHeight="1000.0" prefWidth="1594.0" style="-fx-background-color: #010101;" styleClass="mainFxmlClass" stylesheets="@../Css/Stylee1.css">
          <children>
-            <Pane layoutX="645.0" prefHeight="61.0" prefWidth="317.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 5;">
+            <Pane layoutX="645.0" prefHeight="61.0" prefWidth="317.0" style="-fx-background-radius: 5;" styleClass="gradientmaincolor" stylesheets="@../Css/product.css">
                <children>
                   <Label layoutX="57.0" layoutY="2.0" prefHeight="57.0" prefWidth="239.0" text="Comment Section" textFill="WHITE">
                      <font>
@@ -34,7 +34,7 @@
                   </Label>
                </children>
             </Pane>
-            <Label layoutX="69.0" layoutY="12.0" prefHeight="58.0" prefWidth="123.0" text="User View" textFill="WHITE">
+            <Label layoutX="69.0" layoutY="12.0" prefHeight="58.0" prefWidth="123.0" text="User View" textFill="#00afc7">
                <font>
                   <Font name="Bodoni MT Condensed" size="39.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fx:id="hl1" fill="#27ad18" fontSmoothingType="LCD" layoutX="12.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Headline1" wrappingWidth="1167.9999023437501">
+            <Text fx:id="hl1" fill="#00afc7" fontSmoothingType="LCD" layoutX="12.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Headline1" wrappingWidth="1167.9999023437501">
                <font>
                   <Font name="Arial Rounded MT Bold" size="36.0" />
                </font>
@@ -80,7 +80,7 @@
             <ImageView fx:id="imageview11" fitHeight="195.0" fitWidth="239.0" layoutX="14.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="imageview3" fitHeight="195.0" fitWidth="291.0" layoutX="14.0" layoutY="759.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="imageview1" fitHeight="325.0" fitWidth="426.0" layoutX="14.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true" />
-            <TableView fx:id="commentview" editable="true" layoutX="12.0" layoutY="546.0" onKeyTyped="#ADDCOMMENT" onMouseClicked="#ClickTable" prefHeight="440.0" prefWidth="1168.0">
+            <TableView fx:id="commentview" editable="true" layoutX="12.0" layoutY="546.0" onKeyTyped="#ADDCOMMENT" onMouseClicked="#ClickTable" prefHeight="440.0" prefWidth="1168.0" stylesheets="@../Css/product.css">
                <columns>
                   <TableColumn fx:id="content" prefWidth="1007.9999294281006" text="Content" />
                   <TableColumn fx:id="LIKES" minWidth="0.0" prefWidth="159.20001220703125" text="Likes" />

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -18,18 +17,18 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="game_paine" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.QGamesController">
+<AnchorPane id="AnchorPane" fx:id="game_paine" styleClass="gradientmaincolor" stylesheets="@../Css/product.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.trophy.Controller.QGamesController">
    <children>
       <HBox fx:id="Hbox_games_button" alignment="CENTER_LEFT" layoutX="21.0" layoutY="115.0" prefHeight="82.0" prefWidth="736.0" spacing="20.0">
          <children>
-            <Button fx:id="add_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Add">
+            <Button fx:id="add_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" styleClass="button4" stylesheets="@../Css/product.css" text="Add">
                <effect>
                   <Glow level="0.47" />
                </effect></Button>
-            <Button fx:id="delete_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" text="Delete" />
-            <TextField fx:id="game_in_search" prefHeight="42.0" prefWidth="317.0" promptText="Search game " />
-            <Button fx:id="game_stat" mnemonicParsing="false" onAction="#show_stat" prefHeight="40.0" prefWidth="90.0" text="Show Stat" />
-            <Button fx:id="btnhome" mnemonicParsing="false" onAction="#showHome" prefHeight="40.0" prefWidth="90.0" text="Home" />
+            <Button fx:id="delete_game" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" styleClass="button4" text="Delete" />
+            <TextField fx:id="game_in_search" prefHeight="42.0" prefWidth="317.0" promptText="Search game " styleClass="button4" />
+            <Button fx:id="game_stat" mnemonicParsing="false" onAction="#show_stat" prefHeight="40.0" prefWidth="90.0" styleClass="button4" text="Show Stat" />
+            <Button fx:id="btnhome" mnemonicParsing="false" onAction="#showHome" prefHeight="40.0" prefWidth="90.0" styleClass="button4" text="Home" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -72,8 +71,4 @@
          </menus></MenuBar>
       <Circle fx:id="game_cercle" fill="DODGERBLUE" layoutX="1223.0" layoutY="85.0" onMouseEntered="#showFromWeb" radius="42.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
-   <stylesheets>
-      <URL value="@../../../../dark%20theme.css" />
-      <URL value="@../Css/qgames.css" />
-   </stylesheets>
 </AnchorPane>

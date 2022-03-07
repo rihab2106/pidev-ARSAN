@@ -111,8 +111,6 @@ public class ProductController implements Initializable {
     @FXML
     private ImageView DESCBut;
     @FXML
-    private Button btnDelete1;
-    @FXML
     private TextField txtquantity;
     @FXML
     private TableColumn Quantity;
@@ -124,6 +122,8 @@ public class ProductController implements Initializable {
     private Scene scene;
     @FXML
     private ImageView btnrefrechtable;
+    @FXML
+    private Button btnHome;
     
 
     //ooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -511,6 +511,14 @@ public class ProductController implements Initializable {
     @FXML
     private void searchp(KeyEvent event) {
          table.setItems(pd.getSearchProduct(txtSearch.getText()));
+        
+    }
+
+    @FXML
+    private void showHome(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/com/trophy/view/HomeAdmin.fxml"));
+       Stage window =(Stage)btnshop.getScene().getWindow();
+       window.setScene(new Scene(root));
         
     }
 
