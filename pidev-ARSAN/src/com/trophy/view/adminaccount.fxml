@@ -37,5 +37,6 @@
       <TextField fx:id="iduser" layoutX="226.0" layoutY="44.0" prefHeight="26.0" prefWidth="184.0" promptText="ID user" />
       <Button fx:id="bts" layoutX="751.0" layoutY="86.0" mnemonicParsing="false" onAction="#sortusers" prefHeight="26.0" prefWidth="70.0" styleClass="button4" stylesheets="@../Css/product.css" text="Sort" />
       <Button fx:id="reftext" layoutX="226.0" layoutY="13.0" mnemonicParsing="false" onAction="#refresh" styleClass="button4" stylesheets="@../Css/product.css" text="Refresh" />
+      <Button fx:id="btnHome" layoutX="749.0" layoutY="13.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="70.0" styleClass="button4" stylesheets="@../Css/product.css" text="Home" />
    </children>
 </AnchorPane>

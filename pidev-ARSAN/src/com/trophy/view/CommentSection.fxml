@@ -24,14 +24,6 @@
    <children>
       <AnchorPane id="AnchorPane" layoutX="-9.0" onMouseEntered="#ADDNEWITEM" prefHeight="1000.0" prefWidth="1594.0" style="-fx-background-color: #010101;" styleClass="mainFxmlClass" stylesheets="@../Css/Stylee1.css">
          <children>
-            <Button fx:id="loginbtn" focusTraversable="false" layoutX="1305.0" layoutY="27.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="123.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Login" textFill="#fcf8f8">
-               <font>
-                  <Font name="Aldhabi" size="28.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
             <Button fx:id="btnback" focusTraversable="false" layoutX="1453.0" layoutY="27.0" mnemonicParsing="false" onAction="#Back" prefHeight="52.0" prefWidth="114.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Back" textFill="#fcf8f8">
                <font>
                   <Font name="Aldhabi" size="28.0" />
@@ -69,15 +61,7 @@
                   <ContextMenu fx:id="CM" />
                </contextMenu>
             </TableView>
-            <Button fx:id="previous" focusTraversable="false" layoutX="1412.0" layoutY="917.0" mnemonicParsing="false" onAction="#previous" prefHeight="20.0" prefWidth="168.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Previous page" textFill="#fcf8f8">
-               <font>
-                  <Font name="Aldhabi" size="28.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="Addcombtn" focusTraversable="false" layoutX="1189.0" layoutY="784.0" mnemonicParsing="false" onAction="#displayfield" prefHeight="34.0" prefWidth="168.0" style="-fx-background-color: #2bc20e; -fx-background-radius: 8;" text="Add Comment" textFill="#fcf8f8">
+            <Button fx:id="Addcombtn" focusTraversable="false" layoutX="1189.0" layoutY="784.0" mnemonicParsing="false" onAction="#displayfield" prefHeight="34.0" prefWidth="168.0" style="-fx-background-radius: 8;" styleClass="button4" stylesheets="@../Css/product.css" text="Add Comment" textFill="#fcf8f8">
                <font>
                   <Font name="Aldhabi" size="21.0" />
                </font>

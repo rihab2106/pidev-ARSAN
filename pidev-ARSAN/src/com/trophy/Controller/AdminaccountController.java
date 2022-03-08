@@ -63,6 +63,8 @@ public class AdminaccountController implements Initializable {
     private Button reftext;
     @FXML
     private Button logouttxt;
+    @FXML
+    private Button btnHome;
 
 
 
@@ -193,6 +195,21 @@ public class AdminaccountController implements Initializable {
             stage.show();
             } catch (IOException ex) {
                 System.out.println("error in displaying Article");
+            }
+    }
+
+    @FXML
+    private void Home(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent parent = FXMLLoader.load(getClass().getResource("/com/trophy/view/HomeAdmin.fxml"));
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            } catch (IOException ex) {
+                System.out.println("not HomeAdmin");
             }
     }
 }

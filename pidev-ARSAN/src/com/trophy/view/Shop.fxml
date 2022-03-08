@@ -28,10 +28,10 @@
                         </ImageView>
                         <TableView fx:id="table" layoutX="14.0" layoutY="125.0" prefHeight="378.0" prefWidth="632.0" stylesheets="@../Css/product.css">
                           <columns>
-                            <TableColumn fx:id="Name" prefWidth="127.19996643066406" text="Product Name" />
-                            <TableColumn fx:id="Price" prefWidth="85.5999755859375" text="Price " />
-                              <TableColumn fx:id="Discount" prefWidth="121.5999755859375" text="Discount" />
-                              <TableColumn fx:id="Category" prefWidth="275.20013427734375" text="Category" />
+                            <TableColumn fx:id="Name" prefWidth="164.80001258850098" text="Product Name" />
+                            <TableColumn fx:id="Price" prefWidth="85.60006713867188" text="Price " />
+                              <TableColumn fx:id="Discount" prefWidth="131.99993896484375" text="Discount" />
+                              <TableColumn fx:id="Category" prefWidth="228.79998779296875" text="Category" />
                           </columns>
                         </TableView>
                         <Pane layoutX="671.0" layoutY="-10.0" prefHeight="97.0" prefWidth="329.0" style="-fx-background-radius: 50;" styleClass="gradientmaincolor">

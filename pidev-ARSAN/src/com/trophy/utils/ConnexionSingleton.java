@@ -45,7 +45,8 @@ public class ConnexionSingleton  {
     {
        if(cnx == null){
          try {          
-            cnx = (Connection) DriverManager.getConnection(url,"root","");                   
+            cnx = (Connection) DriverManager.getConnection(url,"root","");
+          
         } catch (SQLException ex) {
             Logger.getLogger(ConnexionSingleton.class.getName()).log(Level.SEVERE, null, ex);
         }

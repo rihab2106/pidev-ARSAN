@@ -16,23 +16,23 @@ import java.util.logging.Logger;
  * @author Mouelhi
  */
 public class CNX {
-    private static CNX instance;
-    private Statement st;
-    private ResultSet rs;
-    public CNX() {
-        
-        ConnexionSingleton cs=ConnexionSingleton.getInstance();
-        try {
-            st=cs.getCnx().createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(CNX.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public static CNX getInstance(){
-        if(instance==null) 
-            instance=new CNX();
-        return instance;
-    }
-    
+//    private static CNX instance;
+//    private Statement st;
+//    private ResultSet rs;
+//    public CNX() {
+//        
+//        ConnexionSingleton cs=ConnexionSingleton.getInstance();
+//        try {
+//            st=cs.getCnx().createStatement();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(CNX.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
+//    
+//    public static CNX getInstance(){
+//        if(instance==null) 
+//            instance=new CNX();
+//        return instance;
+//    }
+//    
 }

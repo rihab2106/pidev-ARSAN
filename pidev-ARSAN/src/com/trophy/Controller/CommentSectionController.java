@@ -66,8 +66,6 @@ public class CommentSectionController implements Initializable {
     private News selectedNews;
     private ObservableList<Comment> selectedComments;
     @FXML
-    private Button loginbtn;
-    @FXML
     private Text hl1;
     @FXML
     private TextArea desc1;
@@ -85,8 +83,6 @@ public class CommentSectionController implements Initializable {
     @FXML
     private TableColumn content;
     private TableColumn<Comment, Void> likeanddislike;
-    @FXML
-    private Button previous;
     private TableColumn<Comment, Void> DISLIKE1;
     @FXML
     private Button Addcombtn;
@@ -200,14 +196,10 @@ public class CommentSectionController implements Initializable {
 
     
 
-    @FXML
-    private void login(ActionEvent event) {
-    }
 
 
     private Stage stage;
 
-    @FXML
     private void previous(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com/trophy/view/UserView.fxml"));

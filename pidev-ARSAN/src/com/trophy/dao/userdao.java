@@ -35,7 +35,7 @@ public class userdao implements userinterface<users, Groups> {
     public  userdao() {
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
-            st=cs.getCnx().createStatement();
+            st=cs.openConnection().createStatement();
              
         } catch (SQLException ex) {
             Logger.getLogger(userdao.class.getName()).log(Level.SEVERE, null, ex);
